@@ -61,6 +61,35 @@ button:focus-visible,input:focus-visible,select:focus-visible,a:focus-visible{ou
 .tagline{margin-top:26px;font-family:var(--f-display);font-size:17px;font-weight:600;color:var(--clay-ink);display:inline-flex;align-items:center;gap:10px;background:var(--clay-soft);border:1px solid color-mix(in srgb,var(--clay) 30%,transparent);padding:8px 16px;border-radius:999px}
 .hero-cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:34px}
 .btn{font-family:var(--f-body);font-weight:600;font-size:15px;padding:12px 22px;border-radius:999px;border:1px solid var(--clay);background:var(--clay);color:#fff;cursor:pointer;text-decoration:none;display:inline-block}
+.kit-card{margin-top:30px;background:var(--surface);border:1px solid var(--line-strong);border-radius:var(--radius);padding:30px 32px}
+.kit-head{display:flex;justify-content:space-between;align-items:flex-start;gap:28px;flex-wrap:wrap}
+.kit-tag{display:inline-block;font-family:var(--f-data);font-size:11px;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--clay-ink);background:var(--clay-soft);border-radius:999px;padding:4px 12px;margin-bottom:10px}
+.kit-card h3{font-family:var(--f-display);font-size:30px;font-weight:800;margin:0 0 8px;line-height:1.15}
+.kit-sub{color:var(--ink-2);font-size:17px;margin:0;max-width:46ch}
+.kit-price{text-align:right;flex:none}
+.kit-price .amt{display:block;font-family:var(--f-display);font-size:44px;font-weight:800;color:var(--clay);line-height:1}
+.kit-price .per{font-size:13px;color:var(--muted)}
+.kit-proof{margin:22px 0 26px;padding:12px 16px;background:var(--surface-2);border-left:3px solid var(--good);
+  font-size:14px;color:var(--ink-2)}
+.kit-flow{list-style:none;counter-reset:kf;padding:0;margin:0 0 30px}
+.kit-flow li{counter-increment:kf;position:relative;padding:0 0 18px 46px;border-left:1px solid var(--line);margin-left:15px}
+.kit-flow li:last-child{border-left-color:transparent;padding-bottom:0}
+.kit-flow li::before{content:counter(kf,decimal-leading-zero);position:absolute;left:-15px;top:-2px;width:30px;height:30px;
+  border-radius:50%;background:var(--clay);color:#fff;font-family:var(--f-data);font-size:11px;font-weight:700;
+  display:flex;align-items:center;justify-content:center}
+.kit-flow b{display:block;font-size:16px;color:var(--ink);margin-bottom:3px}
+.kit-flow span{display:block;font-size:14.5px;color:var(--ink-2);line-height:1.6;max-width:56ch}
+.kit-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-bottom:28px}
+@media (max-width:720px){.kit-grid{grid-template-columns:1fr}.kit-price{text-align:left}}
+.kit-cta{display:flex;align-items:center;gap:18px;flex-wrap:wrap;padding-top:22px;border-top:1px solid var(--line)}
+.kit-alt{font-size:14px;color:var(--muted)}
+.linkish{background:none;border:0;padding:0;font:inherit;color:var(--clay);cursor:pointer;text-decoration:underline}
+.kit-soon{margin-top:44px;padding-top:28px;border-top:1px solid var(--line)}
+.kit-soon-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px;margin-bottom:14px}
+.kit-soon-grid > div{background:var(--surface-2);border:1px solid var(--line);border-radius:10px;padding:16px 18px}
+.kit-soon-grid b{display:block;font-size:15px;margin-bottom:5px;color:var(--ink)}
+.kit-soon-grid span{font-size:13.5px;color:var(--ink-2);line-height:1.55}
 .handover{margin:42px 0;padding:26px 28px;border-radius:var(--radius);background:var(--clay-soft);
   border:1px solid color-mix(in srgb,var(--clay) 28%,transparent);position:relative}
 .handover .ho-mark{font-family:var(--f-data);font-size:11px;letter-spacing:.12em;text-transform:uppercase;
@@ -265,6 +294,7 @@ pre.code{max-width:100%}
     <nav class="navlinks">
       <button data-route="home">Home</button>
       <button data-route="templates">Templates</button>
+      <button data-route="kits">Kits</button>
       <button data-route="waitlist">Build queue</button>
       <button data-route="newsletter">Newsletter</button>
     </nav>
@@ -405,6 +435,79 @@ pre.code{max-width:100%}
 </div>
 
 <!-- WAITLIST -->
+<div id="view-kits" hidden>
+  <section class="wrap">
+    <p class="eyebrow">Kits</p>
+    <h2 style="font-size:clamp(28px,4.5vw,42px);font-weight:800;margin:10px 0 16px">Built once. Yours to run.</h2>
+    <p style="max-width:62ch;color:var(--ink-2)">The guides are free and always will be. A kit is the same thing assembled — the scripts, the prompts, the folder structure and the setup walkthrough, packaged so you can run it this week instead of building it over a month.</p>
+
+    <div class="kit-card">
+      <div class="kit-head">
+        <div>
+          <span class="kit-tag">Flagship kit</span>
+          <h3>The One-Prompt Content Week</h3>
+          <p class="kit-sub">One prompt on Sunday. Your week is cut, captioned, and scheduled by Monday.</p>
+        </div>
+        <div class="kit-price">
+          <span class="amt">$99</span>
+          <span class="per">one-time</span>
+        </div>
+      </div>
+
+      <div class="kit-proof">Running in production for a creator who hasn't opened an editor in three weeks.</div>
+
+      <p class="sub">The flow</p>
+      <ol class="kit-flow">
+        <li><b>You write one prompt</b><span>A plain-English brief for the week: topics, angle, tone. That is the only manual step.</span></li>
+        <li><b>It pulls your raw footage</b><span>Watches a folder or drive link, transcribes everything, and indexes what's in each clip.</span></li>
+        <li><b>It picks the moments</b><span>Matches the brief against the transcript index and selects the segments that actually serve it — not the first 30 seconds of each file.</span></li>
+        <li><b>It cuts</b><span>Assembles each piece, trims dead air and filler, and holds the pacing short-form needs.</span></li>
+        <li><b>It captions</b><span>Word-level timing, your font and placement, burned in — no separate captioning pass.</span></li>
+        <li><b>It writes the copy</b><span>Hook, caption and hashtags per platform, in your voice, from the same brief.</span></li>
+        <li><b>It schedules the week</b><span>Queues everything to your posting calendar at your slots. You approve or you ignore it — either way it ships.</span></li>
+      </ol>
+
+      <div class="kit-grid">
+        <div>
+          <p class="sub">What you get</p>
+          <ul class="need">
+            <li>Every script, prompt and config file</li>
+            <li>Folder structure that works out of the box</li>
+            <li>Setup walkthrough, start to finish</li>
+            <li>The brief template the whole thing runs on</li>
+            <li>Free updates when the kit improves</li>
+          </ul>
+        </div>
+        <div>
+          <p class="sub">What you need</p>
+          <ul class="need">
+            <li>An Anthropic API key (your own, your usage)</li>
+            <li>A scheduling tool with an API</li>
+            <li>Comfort running a script from a terminal</li>
+            <li>Roughly two hours for first setup</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="kit-cta">
+        <button class="btn" data-route="waitlist">Get the kit — $99</button>
+        <span class="kit-alt">Or have it built around your pipeline instead — <button class="linkish" data-route="waitlist">the build queue</button></span>
+      </div>
+      <p class="note" style="margin-top:14px">Honest note: this is a kit, not an app. You run it on your own machine with your own keys. If you'd rather not touch a terminal, the build queue is the better door.</p>
+    </div>
+
+    <div class="kit-soon">
+      <p class="sub">In the works</p>
+      <div class="kit-soon-grid">
+        <div><b>Client Onboarding Kit</b><span>Intake form to brief to folder structure to kickoff email, automatically.</span></div>
+        <div><b>Agency Reporting Kit</b><span>Pull the numbers, write the client update, send it on a schedule.</span></div>
+        <div><b>Inbox Triage Kit</b><span>Sort, draft and route — so the inbox stops being a morning job.</span></div>
+      </div>
+      <p class="note">Want one of these first? Say so in the build queue and it moves up.</p>
+    </div>
+  </section>
+</div>
+
 <div id="view-waitlist" hidden>
   <section class="wrap">
     <p class="eyebrow">Build queue</p>
@@ -473,6 +576,7 @@ pre.code{max-width:100%}
       <h4>Site</h4>
       <button data-route="home">Home</button>
       <button data-route="templates">All 60 guides</button>
+      <button data-route="kits">Kits</button>
       <button data-route="waitlist">Build queue</button>
       <button data-route="newsletter">Newsletter</button>
     </div>
@@ -2921,7 +3025,7 @@ q.addEventListener("input",render);sort.addEventListener("change",render);
 
 
 
-const routes=["home","templates","waitlist","newsletter","guide"];
+const routes=["home","templates","kits","waitlist","newsletter","guide"];
 function go(r){
   if(r&&r.startsWith("guide/")){const g=T.find(x=>x.s===r.slice(6));if(g){renderGuide(g);r="guide";}else r="templates";}
   if(!routes.includes(r))r="home";
