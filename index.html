@@ -61,6 +61,18 @@ button:focus-visible,input:focus-visible,select:focus-visible,a:focus-visible{ou
 .tagline{margin-top:26px;font-family:var(--f-display);font-size:17px;font-weight:600;color:var(--clay-ink);display:inline-flex;align-items:center;gap:10px;background:var(--clay-soft);border:1px solid color-mix(in srgb,var(--clay) 30%,transparent);padding:8px 16px;border-radius:999px}
 .hero-cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:34px}
 .btn{font-family:var(--f-body);font-weight:600;font-size:15px;padding:12px 22px;border-radius:999px;border:1px solid var(--clay);background:var(--clay);color:#fff;cursor:pointer;text-decoration:none;display:inline-block}
+.handover{margin:42px 0;padding:26px 28px;border-radius:var(--radius);background:var(--clay-soft);
+  border:1px solid color-mix(in srgb,var(--clay) 28%,transparent);position:relative}
+.handover .ho-mark{font-family:var(--f-data);font-size:11px;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--clay-ink);margin-bottom:8px}
+.handover h3{font-family:var(--f-display);font-size:24px;font-weight:800;margin:0 0 10px;color:var(--ink)}
+.handover p{margin:0 0 16px;color:var(--ink-2);font-size:16px;line-height:1.65}
+.handover .ho-pts{list-style:none;padding:0;margin:0 0 20px;display:grid;gap:8px}
+.handover .ho-pts li{padding-left:22px;position:relative;font-size:15px;color:var(--ink-2);line-height:1.5}
+.handover .ho-pts li::before{content:'';position:absolute;left:0;top:8px;width:8px;height:8px;border-radius:50%;
+  background:var(--clay);opacity:.75}
+.handover .ho-pts b{color:var(--clay-ink);font-weight:700}
+.handover .ho-alt{display:block;margin-top:12px;font-size:13px;color:var(--muted)}
 .btn:hover{filter:brightness(1.06)}
 .btn.ghost{background:transparent;color:var(--ink);border-color:var(--line-strong)}
 .btn.ghost:hover{background:var(--surface)}
@@ -2959,6 +2971,21 @@ function renderGuide(x){
   <h2 id="s7">Where it breaks</h2><div class="callout"><p>${x.breaks}</p></div>
   <h2 id="s8">The mistakes that cost the most</h2><ul class="need">${D.mistakes.map(v=>`<li>${v}</li>`).join("")}</ul>
   <h2 id="s9">What it costs to run</h2><p>${D.cost}</p>
+
+  <div class="handover">
+    <div class="ho-mark">Or don't build it</div>
+    <h3>Have this one built for you.</h3>
+    <p>Everything above is yours, free, forever — the prompt, the code, the whole build. But if you'd rather have this running on your own setup by the end of the week, tuned to how your business actually works, tested and handed over, that's the other thing we do.</p>
+    <ul class="ho-pts">
+      <li><b>${x.setup} minutes</b> of your time instead of <b>${x.hours} hours</b> of building</li>
+      <li>One-time setup — no retainer, nothing to renew</li>
+      <li>Runs on your machine, your keys, your subscription</li>
+      <li>You approve it before it's locked and handed over</li>
+    </ul>
+    <button class="btn" data-route="services">Have it built &rarr;</button>
+    <span class="ho-alt">Free either way. The build above doesn't expire.</span>
+  </div>
+
   <h2>Once it runs</h2><div class="next-up"><p>${x.then}</p></div>
   <h2 id="s10">More in ${x.c}</h2><div class="grid">${T.filter(v=>v.c===x.c&&v.s!==x.s).slice(0,3).map(cardHTML).join("")}</div>
   `;}
