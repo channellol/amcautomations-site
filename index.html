@@ -3428,12 +3428,16 @@ function renderGuide(x){
   <h2>Once it runs</h2><div class="next-up"><p>${x.then}</p></div>
   <h2 id="s10">More in ${x.c}</h2><div class="grid">${T.filter(v=>v.c===x.c&&v.s!==x.s).slice(0,3).map(cardHTML).join("")}</div>
   `;}
+const SB="https://mwryqqpsjuobeonjfdbx.supabase.co",SBK="sb_publishable_G0lRP8-CRTcjorNnwDz_Iw_iyY8YTsF";
 function handle(form,doneId,msg){const f=document.getElementById(form);if(!f)return;f.addEventListener("submit",async e=>{e.preventDefault();
   const d=document.getElementById(doneId),b=f.querySelector("button[type=submit]"),data={_subject:"amc.automations: "+form,_template:"table",_captcha:"false",page:location.hash};
   f.querySelectorAll("input").forEach(i=>data[i.name||i.id]=i.value);
   b.disabled=true;const t=b.textContent;b.textContent="Sending…";
+  const v=id=>(document.getElementById(form+"-"+id)||{}).value||null;
+  const row={kind:{sv:"brief",wl:"waitlist"}[form]||"newsletter",business:v("name"),job:v("job"),contact:v("email"),page:location.hash.slice(0,300)};
+  const sb=fetch(SB+"/rest/v1/leads",{method:"POST",headers:{apikey:SBK,"Content-Type":"application/json",Prefer:"return=minimal"},body:JSON.stringify(row)}).then(r=>r.ok).catch(()=>false);
   try{const r=await fetch("https://formsubmit.co/ajax/atharva@apterno.com",{method:"POST",headers:{"Content-Type":"application/json",Accept:"application/json"},body:JSON.stringify(data)});
-    if(!r.ok)throw 0;d.textContent=msg;d.className="note ok";f.reset();}
+    if(!r.ok&&!(await sb))throw 0;d.textContent=msg;d.className="note ok";f.reset();}
   catch(_){d.innerHTML='Could not send. Message on <a href="https://wa.me/917075969025">WhatsApp</a> instead.';d.className="note err";}
   d.hidden=false;b.disabled=false;b.textContent=t;});}
 handle("wl","wl-done","You are in the queue. I will email you within a day.");handle("sv","sv-done","Got it. I will reply within a day.");
