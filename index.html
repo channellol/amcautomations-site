@@ -1018,7 +1018,14 @@ what:"Applying is 90% repetition: searching, rewording the same resume, and typi
 need:["Your resume as a PDF or text, with every project and skill on it","A short list: roles you want, cities, must-have skills, and what to skip","Claude with browser access (Claude in Chrome) for filling forms"],
 steps:["Give Claude your resume and your target list. Ask it to restate your profile as search rules: roles, locations, must-haves, and a skip list (unpaid, too senior, wrong stack).","Have it search job boards and company career pages, then rank matches by fit and freshness. Roles posted in the last 3 days go first, because early applicants get read.","For each shortlisted role, ask for a tailored version of your resume: reorder projects and mirror the job post's keywords. It must only use facts already on your resume.","With browser access, have Claude open the application, fill every field from your details, and attach that role's resume version.","Review the filled form and press submit yourself. Log each application in a sheet: company, role, date, resume version."],
 breaks:"Letting it invent experience to match a job post. Tell it plainly: reorder and reword what is true, never add skills or projects you do not have. Recruiters check, and one caught lie costs you the company.",
-then:"After two weeks, look at which resume versions got replies. Make that ordering your default and tailor less."}
+then:"After two weeks, look at which resume versions got replies. Make that ordering your default and tailor less."},
+
+{s:"lead-auto-reply",k:"REPLY",c:"Build & sell",t:"Reply to Every New Lead in Under a Minute, Even at 2 AM",d:"Every enquiry from Instagram, WhatsApp, your website or Google gets an instant, accurate reply, a few qualifying questions, and a booked call. You only see the hot ones.",read:6,setup:45,hours:10,
+what:"Small businesses lose leads to slowness, not price. The first business to reply usually gets the customer, and most owners reply hours later because they are busy running the business. An agent that answers from your own business info, asks the qualifying questions, and books the call closes that gap without hiring anyone.",
+need:["One sheet with your business facts: services, prices, timings, location, FAQs","Access to the channels leads come in on (WhatsApp Business, Instagram DMs, your website form, Google Business messages)","A booking calendar link (Cal.com or Google Calendar)"],
+steps:["Route every channel into one place. WhatsApp and Instagram through Meta's official APIs, the website form through a webhook. One inbox means one agent.","Give the agent your business sheet as its only source of truth. It answers from the sheet and says so when it does not know, instead of guessing a price.","Reply within 60 seconds with the answer plus one question that moves the lead forward: what they need, their timeline, their budget range.","When the three answers qualify them, send the booking link and confirm the slot. When they don't, answer politely and stop.","Send yourself one summary each evening: how many came in, how fast each got a reply, who booked. Hand anything unusual to a person immediately."],
+breaks:"Letting it quote prices or promise things that are not in the sheet. One wrong price in writing costs more than a slow reply. If it is not in the sheet, it hands over to you.",
+then:"Watch which questions leads ask that the sheet can't answer. Add those answers weekly and the handover rate drops."}
 ];
 const DEEP1={
 "council-that-roasts-your-idea":{why:"A single reviewer inherits your framing. You describe the idea in the words you already believe, and it answers inside those words. Conflicting briefs break that: the accountant cannot praise a plan it is only allowed to cost, and the operator cannot love a workflow it has to run on a Tuesday morning. What you are buying is not intelligence, it is four incompatible vantage points on the same paragraph, produced in ten minutes instead of a month.",checks:["Each role produced at least one objection the others did not","Two roles openly contradict each other somewhere","You can name one thing you will change because of round two"],mistakes:["Writing four briefs that are really the same brief in different clothes","Letting the council recommend a decision, which turns four opinions back into one"],cost:"Two rounds, four short outputs each. Cheap enough to run on every idea before you build."},
@@ -1086,7 +1093,8 @@ const DEEP3={
 "client-brief-template":{why:"Revisions are usually the cost of a decision that was never made. A six-question brief forces those decisions to the front, where they cost four minutes instead of a rebuild. Asking for an example rather than an adjective is the highest-value question on the form, because it transfers taste rather than vocabulary.",checks:["The questions came from real revision history","There are six or fewer","One question is a hard constraint"],mistakes:["A long form nobody completes","Free-text answers that contradict each other"],cost:"Four minutes of the client's time, against a revision round."},
 "bank-the-judgment-calls":{why:"Repeated work is mostly re-decided work. Writing the call, the reason and what would change it turns a recurring argument into a lookup, and the third field is the one that makes the file survive contact with a changed world. Marking reversals rather than editing them away keeps the history readable.",checks:["Each entry has a reason and a trigger for revisiting","Entries are two lines","Reversals are marked, not deleted"],mistakes:["Recording the decision without the reason","Letting entries grow long, so they stop being written"],cost:"Two lines at the moment of deciding. After a year it is the most valuable file you own."},
 "lead-scoring":{why:"Outreach fails at the list, not the email. A score forces every lead to earn its place with evidence, so the time you spend writing goes to people with a real reason to reply. The rejection log matters as much as the keep list: it stops you re-researching the same dead companies every week.",checks:["Every point in the score has a source URL behind it","Nothing under the cut was emailed","Each saved lead carries the one-line reason it qualified"],mistakes:["Scoring from the model's impression instead of cited evidence","Keeping 50 to 59 as maybes, which quietly becomes emailing everyone"],cost:"About a day to write the rubric and wire it up, then minutes per batch."},
-"claude-job-applier":{why:"Most students lose placement season to volume, not skill. Hours go into rewording the same resume and typing the same fields, so they apply to fewer roles and later than everyone else. Handing the repetition to Claude means you apply earlier, to better-matched roles, with a resume that speaks each recruiter's language.",checks:["Every tailored resume uses only facts from your original","Each application was reviewed before you pressed submit","Applications are logged with the resume version used"],mistakes:["Letting it add skills you do not have","Applying to everything instead of the ranked shortlist"],cost:"An evening to set up your profile and prompts, then a few minutes per application."}
+"claude-job-applier":{why:"Most students lose placement season to volume, not skill. Hours go into rewording the same resume and typing the same fields, so they apply to fewer roles and later than everyone else. Handing the repetition to Claude means you apply earlier, to better-matched roles, with a resume that speaks each recruiter's language.",checks:["Every tailored resume uses only facts from your original","Each application was reviewed before you pressed submit","Applications are logged with the resume version used"],mistakes:["Letting it add skills you do not have","Applying to everything instead of the ranked shortlist"],cost:"An evening to set up your profile and prompts, then a few minutes per application."},
+"lead-auto-reply":{why:"Response time decides most small-business sales. Leads enquire with two or three businesses at once and go with whoever answers clearly first. An owner who replies at night after closing has already lost most of them. Automating the first reply and the qualifying questions turns response time from hours into seconds without anyone watching the phone.",checks:["Every answer came from the business sheet, not the model's guess","Unqualified leads got a polite answer, not a booking link","Anything outside the sheet was handed to a person"],mistakes:["Letting it improvise prices or availability","Asking five qualifying questions at once instead of one at a time"],cost:"A day to connect channels and write the business sheet, then near zero per lead."}
 };
 const HOW1={
 "council-that-roasts-your-idea":{flow:["Your idea paragraph is copied into four separate sessions, one per role","Each session holds only its own brief and the paragraph, never the other roles","Round one outputs are collected into one transcript file","The transcript goes back to all four, and each answers the objection aimed at it","You read the objections nobody answered and decide alone"],paste:`Role: THE ACCOUNTANT.
@@ -1518,7 +1526,18 @@ Target roles: {roles}. Locations: {cities}. Must have: {skills}. Skip: {skip}.
 3. For the role I pick, rewrite my resume to match its keywords.
    Reorder and reword ONLY what is already true. Never add skills or projects.
 4. Fill the application form with my details and attach that version.
-   Stop before submitting and show me the filled form.`}
+   Stop before submitting and show me the filled form.`},
+"lead-auto-reply":{flow:["Every channel feeds one inbox: WhatsApp, Instagram, website form, Google","The agent answers from your business sheet within 60 seconds","It asks one qualifying question at a time: need, timeline, budget","Qualified leads get the booking link and a confirmed slot","You get an evening summary and instant handovers for anything unusual"],paste:`You reply to new enquiries for {business}. Use ONLY the business sheet below.
+
+Business sheet:
+{services, prices, timings, location, FAQs}
+
+Rules:
+- Reply in under 3 short sentences, in the customer's language.
+- If the answer is not in the sheet, say you will check and flag it for the owner.
+- After answering, ask ONE question to qualify: need, then timeline, then budget range.
+- If they fit ({qualifying rule}), send {booking_link} and confirm the slot.
+- Never promise a price, discount or date that is not in the sheet.`}
 };
 const BUILD1={
 "council-that-roasts-your-idea":{repos:[],tree:`council/
@@ -3055,7 +3074,31 @@ for _, j in jobs.iterrows():
     path = pathlib.Path("tailored") / f'{j["company"]}.md'
     path.write_text(tailored)
     print(fit["score"], j["company"], j["title"], j["job_url"], "->", path)
-# open each job_url, fill the form, attach the tailored resume, review, and submit yourself.`,run:`python find.py`}
+# open each job_url, fill the form, attach the tailored resume, review, and submit yourself.`,run:`python find.py`},
+"lead-auto-reply":{repos:[["n8n","https://github.com/n8n-io/n8n","Connect WhatsApp, Instagram and forms into one workflow"],["Cal.com","https://github.com/calcom/cal.com","Open-source booking links and calendar sync"]],tree:`lead-reply/
+  amc.py
+  business_sheet.md
+  webhook.py          # receives WhatsApp / Instagram / form messages
+  leads.csv           # time_in, channel, name, stage, replied_in_s
+  summary.py`,code:`import csv, time, pathlib
+from flask import Flask, request
+from amc import ask_json
+
+sheet = pathlib.Path("business_sheet.md").read_text()
+app = Flask(__name__)
+
+@app.post("/lead")
+def lead():
+    m = request.json                     # {channel, name, text, history}
+    t0 = time.time()
+    r = ask_json(f"""You reply to new enquiries. Use ONLY this sheet:\n{sheet}
+Answer in under 3 sentences, then ask ONE qualifying question (need, timeline, budget).
+If qualified, include the booking link. If the answer is not in the sheet, set handover true.
+Return JSON {{"reply": "...", "stage": "new|qualifying|booked", "handover": false}}""",
+        str(m["history"]) + "\nCustomer: " + m["text"])
+    csv.writer(open("leads.csv", "a", newline="")).writerow(
+        [time.strftime("%F %T"), m["channel"], m["name"], r["stage"], round(time.time() - t0, 1)])
+    return r                              # your channel connector sends r["reply"] back`,run:`python webhook.py`}
 };
 const STARTER=`# amc.py — the starter kit every guide imports
 # pip install anthropic   and set ANTHROPIC_API_KEY
