@@ -1004,7 +1004,14 @@ what:"Most repeated work is re-deciding things you already decided. Writing down
 need:["A decisions file","The discipline to write two lines at the time"],
 steps:["Record the decision, the date, the reason, and what would change it.","Keep it to two lines. Long entries do not get written.","Reference the file before any similar decision.","Mark a decision as reversed rather than editing it away.","Review quarterly and retire what no longer applies."],
 breaks:"Recording the decision without the reason. Next quarter you cannot tell whether it still applies.",
-then:"After a year this file is the most valuable thing in your setup."}
+then:"After a year this file is the most valuable thing in your setup."},
+
+{s:"lead-scoring",k:"SCORE",c:"Build & sell",t:"Score Every Lead From 0 to 100 Before You Send a Single Email",d:"Four weighted checks decide who gets an email. Anything under 60 is rejected and skipped for 90 days, so you only write to people likely to reply.",read:6,setup:40,hours:6,
+what:"Most lead lists are mostly people who will never reply. Scoring each lead against a fixed rubric before outreach means you write 25 good emails instead of 376 ignored ones. One real run: 376 companies in, 25 worth emailing.",
+need:["Your ideal customer written as rules: industry, team size, who buys, and the signal that means now","A list of candidate companies (a database export, Google Maps pull or your own research)","Claude, and a sheet or small database to store scores and rejections"],
+steps:["Turn your ideal customer into four scoring buckets with fixed weights: content or use-case fit 30, industry and size 25, a dated buying signal 25, a named decision maker with a real email 20. The weights must add to 100.","For each candidate, have Claude research and cite evidence for every bucket. No citation, no points. A guessed email scores zero in the contact bucket.","Score only signals from the last 120 days, weighted by type: a campaign launch or a job post for the role you replace counts more than a generic news mention.","Set the cut at 60. Everything below is rejected, logged with the reason, and not re-researched for 90 days.","Deduplicate against everyone you have ever contacted before saving, then export the survivors with the one-line reason they qualified. That reason is the opening line of your email."],
+breaks:"Letting the model score from vibes. If a point has no cited source, it must be zero, or your top leads will be the ones it made up.",
+then:"Track replies by score band. If 60 to 70 never replies, raise the cut. If 90+ converts, shift more weight to whichever bucket they all share."}
 ];
 const DEEP1={
 "council-that-roasts-your-idea":{why:"A single reviewer inherits your framing. You describe the idea in the words you already believe, and it answers inside those words. Conflicting briefs break that: the accountant cannot praise a plan it is only allowed to cost, and the operator cannot love a workflow it has to run on a Tuesday morning. What you are buying is not intelligence, it is four incompatible vantage points on the same paragraph, produced in ten minutes instead of a month.",checks:["Each role produced at least one objection the others did not","Two roles openly contradict each other somewhere","You can name one thing you will change because of round two"],mistakes:["Writing four briefs that are really the same brief in different clothes","Letting the council recommend a decision, which turns four opinions back into one"],cost:"Two rounds, four short outputs each. Cheap enough to run on every idea before you build."},
@@ -1070,7 +1077,8 @@ const DEEP3={
 "grade-and-fix-own-work":{why:"Self-review works under two conditions: the rubric comes from outside the work, and the loop has a limit. Without the first it grades its own intentions; without the second it polishes forever at increasing cost for decreasing return. Two passes captures nearly all of the gain.",checks:["The rubric was written before the work","Grading and fixing are separate steps","The loop stops at two passes"],mistakes:["Letting one step grade and fix together","Continuing past two passes because the score keeps moving"],cost:"Two short passes per output."},
 "batch-without-sameness":{why:"Batch output collapses toward its own best idea. Once a strong pattern appears, everything after it is a variation. Generating in small groups with a named angle per group, and forcing one constraint to change per group, keeps the later items genuinely different instead of technically different.",checks:["Each item has its own input","Groups have named angles","Review was done on first lines only"],mistakes:["Thirty outputs for one input","Regenerating one item at a time, which drags the batch back toward the same pattern"],cost:"Small, and it saves the twenty items you would otherwise throw away."},
 "client-brief-template":{why:"Revisions are usually the cost of a decision that was never made. A six-question brief forces those decisions to the front, where they cost four minutes instead of a rebuild. Asking for an example rather than an adjective is the highest-value question on the form, because it transfers taste rather than vocabulary.",checks:["The questions came from real revision history","There are six or fewer","One question is a hard constraint"],mistakes:["A long form nobody completes","Free-text answers that contradict each other"],cost:"Four minutes of the client's time, against a revision round."},
-"bank-the-judgment-calls":{why:"Repeated work is mostly re-decided work. Writing the call, the reason and what would change it turns a recurring argument into a lookup, and the third field is the one that makes the file survive contact with a changed world. Marking reversals rather than editing them away keeps the history readable.",checks:["Each entry has a reason and a trigger for revisiting","Entries are two lines","Reversals are marked, not deleted"],mistakes:["Recording the decision without the reason","Letting entries grow long, so they stop being written"],cost:"Two lines at the moment of deciding. After a year it is the most valuable file you own."}
+"bank-the-judgment-calls":{why:"Repeated work is mostly re-decided work. Writing the call, the reason and what would change it turns a recurring argument into a lookup, and the third field is the one that makes the file survive contact with a changed world. Marking reversals rather than editing them away keeps the history readable.",checks:["Each entry has a reason and a trigger for revisiting","Entries are two lines","Reversals are marked, not deleted"],mistakes:["Recording the decision without the reason","Letting entries grow long, so they stop being written"],cost:"Two lines at the moment of deciding. After a year it is the most valuable file you own."},
+"lead-scoring":{why:"Outreach fails at the list, not the email. A score forces every lead to earn its place with evidence, so the time you spend writing goes to people with a real reason to reply. The rejection log matters as much as the keep list: it stops you re-researching the same dead companies every week.",checks:["Every point in the score has a source URL behind it","Nothing under the cut was emailed","Each saved lead carries the one-line reason it qualified"],mistakes:["Scoring from the model's impression instead of cited evidence","Keeping 50 to 59 as maybes, which quietly becomes emailing everyone"],cost:"About a day to write the rubric and wire it up, then minutes per batch."}
 };
 const HOW1={
 "council-that-roasts-your-idea":{flow:["Your idea paragraph is copied into four separate sessions, one per role","Each session holds only its own brief and the paragraph, never the other roles","Round one outputs are collected into one transcript file","The transcript goes back to all four, and each answers the objection aimed at it","You read the objections nobody answered and decide alone"],paste:`Role: THE ACCOUNTANT.
@@ -1483,7 +1491,17 @@ One input per item. Return the groups separately.`},
   revisit if: a client type appears where per-item genuinely fits.
 
 2026-09-02 | REVERSED (was: weekly reporting) -> monthly.
-  why: weekly note was read once in six weeks.`}
+  why: weekly note was read once in six weeks.`},
+"lead-scoring":{flow:["Your ideal customer is written as four weighted buckets that add to 100","Each candidate is researched and every bucket gets cited evidence","Points without a source are set to zero","Leads under 60 are rejected and logged for 90 days","Survivors are deduplicated and exported with their opening line"],paste:`You are a lead scorer. Score this company from 0 to 100 using ONLY cited evidence.
+
+Rubric (points must sum to 100):
+- Fit (30): evidence they do the work my product speeds up.
+- ICP (25): industry {industries}, team size {min} to {max}, geography {regions}.
+- Signal (25): a dated event in the last 120 days (hiring for {role}, launch, funding).
+- Contact (20): a named {buyer_role} with a sourced, on-domain email.
+
+Rules: every point needs a source URL. No source, no points. Never guess an email.
+Return JSON: {"score": n, "reasons": {...}, "sources": [...], "opening_line": "..."}`}
 };
 const BUILD1={
 "council-that-roasts-your-idea":{repos:[],tree:`council/
@@ -2966,7 +2984,34 @@ if __name__ == "__main__":
     cmd, *args = sys.argv[1:]
     if cmd == "log": log(*args)
     elif cmd == "find": print("\\n\\n".join(lookup(args[0])) or "no prior decision")`,run:`python decide.py log "Quote setup as one figure" "per-item anchors low" "a client type where per-item fits"
-python decide.py find quote`}
+python decide.py find quote`},
+"lead-scoring":{repos:[["Crawl4AI","https://github.com/unclecode/crawl4ai","Fetch company sites and job pages as evidence"],["Playwright","https://github.com/microsoft/playwright-python","For sites that need a real browser to load"]],tree:`scoring/
+  amc.py
+  rubric.txt
+  candidates.csv      # name,website
+  rejected.csv        # name,score,reason,date
+  score.py
+  leads.csv`,code:`import csv, datetime, pathlib, requests
+from amc import ask_json
+
+rubric = pathlib.Path("rubric.txt").read_text()
+seen = {r["name"] for r in csv.DictReader(open("rejected.csv"))}
+keep = csv.writer(open("leads.csv", "w", newline=""))
+keep.writerow(["name", "website", "score", "opening_line"])
+drop = csv.writer(open("rejected.csv", "a", newline=""))
+
+for c in csv.DictReader(open("candidates.csv")):
+    if c["name"] in seen:
+        continue                                   # rejected in the last 90 days
+    try:
+        page = requests.get(c["website"], timeout=15).text[:20000]
+    except requests.RequestException:
+        continue
+    r = ask_json(rubric, page)                     # returns score, reasons, sources, opening_line
+    if r["score"] >= 60 and r["sources"]:
+        keep.writerow([c["name"], c["website"], r["score"], r["opening_line"]])
+    else:
+        drop.writerow([c["name"], r["score"], r["reasons"], datetime.date.today()])`,run:`python score.py`}
 };
 const STARTER=`# amc.py — the starter kit every guide imports
 # pip install anthropic   and set ANTHROPIC_API_KEY
