@@ -1145,6 +1145,18 @@ steps:["Give Claude your resume and your target list. Ask it to restate your pro
 breaks:"Letting it invent experience to match a job post. Tell it plainly: reorder and reword what is true, never add skills or projects you do not have. Recruiters check, and one caught lie costs you the company.",
 then:"After two weeks, look at which resume versions got replies. Make that ordering your default and tailor less."},
 
+{s:"review-replies",k:"REVIEWS",c:"Build & sell",t:"Give Claude Your Google Reviews and Turn Happy Customers Into Referrals",d:"Claude replies to every review in your voice, flags the angry ones to you first, and asks your 5-star reviewers for a referral.",read:5,setup:30,hours:4,
+what:"Most local businesses leave reviews unanswered, and new customers read those replies before they call. Replying takes time you don't have, so the reviews pile up. Claude can draft a reply for every review in your own voice, send the unhappy ones to you before anything goes out, and turn your happiest customers into referrals.",
+need:["Owner access to your Google Business Profile","5 to 10 replies you have written before, so it learns your voice","One line on your referral offer (for example: 10% off for both of you)"],
+steps:["Export your recent reviews from Google Business Profile, or paste them in. Give Claude your old replies and ask it to describe your voice in 5 rules.","For each review, have Claude sort it: happy, mixed, or unhappy. Unhappy ones (3 stars or less) go to you with a suggested reply and never post on their own.","For happy and mixed reviews, Claude drafts a reply that names what the customer actually mentioned. No copy-paste thank-yous.","For 5-star reviewers you can reach on WhatsApp, Claude drafts a short thank-you with your referral offer.","Review the drafts, post the replies, and send the referral messages. Once you trust the drafts, connect the Business Profile API so replies post automatically."],
+breaks:"Generic replies. If every reply says 'Thanks for your kind words!', customers can tell and Google readers stop trusting it. Every reply must mention one specific thing from the review.",
+then:"Track which referral messages turn into bookings. Keep the wording that works and drop the rest."},
+{s:"linkedin-rewrite",k:"PROFILE",c:"Build & sell",t:"Give Claude Your LinkedIn and Let Recruiters Find You First",d:"Claude rewrites your headline, About and skills from your resume and projects, using the words recruiters actually search for.",read:5,setup:20,hours:3,
+what:"Recruiters search LinkedIn by keywords, then open the profiles whose headline and skills match. Most student profiles say 'Student at X college' and list no searchable skills, so they never show up. Claude can rebuild your profile from your resume and projects around the words recruiters use for the roles you want.",
+need:["Your resume and links to 2 or 3 projects (GitHub, portfolio, Kaggle)","3 job posts for the role you want","Your current LinkedIn headline and About section"],
+steps:["Give Claude the 3 job posts and ask for the 15 skills and keywords that repeat across them.","Give it your resume and projects. Ask it to keep only the keywords you can prove with a real project or course.","Have it write a headline under 220 characters: target role, 2 or 3 proven skills, and one result.","Have it write an About section: one line on who you are, 3 projects with what you built and the result, and what you are looking for.","Paste the new headline, About and skills into LinkedIn yourself, and turn on Open to Work for recruiters only."],
+breaks:"Keyword-stuffing skills you can't back up. A recruiter will ask about every skill on your profile. Only list what a project or course proves.",
+then:"After two weeks, check 'Search appearances' on your profile. If the number went up, write your next project post using the same keywords."},
 {s:"lead-auto-reply",k:"REPLY",c:"Build & sell",t:"Reply to Every New Lead in Under a Minute, Even at 2 AM",d:"Every enquiry from Instagram, WhatsApp, your website or Google gets an instant, accurate reply, a few qualifying questions, and a booked call. You only see the hot ones.",read:6,setup:45,hours:10,
 what:"Small businesses lose leads to slowness, not price. The first business to reply usually gets the customer, and most owners reply hours later because they are busy running the business. An agent that answers from your own business info, asks the qualifying questions, and books the call closes that gap without hiring anyone.",
 need:["One sheet with your business facts: services, prices, timings, location, FAQs","Access to the channels leads come in on (WhatsApp Business, Instagram DMs, your website form, Google Business messages)","A booking calendar link (Cal.com or Google Calendar)"],
@@ -1219,6 +1231,8 @@ const DEEP3={
 "bank-the-judgment-calls":{why:"Repeated work is mostly re-decided work. Writing the call, the reason and what would change it turns a recurring argument into a lookup, and the third field is the one that makes the file survive contact with a changed world. Marking reversals rather than editing them away keeps the history readable.",checks:["Each entry has a reason and a trigger for revisiting","Entries are two lines","Reversals are marked, not deleted"],mistakes:["Recording the decision without the reason","Letting entries grow long, so they stop being written"],cost:"Two lines at the moment of deciding. After a year it is the most valuable file you own."},
 "lead-scoring":{why:"Outreach fails at the list, not the email. A score forces every lead to earn its place with evidence, so the time you spend writing goes to people with a real reason to reply. The rejection log matters as much as the keep list: it stops you re-researching the same dead companies every week.",checks:["Every point in the score has a source URL behind it","Nothing under the cut was emailed","Each saved lead carries the one-line reason it qualified"],mistakes:["Scoring from the model's impression instead of cited evidence","Keeping 50 to 59 as maybes, which quietly becomes emailing everyone"],cost:"About a day to write the rubric and wire it up, then minutes per batch."},
 "claude-job-applier":{why:"Most students lose placement season to volume, not skill. Hours go into rewording the same resume and typing the same fields, so they apply to fewer roles and later than everyone else. Handing the repetition to Claude means you apply earlier, to better-matched roles, with a resume that speaks each recruiter's language.",checks:["Every tailored resume uses only facts from your original","Each application was reviewed before you pressed submit","Applications are logged with the resume version used"],mistakes:["Letting it add skills you do not have","Applying to everything instead of the ranked shortlist"],cost:"An evening to set up your profile and prompts, then a few minutes per application."},
+"review-replies":{why:"People read how a business answers reviews before they call, especially the bad ones. A calm, specific reply to a 2-star review often wins more trust than ten 5-star reviews. Owners skip it because it is slow and awkward. Drafting in the owner's voice and routing the angry ones to a person keeps it fast and safe.",checks:["Every reply mentions one specific thing from the review","Nothing 3 stars or below posted without the owner's approval","Referral messages only went to customers who gave 5 stars"],mistakes:["Same thank-you line on every review","Arguing with an unhappy customer in public"],cost:"An hour to set up your voice, then minutes a week."},
+"linkedin-rewrite":{why:"Recruiters search before they read. A profile that doesn't contain the words they type never appears, no matter how good the student is. Matching the headline and skills to real job posts, and backing each skill with a project, fixes discovery without exaggerating.",checks:["Every skill listed is proven by a project or course","Headline names a target role, not just a college","About section has real projects with results"],mistakes:["Listing 50 skills","Copying the job post word for word"],cost:"One evening, free."},
 "lead-auto-reply":{why:"Response time decides most small-business sales. Leads enquire with two or three businesses at once and go with whoever answers clearly first. An owner who replies at night after closing has already lost most of them. Automating the first reply and the qualifying questions turns response time from hours into seconds without anyone watching the phone.",checks:["Every answer came from the business sheet, not the model's guess","Unqualified leads got a polite answer, not a booking link","Anything outside the sheet was handed to a person"],mistakes:["Letting it improvise prices or availability","Asking five qualifying questions at once instead of one at a time"],cost:"A day to connect channels and write the business sheet, then near zero per lead."}
 };
 const HOW1={
@@ -1652,6 +1666,31 @@ Target roles: {roles}. Locations: {cities}. Must have: {skills}. Skip: {skip}.
    Reorder and reword ONLY what is already true. Never add skills or projects.
 4. Fill the application form with my details and attach that version.
    Stop before submitting and show me the filled form.`},
+"review-replies":{flow:["New reviews come in from Google Business Profile","Claude sorts each one: happy, mixed or unhappy","Happy and mixed get a specific reply in your voice","Unhappy ones go to you first with a suggested reply","5-star customers get a thank-you with your referral offer"],paste:`You reply to Google reviews for {business}.
+
+My voice (from my past replies):
+{5 voice rules}
+
+For each review:
+1. Label it happy, mixed or unhappy.
+2. Write a reply under 3 sentences that mentions one specific thing the customer said.
+3. If it is 3 stars or below, do not post. Mark it FOR OWNER and suggest a calm reply that offers to fix it offline.
+4. If it is 5 stars, also write a WhatsApp thank-you with this referral offer: {offer}.
+Never use the same opening line twice.`},
+"linkedin-rewrite":{flow:["3 job posts become a list of searched keywords","Your resume and projects decide which keywords you can prove","Claude writes a headline around role, skills and a result","It writes an About with 3 real projects","You paste it in and turn on Open to Work"],paste:`I want to be found by recruiters for {target role}.
+
+Job posts:
+{paste 3 job posts}
+
+My resume and projects:
+{paste}
+
+1. List the 15 keywords that repeat across the job posts.
+2. Keep only the ones my resume or projects prove. Say which project proves each.
+3. Write a LinkedIn headline under 220 characters: role, 2 or 3 proven skills, one result.
+4. Write an About section: one line intro, 3 projects (what I built, the result), what I want next.
+5. List my top 10 skills in order.
+Never add a skill I can't prove.`},
 "lead-auto-reply":{flow:["Every channel feeds one inbox: WhatsApp, Instagram, website form, Google","The agent answers from your business sheet within 60 seconds","It asks one qualifying question at a time: need, timeline, budget","Qualified leads get the booking link and a confirmed slot","You get an evening summary and instant handovers for anything unusual"],paste:`You reply to new enquiries for {business}. Use ONLY the business sheet below.
 
 Business sheet:
@@ -3200,6 +3239,43 @@ for _, j in jobs.iterrows():
     path.write_text(tailored)
     print(fit["score"], j["company"], j["title"], j["job_url"], "->", path)
 # open each job_url, fill the form, attach the tailored resume, review, and submit yourself.`,run:`python find.py`},
+"review-replies":{repos:[],tree:`reviews/
+  amc.py
+  voice.md            # 5 rules from your past replies
+  reviews.csv         # name, stars, text, phone (optional)
+  reply.py
+  out/replies.csv  out/for_owner.csv`,code:`import csv, pathlib
+from amc import ask_json
+
+voice = pathlib.Path("voice.md").read_text()
+offer = "10% off your next visit for you and a friend"
+out, owner = [], []
+for r in csv.DictReader(open("reviews.csv")):
+    j = ask_json(f"""You reply to Google reviews. Voice rules:\n{voice}
+Mention one specific thing the customer said. Under 3 sentences.
+If stars <= 3, suggest a calm reply offering to fix it offline.
+If stars == 5, also write a short WhatsApp thank-you with this offer: {offer}.
+Return JSON {{"label": "happy|mixed|unhappy", "reply": "...", "referral": "... or empty"}}""",
+        f"{r['stars']} stars from {r['name']}: {r['text']}")
+    (owner if int(r["stars"]) <= 3 else out).append([r["name"], r["stars"], j["reply"], j["referral"]])
+csv.writer(open("out/replies.csv", "w", newline="")).writerows(out)
+csv.writer(open("out/for_owner.csv", "w", newline="")).writerows(owner)`,run:`python reply.py`},
+"linkedin-rewrite":{repos:[],tree:`linkedin/
+  amc.py
+  resume.md
+  projects.md
+  jobs.md             # 3 job posts
+  rewrite.py`,code:`import pathlib
+from amc import ask
+
+read = lambda f: pathlib.Path(f).read_text()
+print(ask("""You rewrite LinkedIn profiles so recruiters find the student.
+1. List the 15 keywords that repeat across the job posts.
+2. Keep only keywords the resume or projects prove, naming the project for each.
+3. Headline under 220 characters: role, 2-3 proven skills, one result.
+4. About: one line intro, 3 projects with results, what they want next.
+5. Top 10 skills in order. Never add a skill that is not proven.""",
+    f"JOBS:\n{read('jobs.md')}\n\nRESUME:\n{read('resume.md')}\n\nPROJECTS:\n{read('projects.md')}"))`,run:`python rewrite.py > profile.md`},
 "lead-auto-reply":{repos:[["n8n","https://github.com/n8n-io/n8n","Connect WhatsApp, Instagram and forms into one workflow"],["Cal.com","https://github.com/calcom/cal.com","Open-source booking links and calendar sync"]],tree:`lead-reply/
   amc.py
   business_sheet.md
