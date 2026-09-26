@@ -1157,6 +1157,30 @@ need:["Your resume and links to 2 or 3 projects (GitHub, portfolio, Kaggle)","3 
 steps:["Give Claude the 3 job posts and ask for the 15 skills and keywords that repeat across them.","Give it your resume and projects. Ask it to keep only the keywords you can prove with a real project or course.","Have it write a headline under 220 characters: target role, 2 or 3 proven skills, and one result.","Have it write an About section: one line on who you are, 3 projects with what you built and the result, and what you are looking for.","Paste the new headline, About and skills into LinkedIn yourself, and turn on Open to Work for recruiters only."],
 breaks:"Keyword-stuffing skills you can't back up. A recruiter will ask about every skill on your profile. Only list what a project or course proves.",
 then:"After two weeks, check 'Search appearances' on your profile. If the number went up, write your next project post using the same keywords."},
+{s:"one-post-everywhere",k:"EVERYWHERE",c:"Tools & repos",t:"One Post, Everywhere: Let Claude Publish to Every Platform at Once",d:"Write one post, and Claude adapts it for Instagram, LinkedIn, X, Threads, TikTok, YouTube and more, then schedules all of them in one go.",read:5,setup:20,hours:5,
+what:"Posting the same idea on six platforms means six different lengths, formats and hashtag rules, so most people post on one and ignore the rest. A social scheduler with an MCP connector lets Claude do the whole thing from one chat: rewrite the post per platform, attach the media, and schedule it everywhere.",
+need:["A social scheduler that has an MCP connector for Claude (I use OmniSocials)","Your accounts connected inside that scheduler","One finished post: the idea, the media, and the time you want it out"],
+steps:["Connect your social accounts to the scheduler, then add its MCP connector to Claude.","Give Claude your post and ask it to write one version per platform: short for X and Threads, longer and more professional for LinkedIn, hooky with hashtags for Instagram.","Upload the image, carousel or video once. Claude attaches it to every version.","Pick one time, or ask Claude to use each platform's best time from your analytics.","Review the versions and say go. Claude schedules them all and gives you the links."],
+breaks:"Posting the exact same caption everywhere. Each platform has its own length limit and tone. Ask for one version per platform, every time.",
+then:"After a week, ask Claude which platform gave you the most reach per post, and put more effort there."},
+{s:"whatsapp-ai-agents",k:"AGENTS",c:"Build & sell",t:"10 WhatsApp AI Agents Any Business Can Build With Claude",d:"From a 24/7 receptionist to payment reminders: ten WhatsApp agents that answer, qualify, book and follow up while you work.",read:7,setup:60,hours:12,
+what:"Your customers already message you on WhatsApp, and most of those chats are the same ten questions. Each of these agents handles one job end to end. Start with the one that eats most of your day, then add the next.",
+need:["A WhatsApp Business API number (a provider like Kapso gives you one without a SIM)","Your business facts in one sheet: services, prices, timings, FAQs","Claude to write and run the agent"],
+steps:["Pick one agent from the list: receptionist, lead qualifier, appointment booker, order tracker, payment reminder, review collector, abandoned cart, FAQ support, reorder reminder or feedback survey.","Write its one job in one sentence, plus what it must never do (for example: never promise a discount).","Give Claude your business sheet and have it answer only from that sheet.","Connect it to your WhatsApp number and test it with 10 real questions from your old chats.","Go live with a handover rule: anything it can't answer goes to you instantly."],
+breaks:"Building all ten at once. Each agent needs its own rules and testing. Ship one, watch it for a week, then add the next.",
+then:"Check which questions it handed over most. Add those answers to the sheet and the handovers drop."},
+{s:"claude-whatsapp-number",k:"NUMBER",c:"Tools & repos",t:"Give Claude Its Own WhatsApp Number",d:"Get a WhatsApp Business number in minutes with no SIM, then let Claude build the agent that answers on it.",read:6,setup:30,hours:6,
+what:"Getting a WhatsApp Business API number used to mean Meta verification, a spare SIM and days of waiting. Kapso, which runs on the official WhatsApp Cloud API, gives you a pre-verified US number on its free plan, and its agent skills let Claude write the integration for you.",
+need:["A free Kapso account (the free plan includes 2,000 messages a month and a pre-verified US number)","Claude Code","A Kapso API key from app.kapso.ai"],
+steps:["Sign up on Kapso and take the free pre-verified number, or connect a number you already own.","In your project, install the skills: npx skills add gokapso/agent-skills.","Set KAPSO_API_BASE_URL to https://api.kapso.ai and KAPSO_API_KEY to your key.","Tell Claude what the agent should do (answer FAQs, book appointments) and let it build the workflow and webhook.","Message the number from your phone, then use Kapso's logs to see every request if something fails."],
+breaks:"Messaging people who never messaged you first. WhatsApp only lets you reply freely within 24 hours of the customer's last message. Outside that, you need approved templates and their opt-in.",
+then:"Once it works on the test number, move it to your real business number so customers see your name."},
+{s:"meta-ads-claude",k:"CAMPAIGN",c:"Build & sell",t:"Run Meta Ads From Claude With Meta's Official MCP",d:"Connect your ad account to Claude in a few clicks, then ask it to report, find what's wasting money, and build campaigns for your review.",read:6,setup:15,hours:6,
+what:"Meta launched an official Meta Ads MCP in April 2026. You connect your ad account to Claude with a normal Meta login, no developer app, and Claude can pull performance, spot bad ad sets and build campaigns in plain language.",
+need:["A Meta Business account with access to your ad account","Claude with custom connectors (free plans allow one)","A clear rule for what Claude may change on its own and what needs your approval"],
+steps:["In Claude, add Meta's Ads MCP as a custom connector and log in with your Meta account.","Ask for a report: spend, cost per result and ROAS per campaign for the last 7 days.","Ask it to flag ad sets spending with no results, and explain why before touching anything.","Have it draft new campaigns or ad variations, but keep them paused.","Review, then turn them on yourself. Repeat the report every Monday."],
+breaks:"Letting it change live budgets without a limit. Tell Claude to draft changes paused and only raise budgets after you approve.",
+then:"Keep a weekly note of what Claude recommended and what happened. After a month, give it that note so its advice fits your account."},
 {s:"lead-auto-reply",k:"REPLY",c:"Build & sell",t:"Reply to Every New Lead in Under a Minute, Even at 2 AM",d:"Every enquiry from Instagram, WhatsApp, your website or Google gets an instant, accurate reply, a few qualifying questions, and a booked call. You only see the hot ones.",read:6,setup:45,hours:10,
 what:"Small businesses lose leads to slowness, not price. The first business to reply usually gets the customer, and most owners reply hours later because they are busy running the business. An agent that answers from your own business info, asks the qualifying questions, and books the call closes that gap without hiring anyone.",
 need:["One sheet with your business facts: services, prices, timings, location, FAQs","Access to the channels leads come in on (WhatsApp Business, Instagram DMs, your website form, Google Business messages)","A booking calendar link (Cal.com or Google Calendar)"],
@@ -1233,6 +1257,10 @@ const DEEP3={
 "claude-job-applier":{why:"Most students lose placement season to volume, not skill. Hours go into rewording the same resume and typing the same fields, so they apply to fewer roles and later than everyone else. Handing the repetition to Claude means you apply earlier, to better-matched roles, with a resume that speaks each recruiter's language.",checks:["Every tailored resume uses only facts from your original","Each application was reviewed before you pressed submit","Applications are logged with the resume version used"],mistakes:["Letting it add skills you do not have","Applying to everything instead of the ranked shortlist"],cost:"An evening to set up your profile and prompts, then a few minutes per application."},
 "review-replies":{why:"People read how a business answers reviews before they call, especially the bad ones. A calm, specific reply to a 2-star review often wins more trust than ten 5-star reviews. Owners skip it because it is slow and awkward. Drafting in the owner's voice and routing the angry ones to a person keeps it fast and safe.",checks:["Every reply mentions one specific thing from the review","Nothing 3 stars or below posted without the owner's approval","Referral messages only went to customers who gave 5 stars"],mistakes:["Same thank-you line on every review","Arguing with an unhappy customer in public"],cost:"An hour to set up your voice, then minutes a week."},
 "linkedin-rewrite":{why:"Recruiters search before they read. A profile that doesn't contain the words they type never appears, no matter how good the student is. Matching the headline and skills to real job posts, and backing each skill with a project, fixes discovery without exaggerating.",checks:["Every skill listed is proven by a project or course","Headline names a target role, not just a college","About section has real projects with results"],mistakes:["Listing 50 skills","Copying the job post word for word"],cost:"One evening, free."},
+"one-post-everywhere":{why:"Reach compounds when the same idea shows up on every platform, but reformatting it six times is the part everyone skips. Handing the rewrite and the scheduling to Claude makes posting everywhere as fast as posting once.",checks:["Each platform got its own caption length and tone","Media attached to every version","All posts scheduled at the time you chose"],mistakes:["Same caption everywhere","Hashtag walls on LinkedIn"],cost:"Your scheduler's plan; Claude does the rest."},
+"whatsapp-ai-agents":{why:"Most WhatsApp chats a business gets are repeats: timings, prices, bookings, order status. Each repeat is a small agent job. Handling them instantly keeps customers from going elsewhere while you are busy.",checks:["Every answer came from your business sheet","Unknown questions were handed to you","Customers could always reach a human"],mistakes:["Building ten agents at once","No handover rule"],cost:"Your WhatsApp provider's plan plus Meta's message fees."},
+"claude-whatsapp-number":{why:"The number used to be the hardest part of a WhatsApp agent. With a pre-verified number and skills that teach Claude the integration, the setup goes from days to an afternoon.",checks:["The number replies to a message from your phone","Webhook events show up in the logs","Outbound messages outside 24 hours use approved templates"],mistakes:["Messaging people without opt-in","Skipping the logs when something fails"],cost:"Free plan: 2,000 messages a month. Meta fees are separate."},
+"meta-ads-claude":{why:"Most ad accounts leak money in ad sets nobody checked this week. A Monday report plus a paused draft of fixes gives you an analyst without hiring one, and nothing goes live without you.",checks:["Every change was drafted paused","Budgets only moved after your approval","The weekly report was saved"],mistakes:["Letting it edit live budgets","Judging ads after one day of data"],cost:"Free with your Claude plan; ad spend as usual."},
 "lead-auto-reply":{why:"Response time decides most small-business sales. Leads enquire with two or three businesses at once and go with whoever answers clearly first. An owner who replies at night after closing has already lost most of them. Automating the first reply and the qualifying questions turns response time from hours into seconds without anyone watching the phone.",checks:["Every answer came from the business sheet, not the model's guess","Unqualified leads got a polite answer, not a booking link","Anything outside the sheet was handed to a person"],mistakes:["Letting it improvise prices or availability","Asking five qualifying questions at once instead of one at a time"],cost:"A day to connect channels and write the business sheet, then near zero per lead."}
 };
 const HOW1={
@@ -1691,6 +1719,32 @@ My resume and projects:
 4. Write an About section: one line intro, 3 projects (what I built, the result), what I want next.
 5. List my top 10 skills in order.
 Never add a skill I can't prove.`},
+"one-post-everywhere":{flow:["You give Claude one post and the media","It writes one version per platform","It attaches the media to each version","It schedules them all at one time","You get the links back"],paste:`Here is my post: {post}
+Media: {files}
+
+Write one version for each platform I have connected. Respect each platform's length limit and tone:
+- X and Threads: short, one idea.
+- LinkedIn: professional, no hashtag wall.
+- Instagram: hook first line, 5 relevant hashtags.
+Show me every version. After I say go, schedule them all for {time}.`},
+"whatsapp-ai-agents":{flow:["Pick one agent and write its one job","Give it your business sheet","Connect it to your WhatsApp number","Test with 10 real past questions","Go live with an instant handover rule"],paste:`You are the {agent name} for {business} on WhatsApp.
+Your one job: {job}.
+Use ONLY this business sheet: {sheet}
+Rules:
+- Reply in under 3 short sentences, in the customer's language.
+- Never promise prices, discounts or dates not in the sheet.
+- If you can't answer, say a person will reply shortly and flag it to the owner.`},
+"claude-whatsapp-number":{flow:["Take a free pre-verified number on Kapso","Install the Kapso agent skills","Add your API key","Tell Claude what the agent should do","Test from your phone and check the logs"],paste:`npx skills add gokapso/agent-skills
+
+Then tell Claude:
+"Using the Kapso skills, build a WhatsApp agent on my number that {job}.
+Answer only from {business sheet}. Hand anything else to me.
+Set up the webhook, then show me how to test it."`},
+"meta-ads-claude":{flow:["Connect Meta's Ads MCP to Claude","Pull a 7-day performance report","Flag ad sets wasting spend","Draft fixes and new ads, paused","You review and switch them on"],paste:`Using the Meta Ads connector:
+1. Report spend, results, cost per result and ROAS per campaign for the last 7 days.
+2. Flag any ad set that spent more than {amount} with no results, and say why you think it failed.
+3. Draft 3 new ad variations for the best campaign. Keep everything PAUSED.
+Do not change any live budget. Wait for my approval.`},
 "lead-auto-reply":{flow:["Every channel feeds one inbox: WhatsApp, Instagram, website form, Google","The agent answers from your business sheet within 60 seconds","It asks one qualifying question at a time: need, timeline, budget","Qualified leads get the booking link and a confirmed slot","You get an evening summary and instant handovers for anything unusual"],paste:`You reply to new enquiries for {business}. Use ONLY the business sheet below.
 
 Business sheet:
@@ -3276,6 +3330,22 @@ print(ask("""You rewrite LinkedIn profiles so recruiters find the student.
 4. About: one line intro, 3 projects with results, what they want next.
 5. Top 10 skills in order. Never add a skill that is not proven.""",
     f"JOBS:\n{read('jobs.md')}\n\nRESUME:\n{read('resume.md')}\n\nPROJECTS:\n{read('projects.md')}"))`,run:`python rewrite.py > profile.md`},
+"one-post-everywhere":{repos:[],tree:`everywhere/
+  post.md
+  media/`,code:`# No code needed: connect your scheduler's MCP connector in Claude,
+# then paste the prompt above with your post and media.`,run:`Paste the prompt into Claude`},
+"whatsapp-ai-agents":{repos:[["Kapso agent skills","https://github.com/gokapso/agent-skills","Claude skills for WhatsApp integrations and automations"]],tree:`agents/
+  business_sheet.md
+  receptionist.md    # one file per agent: job + rules`,code:`# Start with one agent file, e.g. receptionist.md:
+# job: answer timings, location and prices from business_sheet.md
+# never: promise discounts; handover: anything not in the sheet`,run:`npx skills add gokapso/agent-skills`},
+"claude-whatsapp-number":{repos:[["Kapso agent skills","https://github.com/gokapso/agent-skills","Skills that teach Claude the Kapso WhatsApp API"]],tree:`wa-agent/
+  .env               # KAPSO_API_BASE_URL, KAPSO_API_KEY
+  business_sheet.md`,code:`KAPSO_API_BASE_URL=https://api.kapso.ai
+KAPSO_API_KEY=your_key_from_app.kapso.ai`,run:`npx skills add gokapso/agent-skills`},
+"meta-ads-claude":{repos:[],tree:`ads/
+  weekly_report.md`,code:`# No code: add Meta's Ads MCP as a custom connector in Claude,
+# log in with your Meta Business account, then paste the prompt above.`,run:`Paste the prompt into Claude every Monday`},
 "lead-auto-reply":{repos:[["n8n","https://github.com/n8n-io/n8n","Connect WhatsApp, Instagram and forms into one workflow"],["Cal.com","https://github.com/calcom/cal.com","Open-source booking links and calendar sync"]],tree:`lead-reply/
   amc.py
   business_sheet.md
