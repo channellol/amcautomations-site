@@ -409,8 +409,6 @@ pre.code{max-width:100%}
 .gate .row input{flex:1 1 220px}
 .gate-form{margin-top:18px}
 .toc.locked a:nth-child(n+3){opacity:.45}
-.lockpill{font-family:var(--f-data);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--clay-ink);background:var(--clay-soft);border:1px solid color-mix(in srgb,var(--clay) 30%,transparent);border-radius:999px;padding:6px 12px;align-self:center}
-@media(max-width:760px){.lockpill{display:none}}
 [hidden]{display:none!important}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 </style>
@@ -423,7 +421,6 @@ pre.code{max-width:100%}
       <button data-route="templates">Templates</button>
       <button data-route="waitlist">Build queue</button>
       <button data-route="newsletter">Newsletter</button>
-      <span class="lockpill">Free &middot; email unlocks all</span>
       <button data-route="services" class="hire">Done for you</button>
     </nav>
   </div>
@@ -3542,7 +3539,6 @@ function saveLead(email){
 }
 function unlock(email){
   try{localStorage.setItem(GATE_KEY,email)}catch(e){}
-  document.querySelectorAll(".lockpill").forEach(b=>b.hidden=true);
   if(current)renderGuide(current);
 }
 document.addEventListener("submit",async e=>{
@@ -3589,7 +3585,7 @@ document.getElementById("topics").innerHTML=Object.keys(TOPICDESC).map(c=>`<butt
  <span><span class="tname">${c}</span><p>${TOPICDESC[c]}</p></span>
  <span class="n">${T.filter(x=>x.c===c).length} guides</span></button>`).join("");
 document.addEventListener("click",e=>{const b=e.target.closest("[data-cat]");if(!b)return;
- cat=b.dataset.cat;[...chips.children].forEach(c=>c.setAttribute("aria-pressed",c.dataset.cat===cat));if(unlocked())document.querySelectorAll(".lockpill").forEach(b=>b.hidden=true);
+ cat=b.dataset.cat;[...chips.children].forEach(c=>c.setAttribute("aria-pressed",c.dataset.cat===cat));
 render();go("templates");});
 handle("hl","hl-done","You are in. The next guide lands in your inbox.");
 
