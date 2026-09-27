@@ -400,6 +400,17 @@ pre.code{max-width:100%}
 .fx-card .eyebrow{display:flex;align-items:center;gap:8px}
 @media (prefers-reduced-motion:reduce){.fx .nd,.fx .ln::after{animation:none}}
 
+.teaser{position:relative;max-height:190px;overflow:hidden;opacity:.55}
+.teaser::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent,var(--ground))}
+.gate{background:var(--surface);border:1px solid color-mix(in srgb,var(--clay) 35%,var(--line));border-radius:18px;padding:26px;margin-top:8px;box-shadow:0 12px 34px rgba(80,50,30,.08)}
+.gate h3{font-family:var(--f-display);font-size:clamp(21px,3vw,27px);font-weight:800;margin:8px 0 10px}
+.gate p{margin:0;color:var(--ink-2);max-width:52ch}
+.gate .row{display:flex;gap:10px;flex-wrap:wrap;margin-top:6px}
+.gate .row input{flex:1 1 220px}
+.gate-form{margin-top:18px}
+.toc.locked a:nth-child(n+3){opacity:.45}
+.lockpill{font-family:var(--f-data);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--clay-ink);background:var(--clay-soft);border:1px solid color-mix(in srgb,var(--clay) 30%,transparent);border-radius:999px;padding:6px 12px;align-self:center}
+@media(max-width:760px){.lockpill{display:none}}
 [hidden]{display:none!important}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 </style>
@@ -412,6 +423,7 @@ pre.code{max-width:100%}
       <button data-route="templates">Templates</button>
       <button data-route="waitlist">Build queue</button>
       <button data-route="newsletter">Newsletter</button>
+      <span class="lockpill">Free &middot; email unlocks all</span>
       <button data-route="services" class="hire">Done for you</button>
     </nav>
   </div>
@@ -3453,7 +3465,7 @@ window.addEventListener("hashchange",()=>go(location.hash.slice(1)));
 function renderGuide(x){
   const D=DEEP[x.s],H=HOW[x.s],B=BUILD[x.s];
   document.getElementById("toc").innerHTML=[["What this does","s0"],["Why it works","s1"],["How it actually works","s2"],["Copy this to start","s3"],["What you need first","s4"],["The build","s5"],["Build it yourself","sbuild"],["Check it worked","s6"],["Where it breaks","s7"],["The mistakes","s8"],["What it costs","s9"]].map(([v,id])=>`<a href="#" data-jump="${id}">${v}</a>`).join("");
-  document.getElementById("guide-body").innerHTML=`
+  const full=`
   <button class="back" data-route="templates">&larr; All guides</button>
   <div class="meta"><span class="cat">${x.c}</span><span class="tag free">${x.k}</span><span>${x.read} min read</span><span>Free</span></div>
   <h1>${x.t}</h1>
@@ -3462,6 +3474,7 @@ function renderGuide(x){
   <div class="metrics" style="margin-top:24px">${metricsHTML(x)}</div>
   <h2 id="s0">What this does</h2><p>${x.what}</p>
   <h2 id="s1">Why it works</h2><p>${D.why}</p>
+  <!--GATE-->
   <h2 id="s2">How it actually works</h2>
   <ol class="flow">${H.flow.map(v=>`<li>${v}</li>`).join("")}</ol>
   <h2 id="s3">Copy this to start</h2>
@@ -3499,11 +3512,54 @@ function renderGuide(x){
 
   <h2>Once it runs</h2><div class="next-up"><p>${x.then}</p></div>
   <h2 id="s10">More in ${x.c}</h2><div class="grid">${T.filter(v=>v.c===x.c&&v.s!==x.s).slice(0,3).map(cardHTML).join("")}</div>
-  `;}
+  `;
+  const [free,gated]=full.split("<!--GATE-->");
+  document.getElementById("guide-body").innerHTML = unlocked()
+    ? free+gated
+    : free + `<div class="teaser">${gated.split("<pre")[0].slice(0,500)}</div>` + gateHTML(x);
+  document.getElementById("toc").classList.toggle("locked",!unlocked());
+  current=x;}
+
+/* ---- email gate: preview free, one email unlocks every guide ---- */
+const GATE_KEY="amc_email";
+let current=null;
+function unlocked(){try{return !!localStorage.getItem(GATE_KEY)}catch(e){return false}}
+function gateHTML(x){return `<div class="gate">
+  <p class="eyebrow">The rest of this guide</p>
+  <h3>One email unlocks all ${T.length} guides.</h3>
+  <p>You are reading the free preview. The paste-ready prompt, the full build, the code and the failure notes are below. Free, no card, unsubscribe any time.</p>
+  <form id="gate-form" class="gate-form">
+    <label class="fl" for="gate-email">Email address</label>
+    <div class="row"><input id="gate-email" name="email" type="email" placeholder="you@business.com" required autocomplete="email">
+    <button class="btn" type="submit">Unlock everything</button></div>
+    <p class="note" id="gate-note" hidden></p>
+  </form>
+  <p class="note">Still to come here: the copy-paste prompt &middot; ${x.steps.length} build steps &middot; runnable code${BUILD[x.s].repos.length?" &middot; "+BUILD[x.s].repos.length+" repos":""} &middot; where it breaks &middot; what it costs</p>
+</div>`}
+function saveLead(email){
+  return fetch(SB+"/rest/v1/leads",{method:"POST",headers:{apikey:SBK,"Content-Type":"application/json",Prefer:"return=minimal"},
+    body:JSON.stringify({kind:"unlock",contact:email,page:location.hash.slice(0,300)})}).then(r=>r.ok).catch(()=>false);
+}
+function unlock(email){
+  try{localStorage.setItem(GATE_KEY,email)}catch(e){}
+  document.querySelectorAll(".lockpill").forEach(b=>b.hidden=true);
+  if(current)renderGuide(current);
+}
+document.addEventListener("submit",async e=>{
+  if(e.target.id!=="gate-form")return;
+  e.preventDefault();
+  const input=document.getElementById("gate-email"),btn=e.target.querySelector("button"),note=document.getElementById("gate-note");
+  const email=input.value.trim();
+  btn.disabled=true;btn.textContent="Unlocking…";
+  await saveLead(email);
+  unlock(email);                       // unlock even if the save failed — never hold the content hostage to a network error
+  if(note){note.textContent="Unlocked. Every guide is open on this device.";note.hidden=false;}
+});
 const SB="https://mwryqqpsjuobeonjfdbx.supabase.co",SBK="sb_publishable_G0lRP8-CRTcjorNnwDz_Iw_iyY8YTsF";
 function handle(form,doneId,msg){const f=document.getElementById(form);if(!f)return;f.addEventListener("submit",async e=>{e.preventDefault();
   const d=document.getElementById(doneId),b=f.querySelector("button[type=submit]"),data={_subject:"amc.automations: "+form,_template:"table",_captcha:"false",page:location.hash};
   f.querySelectorAll("input").forEach(i=>data[i.name||i.id]=i.value);
+  const gEmail=(f.querySelector("input[type=email]")||{}).value;if(gEmail)unlock(gEmail.trim());
   b.disabled=true;const t=b.textContent;b.textContent="Sending…";
   const v=id=>(document.getElementById(form+"-"+id)||{}).value||null;
   const row={kind:{sv:"brief",wl:"waitlist"}[form]||"newsletter",business:v("name"),job:v("job"),contact:v("email"),page:location.hash.slice(0,300)};
@@ -3533,7 +3589,8 @@ document.getElementById("topics").innerHTML=Object.keys(TOPICDESC).map(c=>`<butt
  <span><span class="tname">${c}</span><p>${TOPICDESC[c]}</p></span>
  <span class="n">${T.filter(x=>x.c===c).length} guides</span></button>`).join("");
 document.addEventListener("click",e=>{const b=e.target.closest("[data-cat]");if(!b)return;
- cat=b.dataset.cat;[...chips.children].forEach(c=>c.setAttribute("aria-pressed",c.dataset.cat===cat));render();go("templates");});
+ cat=b.dataset.cat;[...chips.children].forEach(c=>c.setAttribute("aria-pressed",c.dataset.cat===cat));if(unlocked())document.querySelectorAll(".lockpill").forEach(b=>b.hidden=true);
+render();go("templates");});
 handle("hl","hl-done","You are in. The next guide lands in your inbox.");
 
 render();go(location.hash.slice(1)||"home");
