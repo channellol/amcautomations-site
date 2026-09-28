@@ -1300,12 +1300,36 @@ const DEEP3={
 "lead-auto-reply":{why:"Response time decides most small-business sales. Leads enquire with two or three businesses at once and go with whoever answers clearly first. An owner who replies at night after closing has already lost most of them. Automating the first reply and the qualifying questions turns response time from hours into seconds without anyone watching the phone.",checks:["Every answer came from the business sheet, not the model's guess","Unqualified leads got a polite answer, not a booking link","Anything outside the sheet was handed to a person"],mistakes:["Letting it improvise prices or availability","Asking five qualifying questions at once instead of one at a time"],cost:"A day to connect channels and write the business sheet, then near zero per lead."}
 };
 const HOW1={
-"council-that-roasts-your-idea":{flow:["Your idea paragraph is copied into four separate sessions, one per role","Each session holds only its own brief and the paragraph, never the other roles","Round one outputs are collected into one transcript file","The transcript goes back to all four, and each answers the objection aimed at it","You read the objections nobody answered and decide alone"],paste:`Role: THE ACCOUNTANT.
+"council-that-roasts-your-idea":{flow:["Your idea paragraph is copied into four separate sessions, one per role","Each session holds only its own brief and the paragraph, never the other roles","Round one outputs are collected into one transcript file","The transcript goes back to all four, and each answers the objection aimed at it","You read the objections nobody answered and decide alone"],paste:[
+{label:"Role 1 — THE BUYER",prompt:`Role: THE BUYER.
+You only care about whether you would actually pay for this, and what would
+make you walk away. You are not asked whether the idea is good.
+Idea: [paste the paragraph]
+Return: 3 objections, ranked by how likely they are to lose the sale. Each
+objection is one sentence plus the exact moment it would happen. No recommendations.`},
+{label:"Role 2 — THE OPERATOR",prompt:`Role: THE OPERATOR.
+You only care about running this yourself, every day, forever. You are not
+asked whether the idea is good.
+Idea: [paste the paragraph]
+Return: 3 objections, ranked by how much daily pain they cause. Each
+objection is one sentence plus which day of the week it bites hardest. No recommendations.`},
+{label:"Role 3 — THE ACCOUNTANT",prompt:`Role: THE ACCOUNTANT.
 You only care about cost, cash timing and what happens if revenue is zero
 for three months. You are not asked whether the idea is good.
 Idea: [paste the paragraph]
 Return: 3 objections, ranked by size of loss. Each objection is one sentence
 plus the number that makes it true. No recommendations.`},
+{label:"Role 4 — THE SCEPTIC",prompt:`Role: THE SCEPTIC.
+You only look for reasons this fails. You are not asked whether the idea is
+good, and you are not allowed to suggest fixes.
+Idea: [paste the paragraph]
+Return: 3 objections, ranked by how likely they are to actually happen. Each
+objection is one sentence plus what evidence would prove it wrong. No recommendations.`},
+{label:"Round 2 — same role as before, in each of the four sessions",prompt:`Round 2 — same role as before.
+Read the full transcript below. Answer only the single strongest objection
+aimed at your role, or concede it outright. One paragraph. No new objections.
+Transcript: [paste round 1 transcript]`}
+]},
 "attacker-agent":{flow:["The builder's finished output is copied to a fresh session","That session gets the goal and the output only, never the plan or the code path","It returns findings as input, observed result, expected result","Findings without a reproduction are dropped automatically","Survivors are routed back to whoever owns that file"],paste:`You are testing work you did not produce and will not fix.
 Goal of the work: [one line]
 Output: [paste or attach]
@@ -1320,7 +1344,15 @@ Criteria:
 For each submission return: id, score per criterion (1-5), one line on the
 weakest criterion. Then name the winner and the single reason it won.
 Do not rewrite or improve anything.`},
-"second-agent-reviews-first":{flow:["Worker produces the output and an evidence block, one line per rule","Reviewer session receives the rules, the output and the evidence block only","Reviewer returns PASS or FAIL per rule with no prose","Any FAIL returns to the worker with only the failed rules attached","Verdicts append to a log file with the date and rule ids"],paste:`You are the reviewer. You cannot edit, improve or rewrite.
+"second-agent-reviews-first":{flow:["Worker produces the output and an evidence block, one line per rule","Reviewer session receives the rules, the output and the evidence block only","Reviewer returns PASS or FAIL per rule with no prose","Any FAIL returns to the worker with only the failed rules attached","Verdicts append to a log file with the date and rule ids"],paste:[
+{label:"Session 1 — THE WORKER",prompt:`Do the task below. When you are done, add a section titled EVIDENCE with
+exactly one line per rule, quoting or pointing to what proves it holds.
+Rules:
+R1 [checkable statement]
+R2 [checkable statement]
+R3 [checkable statement]
+Task: [paste]`},
+{label:"Session 2 — THE REVIEWER",prompt:`You are the reviewer. You cannot edit, improve or rewrite.
 Rules:
 R1 [checkable statement]
 R2 [checkable statement]
@@ -1328,31 +1360,111 @@ R3 [checkable statement]
 Output under review: [paste]
 Evidence supplied: [paste]
 Return one line per rule: R1 PASS/FAIL — evidence quoted or "missing".
-Missing evidence is FAIL.`},
-"hook-tournament":{flow:["Sixteen hooks are generated in four groups of four, one angle per group","A script pairs them randomly into eight matches","Each match is judged in its own short session on one question","Winners are re-paired for four, then two, then the final","The bracket file records every loser and the reason it lost"],paste:`Two hooks for the same video. Pick the one more likely to stop a scroll
+Missing evidence is FAIL.`}
+]},
+"hook-tournament":{flow:["Sixteen hooks are generated in four groups of four, one angle per group","A script pairs them randomly into eight matches","Each match is judged in its own short session on one question","Winners are re-paired for four, then two, then the final","The bracket file records every loser and the reason it lost"],paste:[
+{label:"Step 1 — GENERATE (run once per angle: contradiction, cost of not knowing, specific number, mistake most people make)",prompt:`Write 4 hooks for this video, under 12 words each, angle: [pick one angle].
+Video summary: [paste]
+Return only the 4 hooks, numbered. No explanation.`},
+{label:"Step 2 — JUDGE (run once per match)",prompt:`Two hooks for the same video. Pick the one more likely to stop a scroll
 in the first 1.5 seconds. You do not know which video this is.
 A: [hook]
 B: [hook]
 Return: WINNER A or B, then one sentence on why the loser loses.
-Do not rewrite either hook.`},
-"seven-station-line":{flow:["Each station is its own session with its own input folder and output folder","Station N writes a file plus a four-field record into the buffer folder","Station N+1 watches that buffer and picks up only completed pairs","A failure leaves the file in the buffer, so the line stalls instead of losing work","A run id travels in every record so the whole line can be traced"],paste:`STATION: EXTRACT
-Input: one file from buffer_02
-You may only extract. Do not judge, format or summarise.
+Do not rewrite either hook.`}
+]},
+"seven-station-line":{flow:["Each station is its own session with its own input folder and output folder","Station N writes a file plus a four-field record into the buffer folder","Station N+1 watches that buffer and picks up only completed pairs","A failure leaves the file in the buffer, so the line stalls instead of losing work","A run id travels in every record so the whole line can be traced"],paste:[
+{label:"Station 1 — READ",prompt:`STATION: READ
+Input: one file from 00_in/
+Restate the input faithfully. No judgement, no summarising.
 Return a JSON record:
 {"run_id":"", "inputs":[], "decisions":[], "files":[], "open_questions":[]}
-Write the record to buffer_03 beside your output file. Nothing else.`},
-"six-person-c-suite":{flow:["One numbers file is written once and shared read-only","Six sessions open it separately, each with a three-line brief","Each returns one recommendation and one warning, capped at two lines","A script collects the twelve lines into a single sheet","You mark contradictions and write your decision at the bottom"],paste:`Role: HEAD OF RISK.
+Write the record to 01_read/ beside your output file. Nothing else.`},
+{label:"Station 2 — EXTRACT",prompt:`STATION: EXTRACT
+Input: one file from 01_read/
+You may only extract facts as bullet points. Do not judge, format or summarise.
+Return the JSON record, carried forward from the previous station.
+Write the record to 02_extract/ beside your output file. Nothing else.`},
+{label:"Station 3 — DECIDE",prompt:`STATION: DECIDE
+Input: one file from 02_extract/
+Decide what to produce and why, in 5 lines. Do not draft it yet.
+Return the carried-forward JSON record plus your 5-line decision.
+Write both to 03_decide/. Nothing else.`},
+{label:"Station 4 — DRAFT",prompt:`STATION: DRAFT
+Input: one file from 03_decide/
+Draft exactly what the decision says. Nothing more, nothing extra.
+Return the carried-forward JSON record plus the draft.
+Write both to 04_draft/. Nothing else.`},
+{label:"Station 5 — CHECK",prompt:`STATION: CHECK
+Input: one file from 04_draft/
+List problems only. If there are none, return the draft as-is with an empty problem list.
+Return the carried-forward JSON record plus your problem list.
+Write both to 05_check/. Nothing else.`},
+{label:"Station 6 — FORMAT",prompt:`STATION: FORMAT
+Input: one file from 05_check/
+Format for publishing. Do not change a single word of the wording.
+Return the final formatted output plus the completed JSON record.
+Write both to 06_format/. This is the last station.`}
+]},
+"six-person-c-suite":{flow:["One numbers file is written once and shared read-only","Six sessions open it separately, each with a three-line brief","Each returns one recommendation and one warning, capped at two lines","A script collects the twelve lines into a single sheet","You mark contradictions and write your decision at the bottom"],paste:[
+{label:"Role 1 — HEAD OF FINANCE",prompt:`Role: HEAD OF FINANCE.
+You read this week's numbers and care only about cash and margin.
+Ignore growth and risk entirely — other roles own those.
+Numbers: [paste]
+Return exactly two lines:
+WARNING: [one sentence, with the number that triggers it]
+RECOMMEND: [one sentence, an action, not a principle]`},
+{label:"Role 2 — HEAD OF RISK",prompt:`Role: HEAD OF RISK.
 You read this week's numbers and care only about what could go wrong.
 Ignore growth entirely — another role owns it.
 Numbers: [paste]
 Return exactly two lines:
 WARNING: [one sentence, with the number that triggers it]
 RECOMMEND: [one sentence, an action, not a principle]`},
-"boss-and-workers":{flow:["Phase one: each worker returns a plan file, no output files","Reviewer reads all plans together and returns approved, merged or rejected","Approved plans are written to a locked folder workers read from","Phase two: workers build only what their locked plan says","Reviewer compares built output against the locked plan, not its own taste"],paste:`You are the reviewer. Phase one only. No code, no drafts.
+{label:"Role 3 — HEAD OF GROWTH",prompt:`Role: HEAD OF GROWTH.
+You read this week's numbers and care only about what is compounding or
+stalling. Ignore cost entirely — another role owns it.
+Numbers: [paste]
+Return exactly two lines:
+WARNING: [one sentence, with the number that triggers it]
+RECOMMEND: [one sentence, an action, not a principle]`},
+{label:"Role 4 — HEAD OF OPERATIONS",prompt:`Role: HEAD OF OPERATIONS.
+You read this week's numbers and care only about what breaks under this
+load next week. Ignore strategy entirely — another role owns it.
+Numbers: [paste]
+Return exactly two lines:
+WARNING: [one sentence, with the number that triggers it]
+RECOMMEND: [one sentence, an action, not a principle]`},
+{label:"Role 5 — HEAD OF PRODUCT",prompt:`Role: HEAD OF PRODUCT.
+You read this week's numbers and care only about what customers are
+actually doing with what shipped. Ignore cost entirely — another role owns it.
+Numbers: [paste]
+Return exactly two lines:
+WARNING: [one sentence, with the number that triggers it]
+RECOMMEND: [one sentence, an action, not a principle]`},
+{label:"Role 6 — HEAD OF PEOPLE",prompt:`Role: HEAD OF PEOPLE.
+You read this week's numbers and care only about who is overloaded or idle.
+Ignore revenue entirely — another role owns it.
+Numbers: [paste]
+Return exactly two lines:
+WARNING: [one sentence, with the number that triggers it]
+RECOMMEND: [one sentence, an action, not a principle]`}
+]},
+"boss-and-workers":{flow:["Phase one: each worker returns a plan file, no output files","Reviewer reads all plans together and returns approved, merged or rejected","Approved plans are written to a locked folder workers read from","Phase two: workers build only what their locked plan says","Reviewer compares built output against the locked plan, not its own taste"],paste:[
+{label:"Phase 1 — each worker proposes",prompt:`You own only: [your part]. Propose a plan in 6 lines. List the files you
+would create. No drafts, no code — plan only.
+Brief: [paste]`},
+{label:"Phase 1 — THE REVIEWER locks the plan",prompt:`You are the reviewer. Phase one only. No code, no drafts.
 Plans submitted: [paste all]
 For each plan return: APPROVE / MERGE WITH n / REJECT plus one reason.
 Then list every overlap where two plans touch the same file, and say which
 plan keeps it. Your output becomes the locked plan. Nothing else runs.`},
+{label:"Phase 2 — each worker builds",prompt:`Phase two. Build exactly this plan. Nothing outside it.
+Locked plan: [paste your approved plan for this part]
+Brief: [paste the original brief]
+Write only the files your plan named. If you find you need something
+outside the plan, stop and report it instead of improvising.`}
+]},
 "agent-swarm-harness":{flow:["The job is checked for dependency: does step two need step one's answer","Wide jobs fan out to N workers, each with its own output path","A merge script runs after all workers finish, never during","Concurrency is capped by a queue, not by launching everything at once","Both versions are timed and logged on the same input"],paste:`Split check before you parallelise. Answer in three lines:
 1. Does any unit need another unit's output? YES/NO
 2. If NO, how many independent units are there?
@@ -1380,13 +1492,25 @@ classify  = cheap
 decide    = strong
 check     = strong    # never downgrade: this is the last line of defence
 # rule: change one line, re-run the 20 saved jobs, compare by eye, then commit`},
-"software-company-in-a-repo":{flow:["One paragraph brief goes in and a spec comes out first","You edit the spec by hand before anything is built","The architecture step reads the edited spec only","Build runs against approved spec and writes new files only","You keep the spec regardless of whether you keep the code"],paste:`Produce a spec only. No code in this response.
+"software-company-in-a-repo":{flow:["One paragraph brief goes in and a spec comes out first","You edit the spec by hand before anything is built","The architecture step reads the edited spec only","Build runs against approved spec and writes new files only","You keep the spec regardless of whether you keep the code"],paste:[
+{label:"Step 1 — SPEC",prompt:`Produce a spec only. No code in this response.
 Brief: [one paragraph]
 Return:
 SCOPE: what is in, what is explicitly out
 FILES: new files you would create, with one line each
 UNKNOWNS: every assumption you had to make
 Stop there. I will edit this before you build anything.`},
+{label:"Step 2 — ARCHITECTURE",prompt:`Read the approved spec only — not the original brief.
+Approved spec: [paste, after your edits]
+Return an architecture note: components, how they connect, and the order
+you would build them in. No code yet.`},
+{label:"Step 3 — BUILD",prompt:`Build exactly this approved spec and architecture. Nothing outside SCOPE,
+and treat every UNKNOWNS entry as still open unless I've answered it below.
+Approved spec: [paste]
+Architecture note: [paste]
+My answers to the unknowns: [paste, or "none"]
+Write only new files. Do not touch anything not listed under FILES.`}
+]},
 "agents-with-hands":{flow:["An allow-list config names permitted commands and folders","Dry run is the default flag; real execution needs an explicit switch","The agent runs under its own account with access to one folder","Every action appends to a log with timestamp, command and result","Destructive paths are tested on junk data before real data is allowed"],paste:`# permissions.yml
 allow_commands: [ffmpeg, cp, mv]
 allow_paths:    ["/jobs/in", "/jobs/working", "/jobs/done"]
@@ -1394,17 +1518,52 @@ deny_default:   true          # anything not listed is refused
 dry_run:        true          # real actions require --execute
 log:            "/jobs/actions.log"
 # test the destructive path on /jobs/junk before pointing at real data`},
-"content-team-of-skills":{flow:["Researcher writes facts.md with sources and no prose","Writer reads facts.md plus the style examples and writes draft.md","Editor cuts draft.md and may not add claims not in facts.md","Packager formats and writes titles, captions and slide text","Scheduler posts and appends the result to a log"],paste:`Role: EDITOR.
+"content-team-of-skills":{flow:["Researcher writes facts.md with sources and no prose","Writer reads facts.md plus the style examples and writes draft.md","Editor cuts draft.md and may not add claims not in facts.md","Packager formats and writes titles, captions and slide text","Scheduler posts and appends the result to a log"],paste:[
+{label:"Role 1 — RESEARCHER",prompt:`Role: RESEARCHER.
+Collect facts only, each with a source. No prose, no opinions, no draft copy.
+Topic: [paste]
+Return facts.md: one fact per line, source in brackets at the end.`},
+{label:"Role 2 — WRITER",prompt:`Role: WRITER.
+Write draft.md from facts.md and the style examples below. Every claim must
+trace back to a line in facts.md — if it isn't there, you can't write it.
+facts.md: [paste]
+Style examples: [paste 2-3 pieces]
+Return draft.md only.`},
+{label:"Role 3 — EDITOR",prompt:`Role: EDITOR.
 You may cut, reorder and question. You may not add any claim that is not
 already in facts.md, and you may not rewrite in your own voice.
 draft.md: [paste]
 facts.md: [paste]
 Return the cut version, then a list of every sentence you removed and why.`},
-"finance-crew":{flow:["Categoriser assigns from a fixed list and marks anything unclear as unknown","Checker reconciles the total against the bank line and flags mismatches","Any unknown row blocks the explainer from writing the note","Explainer reads only reconciled rows","You clear unknowns weekly by hand"],paste:`You are the categoriser. Use ONLY this list:
+{label:"Role 4 — PACKAGER",prompt:`Role: PACKAGER.
+Format the edited draft for publishing. Write the title, caption and any
+slide text. You may not change the wording of the draft itself.
+draft.md (final): [paste]
+Return: TITLE, CAPTION, SLIDE TEXT (if applicable) — nothing else.`},
+{label:"Role 5 — SCHEDULER",prompt:`Role: SCHEDULER.
+Confirm the post is ready and log it. You do not edit content.
+Package: [paste title, caption, slide text]
+Return: POST TIME, CHANNEL, and a one-line log entry to append.`}
+]},
+"finance-crew":{flow:["Categoriser assigns from a fixed list and marks anything unclear as unknown","Checker reconciles the total against the bank line and flags mismatches","Any unknown row blocks the explainer from writing the note","Explainer reads only reconciled rows","You clear unknowns weekly by hand"],paste:[
+{label:"Role 1 — CATEGORISER",prompt:`You are the categoriser. Use ONLY this list:
 [paste chart of accounts]
 For each transaction return: date, vendor, amount, category.
 If the correct category is not on the list, return "UNKNOWN".
 Never invent a category. Never guess an amount. UNKNOWN is a correct answer.`},
+{label:"Role 2 — CHECKER",prompt:`Role: CHECKER.
+Reconcile the categorised transactions against the bank line total.
+Categorised rows: [paste]
+Bank line total: [paste]
+Return: MATCHED (total and count), MISMATCHED (each with the delta), and
+flag any row still marked UNKNOWN — those block the explainer.`},
+{label:"Role 3 — EXPLAINER",prompt:`Role: EXPLAINER.
+Write a short note on what changed this month. Use ONLY reconciled rows —
+never a row still marked UNKNOWN.
+Reconciled rows: [paste]
+Last month's note: [paste, for comparison]
+Return: 3-5 sentences, plain language, numbers included.`}
+]},
 "overnight-crew":{flow:["A scope file names the folders and actions permitted","A ceiling file sets max minutes, max attempts and max spend","After each unit, progress is written to a checkpoint file","A crash resumes from the checkpoint rather than restarting","At 6 a.m. a one-page report is written with done, failed and skipped"],paste:`# run.config
 scope_paths:   ["/jobs/in", "/jobs/out"]
 max_minutes:   240
@@ -3505,7 +3664,7 @@ function renderGuide(x){
   <h2 id="s2">How it actually works</h2>
   <ol class="flow">${H.flow.map(v=>`<li>${v}</li>`).join("")}</ol>
   <h2 id="s3">Copy this to start</h2>
-  <pre class="code"><code>${esc(H.paste)}</code></pre>
+  ${Array.isArray(H.paste)?H.paste.map(p=>`<p class="sub">${p.label}</p><pre class="code"><code>${esc(p.prompt)}</code></pre>`).join(""):`<pre class="code"><code>${esc(H.paste)}</code></pre>`}
   <h2 id="s4">What you need first</h2><ul class="need">${x.need.map(v=>`<li>${v}</li>`).join("")}</ul>
   <h2 id="s5">The build, step by step</h2><ol class="big-steps">${x.steps.map(v=>`<li><span>${v}</span></li>`).join("")}</ol>
   ${tech?`
