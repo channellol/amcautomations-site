@@ -3460,8 +3460,8 @@ document.addEventListener("click",e=>{
 window.addEventListener("hashchange",()=>go(location.hash.slice(1)));
 
 function renderGuide(x){
-  const D=DEEP[x.s],H=HOW[x.s],B=BUILD[x.s];
-  document.getElementById("toc").innerHTML=[["What this does","s0"],["Why it works","s1"],["How it actually works","s2"],["Copy this to start","s3"],["What you need first","s4"],["The build","s5"],["Build it yourself","sbuild"],["Check it worked","s6"],["Where it breaks","s7"],["The mistakes","s8"],["What it costs","s9"]].map(([v,id])=>`<a href="#" data-jump="${id}">${v}</a>`).join("");
+  const D=DEEP[x.s],H=HOW[x.s];
+  document.getElementById("toc").innerHTML=[["What this does","s0"],["Why it works","s1"],["How it actually works","s2"],["Copy this to start","s3"],["What you need first","s4"],["The build","s5"],["Check it worked","s6"],["Where it breaks","s7"],["The mistakes","s8"],["What it costs","s9"]].map(([v,id])=>`<a href="#" data-jump="${id}">${v}</a>`).join("");
   const full=`
   <button class="back" data-route="templates">&larr; All guides</button>
   <div class="meta"><span class="cat">${x.c}</span><span class="tag free">${x.k}</span><span>${x.read} min read</span><span>Free</span></div>
@@ -3479,15 +3479,6 @@ function renderGuide(x){
   <h2 id="s4">What you need first</h2><ul class="need">${x.need.map(v=>`<li>${v}</li>`).join("")}</ul>
   <h2 id="s5">The build, step by step</h2><ol class="big-steps">${x.steps.map(v=>`<li><span>${v}</span></li>`).join("")}</ol>
 
-  <h2 id="sbuild">Build it yourself</h2>
-  ${B.repos.length?`<p class="sub">Repos this uses</p><ul class="repos">${B.repos.map(([n,u,w])=>`<li><a href="${u}" target="_blank" rel="noopener noreferrer">${n} &#8599;</a><span>${w}</span></li>`).join("")}</ul>`:""}
-  <p class="sub">Folder layout</p>
-  <pre class="code"><code>${esc(B.tree)}</code></pre>
-  ${/from amc import|amc\.py/.test(B.code+B.tree)?`<details class="kit"><summary>amc.py — the starter kit this code imports</summary><div class="codewrap"><button class="copy" data-copy="kit">Copy</button><pre class="code"><code>${esc(STARTER)}</code></pre></div></details>`:""}
-  <p class="sub">The code</p>
-  <div class="codewrap"><button class="copy" data-copy="main">Copy</button><pre class="code"><code>${esc(B.code)}</code></pre></div>
-  <p class="sub">Run it</p>
-  <pre class="code"><code>${esc(B.run)}</code></pre>
   <h2 id="s6">Check it worked</h2><ul class="need">${D.checks.map(v=>`<li>${v}</li>`).join("")}</ul>
   <h2 id="s7">Where it breaks</h2><div class="callout"><p>${x.breaks}</p></div>
   <h2 id="s8">The mistakes that cost the most</h2><ul class="need">${D.mistakes.map(v=>`<li>${v}</li>`).join("")}</ul>
@@ -3496,7 +3487,7 @@ function renderGuide(x){
   <div class="handover">
     <div class="ho-mark">Or don't build it</div>
     <h3>Have this one built for you.</h3>
-    <p>Everything above is yours, free, forever — the prompt, the code, the whole build. But if you'd rather have this running on your own setup by the end of the week, tuned to how your business actually works, tested and handed over, that's the other thing we do.</p>
+    <p>Everything above is yours, free, forever — the prompt and the whole build. But if you'd rather have this running on your own setup by the end of the week, tuned to how your business actually works, tested and handed over, that's the other thing we do.</p>
     <ul class="ho-pts">
       <li>Your team builds nothing. We set it up around your tools and hand it over</li>
       <li>One-time setup — no retainer, nothing to renew</li>
@@ -3524,14 +3515,14 @@ function unlocked(){try{return !!localStorage.getItem(GATE_KEY)}catch(e){return 
 function gateHTML(x){return `<div class="gate">
   <p class="eyebrow">The rest of this guide</p>
   <h3>One email unlocks all ${T.length} guides.</h3>
-  <p>You are reading the free preview. The paste-ready prompt, the full build, the code and the failure notes are below. Free, no card, unsubscribe any time.</p>
+  <p>You are reading the free preview. The paste-ready prompt, the full build and the failure notes are below. Free, no card, unsubscribe any time.</p>
   <form id="gate-form" class="gate-form">
     <label class="fl" for="gate-email">Email address</label>
     <div class="row"><input id="gate-email" name="email" type="email" placeholder="you@business.com" required autocomplete="email">
     <button class="btn" type="submit">Unlock everything</button></div>
     <p class="note" id="gate-note" hidden></p>
   </form>
-  <p class="note">Still to come here: the copy-paste prompt &middot; ${x.steps.length} build steps &middot; runnable code${BUILD[x.s].repos.length?" &middot; "+BUILD[x.s].repos.length+" repos":""} &middot; where it breaks &middot; what it costs</p>
+  <p class="note">Still to come here: the copy-paste prompt &middot; ${x.steps.length} build steps &middot; where it breaks &middot; what it costs</p>
 </div>`}
 function saveLead(email){
   return fetch(SB+"/rest/v1/leads",{method:"POST",headers:{apikey:SBK,"Content-Type":"application/json",Prefer:"return=minimal"},
