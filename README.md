@@ -1,8 +1,8 @@
 # amc.automations
 
-A free template library: 60 practical automation guides across agent teams, tools & repos, Claude Code, prompting, and build & sell.
+A free template library: 69 practical automation guides across agent teams, tools & repos, Claude Code, prompting, and build & sell.
 
-Every guide includes how it works, a copy-paste prompt or config, step-by-step build, runnable code, the repos it uses, and an honest note on where it breaks.
+Every guide includes how it works, a copy-paste prompt (or config, for guides that are genuinely infrastructure), step-by-step build, and an honest note on where it breaks. A Prompts/Tech toggle in the nav switches between the paste-ready prompt only (light) and the full Python build — folder layout, starter kit, code (dark).
 
 ## Run locally
 
@@ -20,7 +20,7 @@ Works as-is on GitHub Pages, Netlify or Vercel — no build step.
 
 ## Status
 
-- Email and waitlist forms are not connected to an endpoint yet.
+- Email, waitlist and service-brief forms post to Supabase (`leads` table) and forward to formsubmit.co.
 - Guide code has not been run end to end; test each script with your own keys before relying on it.
 
 ## Email gate
