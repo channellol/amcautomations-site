@@ -44,9 +44,13 @@
   color-scheme:dark;
 }
 *{box-sizing:border-box}
-.modeToggle{display:flex;align-items:center;gap:2px;background:var(--surface-2);border:1px solid var(--line);border-radius:999px;padding:3px;font-family:var(--f-data);font-size:12px}
-.modeToggle button{font-family:inherit;font-size:inherit;font-weight:600;letter-spacing:.04em;color:var(--ink-2);background:none;border:0;padding:6px 13px;border-radius:999px;cursor:pointer}
-.modeToggle button[aria-pressed="true"]{background:var(--ink);color:var(--ground)}
+.techSwitch{display:flex;align-items:center;gap:9px;background:none;border:0;padding:4px 2px;cursor:pointer;font-family:var(--f-data);font-size:12px;font-weight:600;letter-spacing:.04em}
+.techSwitch .ts-lbl{color:var(--muted);transition:color .25s}
+.techSwitch[aria-checked="false"] .ts-lbl.ts-off,.techSwitch[aria-checked="true"] .ts-lbl.ts-on{color:var(--ink)}
+.techSwitch .ts-track{position:relative;width:42px;height:23px;border-radius:999px;background:var(--surface-2);border:1px solid var(--line-strong);transition:background .3s,border-color .3s;flex:none}
+.techSwitch[aria-checked="true"] .ts-track{background:var(--clay);border-color:var(--clay)}
+.techSwitch .ts-knob{position:absolute;top:2px;left:2px;width:17px;height:17px;border-radius:50%;background:#fff;box-shadow:0 1px 3px rgba(0,0,0,.35);transition:transform .3s cubic-bezier(.4,0,.2,1)}
+.techSwitch[aria-checked="true"] .ts-knob{transform:translateX(19px)}
 body{margin:0;background:var(--ground);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased}
 img{max-width:100%}
 a{color:inherit}
@@ -259,7 +263,7 @@ footer{border-top:1px solid var(--line);padding-block:30px;color:var(--muted);fo
 .guide ol.flow{list-style:none;padding:0;margin:0;counter-reset:fl}
 .guide ol.flow li{counter-increment:fl;display:grid;grid-template-columns:auto 1fr;gap:14px;padding:11px 0;color:var(--ink-2)}
 .guide ol.flow li::before{content:counter(fl);font-family:var(--f-data);font-size:12px;color:var(--muted);border:1px solid var(--line-strong);border-radius:50%;width:22px;height:22px;display:grid;place-items:center;margin-top:2px}
-pre.code{background:var(--ink);color:#F5EFE6;border-radius:var(--radius);padding:18px 20px;overflow-x:auto;font-family:var(--f-data);font-size:13px;line-height:1.6;margin:0}
+pre.code{background:#1E1C18;color:#F5EFE6;border-radius:var(--radius);padding:18px 20px;overflow-x:auto;font-family:var(--f-data);font-size:13px;line-height:1.6;margin:0}
 pre.code code{white-space:pre}
 /* hero panel */
 .hero-panel{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:18px;box-shadow:0 18px 40px rgba(80,50,30,.08)}
@@ -434,10 +438,11 @@ pre.code{max-width:100%}
 <header class="nav">
   <div class="nav-in">
     <div class="brand"><svg class="spark" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 1.5l1.9 6.3 6.3 1.9-6.3 1.9L12 22.5l-1.9-10.9L3.8 9.7l6.3-1.9z"/></svg> amc.automations</div>
-    <div class="modeToggle" role="group" aria-label="Guide mode">
-      <button data-mode-btn="prompts" aria-pressed="true">Prompts</button>
-      <button data-mode-btn="tech" aria-pressed="false">Tech</button>
-    </div>
+    <button class="techSwitch" id="techSwitch" role="switch" aria-checked="false" aria-label="Prompts or tech mode">
+      <span class="ts-lbl ts-off">Prompts</span>
+      <span class="ts-track"><span class="ts-knob"></span></span>
+      <span class="ts-lbl ts-on">Tech</span>
+    </button>
     <nav class="navlinks">
       <button data-route="home">Home</button>
       <button data-route="templates">Templates</button>
@@ -3550,10 +3555,11 @@ function getMode(){try{return localStorage.getItem(MODE_KEY)==="tech"?"tech":"pr
 function setMode(m){
   try{localStorage.setItem(MODE_KEY,m)}catch(e){}
   document.documentElement.setAttribute("data-mode",m);
-  document.querySelectorAll("[data-mode-btn]").forEach(b=>b.setAttribute("aria-pressed",b.dataset.modeBtn===m?"true":"false"));
+  const sw=document.getElementById("techSwitch");
+  if(sw)sw.setAttribute("aria-checked",m==="tech"?"true":"false");
   if(current)renderGuide(current);
 }
-document.addEventListener("click",e=>{const b=e.target.closest("[data-mode-btn]");if(!b)return;setMode(b.dataset.modeBtn)});
+document.addEventListener("click",e=>{if(!e.target.closest("#techSwitch"))return;setMode(getMode()==="tech"?"prompts":"tech")});
 setMode(getMode());
 
 /* ---- email gate: preview free, one email unlocks every guide ---- */
