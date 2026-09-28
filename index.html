@@ -28,7 +28,25 @@
   --f-body:"Source Sans 3",system-ui,-apple-system,sans-serif;
   --f-data:"IBM Plex Mono",ui-monospace,Menlo,monospace;
 }
+[data-mode="tech"]{
+  --ground:#171511;
+  --surface:#221F19;
+  --surface-2:#2B2721;
+  --line:#3B362D;
+  --line-strong:#4C4638;
+  --ink:#F5EFE6;
+  --ink-2:#D9D0C2;
+  --muted:#8F8676;
+  --clay:#E3835A;
+  --clay-soft:#3A2A20;
+  --clay-ink:#F0B89A;
+  --good:#6FBF86;
+  color-scheme:dark;
+}
 *{box-sizing:border-box}
+.modeToggle{display:flex;align-items:center;gap:2px;background:var(--surface-2);border:1px solid var(--line);border-radius:999px;padding:3px;font-family:var(--f-data);font-size:12px}
+.modeToggle button{font-family:inherit;font-size:inherit;font-weight:600;letter-spacing:.04em;color:var(--ink-2);background:none;border:0;padding:6px 13px;border-radius:999px;cursor:pointer}
+.modeToggle button[aria-pressed="true"]{background:var(--ink);color:var(--ground)}
 body{margin:0;background:var(--ground);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased}
 img{max-width:100%}
 a{color:inherit}
@@ -416,6 +434,10 @@ pre.code{max-width:100%}
 <header class="nav">
   <div class="nav-in">
     <div class="brand"><svg class="spark" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 1.5l1.9 6.3 6.3 1.9-6.3 1.9L12 22.5l-1.9-10.9L3.8 9.7l6.3-1.9z"/></svg> amc.automations</div>
+    <div class="modeToggle" role="group" aria-label="Guide mode">
+      <button data-mode-btn="prompts" aria-pressed="true">Prompts</button>
+      <button data-mode-btn="tech" aria-pressed="false">Tech</button>
+    </div>
     <nav class="navlinks">
       <button data-route="home">Home</button>
       <button data-route="templates">Templates</button>
@@ -3460,8 +3482,11 @@ document.addEventListener("click",e=>{
 window.addEventListener("hashchange",()=>go(location.hash.slice(1)));
 
 function renderGuide(x){
-  const D=DEEP[x.s],H=HOW[x.s];
-  document.getElementById("toc").innerHTML=[["What this does","s0"],["Why it works","s1"],["How it actually works","s2"],["Copy this to start","s3"],["What you need first","s4"],["The build","s5"],["Check it worked","s6"],["Where it breaks","s7"],["The mistakes","s8"],["What it costs","s9"]].map(([v,id])=>`<a href="#" data-jump="${id}">${v}</a>`).join("");
+  const D=DEEP[x.s],H=HOW[x.s],B=BUILD[x.s],tech=getMode()==="tech";
+  const tocRows=[["What this does","s0"],["Why it works","s1"],["How it actually works","s2"],["Copy this to start","s3"],["What you need first","s4"],["The build","s5"]];
+  if(tech)tocRows.push(["Build it yourself","sbuild"]);
+  tocRows.push(["Check it worked","s6"],["Where it breaks","s7"],["The mistakes","s8"],["What it costs","s9"]);
+  document.getElementById("toc").innerHTML=tocRows.map(([v,id])=>`<a href="#" data-jump="${id}">${v}</a>`).join("");
   const full=`
   <button class="back" data-route="templates">&larr; All guides</button>
   <div class="meta"><span class="cat">${x.c}</span><span class="tag free">${x.k}</span><span>${x.read} min read</span><span>Free</span></div>
@@ -3478,6 +3503,16 @@ function renderGuide(x){
   <pre class="code"><code>${esc(H.paste)}</code></pre>
   <h2 id="s4">What you need first</h2><ul class="need">${x.need.map(v=>`<li>${v}</li>`).join("")}</ul>
   <h2 id="s5">The build, step by step</h2><ol class="big-steps">${x.steps.map(v=>`<li><span>${v}</span></li>`).join("")}</ol>
+  ${tech?`
+  <h2 id="sbuild">Build it yourself</h2>
+  ${B.repos.length?`<p class="sub">Repos this uses</p><ul class="repos">${B.repos.map(([n,u,w])=>`<li><a href="${u}" target="_blank" rel="noopener noreferrer">${n} &#8599;</a><span>${w}</span></li>`).join("")}</ul>`:""}
+  <p class="sub">Folder layout</p>
+  <pre class="code"><code>${esc(B.tree)}</code></pre>
+  ${/from amc import|amc\.py/.test(B.code+B.tree)?`<details class="kit"><summary>amc.py — the starter kit this code imports</summary><div class="codewrap"><button class="copy" data-copy="kit">Copy</button><pre class="code"><code>${esc(STARTER)}</code></pre></div></details>`:""}
+  <p class="sub">The code</p>
+  <div class="codewrap"><button class="copy" data-copy="main">Copy</button><pre class="code"><code>${esc(B.code)}</code></pre></div>
+  <p class="sub">Run it</p>
+  <pre class="code"><code>${esc(B.run)}</code></pre>`:""}
 
   <h2 id="s6">Check it worked</h2><ul class="need">${D.checks.map(v=>`<li>${v}</li>`).join("")}</ul>
   <h2 id="s7">Where it breaks</h2><div class="callout"><p>${x.breaks}</p></div>
@@ -3508,9 +3543,21 @@ function renderGuide(x){
   document.getElementById("toc").classList.toggle("locked",!unlocked());
   current=x;}
 
+/* ---- prompts/tech mode: prompts-only light view, or full python build in dark ---- */
+let current=null;
+const MODE_KEY="amc_mode";
+function getMode(){try{return localStorage.getItem(MODE_KEY)==="tech"?"tech":"prompts"}catch(e){return "prompts"}}
+function setMode(m){
+  try{localStorage.setItem(MODE_KEY,m)}catch(e){}
+  document.documentElement.setAttribute("data-mode",m);
+  document.querySelectorAll("[data-mode-btn]").forEach(b=>b.setAttribute("aria-pressed",b.dataset.modeBtn===m?"true":"false"));
+  if(current)renderGuide(current);
+}
+document.addEventListener("click",e=>{const b=e.target.closest("[data-mode-btn]");if(!b)return;setMode(b.dataset.modeBtn)});
+setMode(getMode());
+
 /* ---- email gate: preview free, one email unlocks every guide ---- */
 const GATE_KEY="amc_email";
-let current=null;
 function unlocked(){try{return !!localStorage.getItem(GATE_KEY)}catch(e){return false}}
 function gateHTML(x){return `<div class="gate">
   <p class="eyebrow">The rest of this guide</p>
