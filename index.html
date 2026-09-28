@@ -3645,6 +3645,7 @@ document.addEventListener("click",e=>{
   const b=e.target.closest("[data-route]");if(b)go(b.dataset.route)});
 window.addEventListener("hashchange",()=>go(location.hash.slice(1)));
 
+const CONFIG_ONLY=new Set(["stop-expensive-model-everywhere","agents-with-hands","overnight-crew","folder-watcher-trigger","local-transcription","mcp-servers-worth-it","one-command-stack","backup-and-rollback","cheap-model-routing","free-tier-pooling","observability-for-agents","recurring-job-autopilot"]);
 function renderGuide(x){
   const D=DEEP[x.s],H=HOW[x.s],B=BUILD[x.s],tech=getMode()==="tech";
   const tocRows=[["What this does","s0"],["Why it works","s1"],["How it actually works","s2"],["Copy this to start","s3"],["What you need first","s4"],["The build","s5"]];
@@ -3664,6 +3665,7 @@ function renderGuide(x){
   <h2 id="s2">How it actually works</h2>
   <ol class="flow">${H.flow.map(v=>`<li>${v}</li>`).join("")}</ol>
   <h2 id="s3">Copy this to start</h2>
+  ${!tech&&CONFIG_ONLY.has(x.s)?`<div class="callout"><p>This one runs on real code, not a chat prompt — the block below is the config that code reads. Flip to Tech above for the script, or have it built for you.</p></div>`:""}
   ${Array.isArray(H.paste)?H.paste.map(p=>`<p class="sub">${p.label}</p><pre class="code"><code>${esc(p.prompt)}</code></pre>`).join(""):`<pre class="code"><code>${esc(H.paste)}</code></pre>`}
   <h2 id="s4">What you need first</h2><ul class="need">${x.need.map(v=>`<li>${v}</li>`).join("")}</ul>
   <h2 id="s5">The build, step by step</h2><ol class="big-steps">${x.steps.map(v=>`<li><span>${v}</span></li>`).join("")}</ol>
