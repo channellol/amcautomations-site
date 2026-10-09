@@ -345,6 +345,27 @@ footer{border-top:1px solid var(--line);padding-block:30px;color:var(--muted);fo
 @media(max-width:700px){.feat-row{grid-template-columns:1fr}}
 .card .cat{overflow-wrap:anywhere}
 .guide h1,.guide .intro{overflow-wrap:anywhere}
+
+.reels{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.reel{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:12px;overflow:hidden}
+.reel video{width:100%;aspect-ratio:9/16;object-fit:cover;border-radius:12px;background:#000;display:block}
+.reel h3{font-size:17px;font-weight:700;margin:14px 6px 4px}
+.reel p{margin:0 6px 8px;font-size:14px;color:var(--ink-2)}
+.slides{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.slides img{width:100%;border-radius:12px;border:1px solid var(--line);display:block}
+.sys{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:clamp(22px,4vw,38px);margin-bottom:18px}
+.sys h3{font-size:clamp(22px,2.8vw,30px);font-weight:800;margin:8px 0 8px}
+.sys>p{color:var(--ink-2);max-width:68ch;margin:0 0 4px}
+.io{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:22px}
+.io div{background:var(--surface-2);border-radius:12px;padding:14px 16px;font-size:14.5px;color:var(--ink-2)}
+.io b{display:block;font-family:var(--f-data);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--clay);margin-bottom:6px}
+.sysgo{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.sysgo button{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:20px;text-align:left;font:inherit;color:inherit;cursor:pointer}
+.sysgo button:hover{border-color:var(--line-strong);box-shadow:0 6px 20px rgba(60,40,20,.07)}
+.sysgo h3{font-size:18px;font-weight:700;margin:8px 0 6px}
+.sysgo p{margin:0;font-size:14px;color:var(--ink-2)}
+.sysgo .k{font-family:var(--f-data);font-size:11px;letter-spacing:.12em;color:var(--clay)}
+@media(max-width:900px){.reels,.io{grid-template-columns:1fr}.slides,.sysgo{grid-template-columns:1fr 1fr}}
 </style>
 
 <header class="nav">
@@ -352,6 +373,8 @@ footer{border-top:1px solid var(--line);padding-block:30px;color:var(--muted);fo
     <div class="brand"><svg class="spark" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 1.5l1.9 6.3 6.3 1.9-6.3 1.9L12 22.5l-1.9-10.9L3.8 9.7l6.3-1.9z"/></svg> amc.automations</div>
     <nav class="navlinks">
       <button data-route="home">Home</button>
+      <button data-route="systems">Systems</button>
+      <button data-route="work">Work</button>
       <button data-route="templates">Agents</button>
       <button data-route="services" class="hire">Done for you</button>
     </nav>
@@ -445,65 +468,177 @@ footer{border-top:1px solid var(--line);padding-block:30px;color:var(--muted);fo
     <div class="hero-art"></div><div class="hero-dots"></div><div class="hero-grain"></div>
     <div class="hero-in">
       <div>
-      <span class="pill-new"><b>FOR COMPANIES</b><span class="live-dot"></span> AI agents, built for your business</span>
-      <h1>AI agents for your company,<br><span class="clay shine">doing the repeat work.</span></h1>
-      <p class="lede">We set up AI agents and automations that answer customers, follow up leads, keep the books tidy and run routine tasks on the tools you already use. A person approves anything that matters.</p>
+      <span class="pill-new"><b>AUTOMATION SYSTEMS</b><span class="live-dot"></span> Running daily, not on slides</span>
+      <h1>Systems that do the work,<br><span class="clay shine">and the output to prove it.</span></h1>
+      <p class="lede">We build automation systems for companies: prospecting that runs overnight, video and posts made from one idea, dashboards that tell you the numbers each morning. See how each one works, then see what it produced.</p>
       <div class="hero-cta">
-        <button class="btn" data-brief>Tell us what should run on its own</button>
-        <button class="btn ghost" data-route="templates">See the agents we can build</button>
+        <button class="btn" data-route="systems">See the systems</button>
+        <button class="btn ghost" data-route="work">See the output</button>
       </div>
-      <p class="covers">Customer replies · sales and leads · marketing · finance and admin · knowledge · operations</p>
+      <p class="covers">Outbound · video and posts · lead capture · daily dashboard</p>
       </div>
-      <aside class="hero-panel" aria-label="How a project runs">
-        <div class="hp-head"><span class="hp-dot"></span> HOW A PROJECT RUNS</div>
-        <div class="hp-row"><span class="s">1</span><span class="t">You describe the work<small>The task your team keeps repeating</small></span><span class="v">brief</span></div>
-        <div class="hp-row"><span class="s">2</span><span class="t">We design the agent<small>The flow, in writing, before anything is built</small></span><span class="v">in writing</span></div>
-        <div class="hp-row"><span class="s">3</span><span class="t">Tested on your data<small>Your tools and your real cases</small></span><span class="v">tested</span></div>
-        <div class="hp-row"><span class="s">4</span><span class="t">A person stays in charge<small>Approval where money, publishing or complaints are involved</small></span><span class="v">approval</span></div>
-        <div class="hp-row"><span class="s">5</span><span class="t">Handed over to you<small>Runs on your accounts, support stays open</small></span><span class="v">yours</span></div>
-        <div class="hp-foot"><span>Your tools stay yours</span><span>Runs on your accounts</span></div>
+      <aside class="hero-panel" aria-label="What runs">
+        <div class="hp-head"><span class="hp-dot"></span> WHAT RUNS EVERY DAY</div>
+        <div class="hp-row"><span class="s">1</span><span class="t">Outbound engine<small>Finds, checks and emails prospects overnight</small></span><span class="v">nightly</span></div>
+        <div class="hp-row"><span class="s">2</span><span class="t">Video repurposing<small>Long video in, finished shorts out</small></span><span class="v">on drop</span></div>
+        <div class="hp-row"><span class="s">3</span><span class="t">Post maker<small>One idea in, on-brand carousel out</small></span><span class="v">on demand</span></div>
+        <div class="hp-row"><span class="s">4</span><span class="t">Comment to DM<small>A keyword comment gets the link in the inbox</small></span><span class="v">24/7</span></div>
+        <div class="hp-row"><span class="s">5</span><span class="t">Morning dashboard<small>Leads, queue, sends and failures on one screen</small></span><span class="v">6 AM</span></div>
+        <div class="hp-foot"><span>A person approves what matters</span><span>Runs on your accounts</span></div>
       </aside>
     </div>
     <div class="stats">
-      <div class="stat"><b data-count="26">26</b><span>agents in the catalogue</span></div>
-      <div class="stat"><b>24/7</b><span>can work outside office hours</span></div>
-      <div class="stat"><b data-count="6">6</b><span>areas of the business covered</span></div>
+      <div class="stat"><b data-count="5">5</b><span>systems in daily use</span></div>
+      <div class="stat"><b>Nightly</b><span>prospect finding, no one at the keyboard</span></div>
+      <div class="stat"><b>3</b><span>follow-ups per prospect: day 3, 7, 15</span></div>
       <div class="stat"><b>Yours</b><span>runs on your own accounts</span></div>
     </div>
   </div>
   <div class="logos"><p class="eyebrow">Built on the tools you already use</p><div class="logos-wrap"><div class="mq"><span><img src="https://cdn.jsdelivr.net/npm/simple-icons@15.0.0/icons/claude.svg" alt="" loading="lazy">Claude</span><span><img src="https://cdn.jsdelivr.net/npm/simple-icons@15.0.0/icons/n8n.svg" alt="" loading="lazy">n8n</span><span><img src="https://cdn.jsdelivr.net/npm/simple-icons@15.0.0/icons/whatsapp.svg" alt="" loading="lazy">WhatsApp</span><span><img src="https://cdn.jsdelivr.net/npm/simple-icons@15.0.0/icons/gmail.svg" alt="" loading="lazy">Gmail</span><span><img src="https://cdn.jsdelivr.net/npm/simple-icons@15.0.0/icons/googlesheets.svg" alt="" loading="lazy">Google Sheets</span><span><img src="https://cdn.jsdelivr.net/npm/simple-icons@15.0.0/icons/instagram.svg" alt="" loading="lazy">Instagram</span><span><img src="https://cdn.jsdelivr.net/npm/simple-icons@15.0.0/icons/notion.svg" alt="" loading="lazy">Notion</span><span><img src="https://cdn.jsdelivr.net/npm/simple-icons@15.0.0/icons/slack.svg" alt="" loading="lazy">Slack</span><span><img src="https://cdn.jsdelivr.net/npm/simple-icons@15.0.0/icons/zapier.svg" alt="" loading="lazy">Zapier</span><span><img src="https://cdn.jsdelivr.net/npm/simple-icons@15.0.0/icons/make.svg" alt="" loading="lazy">Make</span><span><img src="https://cdn.jsdelivr.net/npm/simple-icons@15.0.0/icons/openai.svg" alt="" loading="lazy">OpenAI</span><span><img src="https://cdn.jsdelivr.net/npm/simple-icons@15.0.0/icons/github.svg" alt="" loading="lazy">GitHub</span><span><img src="https://cdn.jsdelivr.net/npm/simple-icons@15.0.0/icons/claude.svg" alt="" loading="lazy">Claude</span><span><img src="https://cdn.jsdelivr.net/npm/simple-icons@15.0.0/icons/n8n.svg" alt="" loading="lazy">n8n</span><span><img src="https://cdn.jsdelivr.net/npm/simple-icons@15.0.0/icons/whatsapp.svg" alt="" loading="lazy">WhatsApp</span><span><img src="https://cdn.jsdelivr.net/npm/simple-icons@15.0.0/icons/gmail.svg" alt="" loading="lazy">Gmail</span><span><img src="https://cdn.jsdelivr.net/npm/simple-icons@15.0.0/icons/googlesheets.svg" alt="" loading="lazy">Google Sheets</span><span><img src="https://cdn.jsdelivr.net/npm/simple-icons@15.0.0/icons/instagram.svg" alt="" loading="lazy">Instagram</span><span><img src="https://cdn.jsdelivr.net/npm/simple-icons@15.0.0/icons/notion.svg" alt="" loading="lazy">Notion</span><span><img src="https://cdn.jsdelivr.net/npm/simple-icons@15.0.0/icons/slack.svg" alt="" loading="lazy">Slack</span><span><img src="https://cdn.jsdelivr.net/npm/simple-icons@15.0.0/icons/zapier.svg" alt="" loading="lazy">Zapier</span><span><img src="https://cdn.jsdelivr.net/npm/simple-icons@15.0.0/icons/make.svg" alt="" loading="lazy">Make</span><span><img src="https://cdn.jsdelivr.net/npm/simple-icons@15.0.0/icons/openai.svg" alt="" loading="lazy">OpenAI</span><span><img src="https://cdn.jsdelivr.net/npm/simple-icons@15.0.0/icons/github.svg" alt="" loading="lazy">GitHub</span></div></div></div>
 
   <section class="wrap">
-    <p class="eyebrow">Start with the result</p>
-    <h2 style="font-size:clamp(26px,3.6vw,38px);font-weight:800;margin:10px 0 26px">What do you want off your team's plate?</h2>
-    <div class="results">
-      <button class="result" data-cat="Customer replies"><span class="ico">&#10033;</span><h3>Answer customers faster</h3><p>Calls, WhatsApp chats and reviews handled, with a person stepping in when it matters.</p></button>
-      <button class="result" data-cat="Sales and leads"><span class="ico">&#8635;</span><h3>Stop losing leads</h3><p>Every enquiry answered, checked and followed up, so your team talks to the ready ones.</p></button>
-      <button class="result" data-cat="Finance and admin"><span class="ico">&#8599;</span><h3>Keep the books tidy</h3><p>Receipts matched, numbers checked and money you are owed brought into view.</p></button>
+    <p class="eyebrow">The systems</p>
+    <h2 style="font-size:clamp(26px,3.6vw,38px);font-weight:800;margin:10px 0 26px">Five systems. Each one shows its input and its output.</h2>
+    <div class="sysgo">
+      <button data-route="systems" data-jump-sys="outbound"><span class="k">01</span><h3>Outbound engine</h3><p>Prospects found, checked, emailed and followed up without anyone tracking it.</p></button>
+      <button data-route="systems" data-jump-sys="video"><span class="k">02</span><h3>Video repurposing</h3><p>One long video becomes captioned vertical shorts, ready to post.</p></button>
+      <button data-route="systems" data-jump-sys="posts"><span class="k">03</span><h3>Post maker</h3><p>One idea becomes a finished carousel in the same layout each time.</p></button>
+      <button data-route="systems" data-jump-sys="dm"><span class="k">04</span><h3>Comment to DM</h3><p>A keyword in the comments sends the link straight to the inbox.</p></button>
     </div>
-  </section>
-
-  <section class="wrap" style="padding-top:0">
-    <p class="eyebrow">Common places to start</p>
-    <div class="sec-head" style="margin-bottom:10px">
-      <h2 style="font-size:clamp(26px,3.6vw,38px);font-weight:800">Agents companies ask about first.</h2>
-      <button class="btn ghost" data-route="templates" id="all-btn">All agents</button>
-    </div>
-    <div class="feat" id="feat"></div>
+    <p style="margin:22px 0 0"><button class="btn ghost" data-route="systems">All systems, in detail</button></p>
   </section>
 
   <div class="band-bg"><section class="wrap">
-    <p class="eyebrow">The catalogue</p>
-    <h2 style="font-size:clamp(26px,3.6vw,38px);font-weight:800;margin:10px 0 8px">Every agent, by area of the business.</h2>
-    <div class="topics" id="topics"></div>
+    <p class="eyebrow">The output</p>
+    <div class="sec-head" style="margin-bottom:22px">
+      <h2 style="font-size:clamp(26px,3.6vw,38px);font-weight:800">What the systems produced.</h2>
+      <button class="btn ghost" data-route="work">See all output</button>
+    </div>
+    <div class="reels">
+      <div class="reel"><video src="assets/reel-fertility.mp4" poster="assets/reel-fertility.jpg" controls preload="none" playsinline></video><h3>Short for a fertility clinic</h3><p>Cut from a long video. Captions, explainer visuals, call button at the end.</p></div>
+      <div class="reel"><video src="assets/reel-gastro.mp4" poster="assets/reel-gastro.jpg" controls preload="none" playsinline></video><h3>Short for a gastro clinic</h3><p>Same format, new topic. Face tracking keeps the doctor in frame.</p></div>
+      <div class="reel"><video src="assets/reel-aesthetics.mp4" poster="assets/reel-aesthetics.jpg" controls preload="none" playsinline></video><h3>Short for an aesthetics clinic</h3><p>Split screen: the doctor on top, the explainer below.</p></div>
+    </div>
   </section></div>
+
+  <section class="wrap">
+    <p class="eyebrow">Need something else?</p>
+    <div class="sec-head" style="margin-bottom:10px">
+      <h2 style="font-size:clamp(26px,3.6vw,38px);font-weight:800">Or pick from the agent catalogue.</h2>
+      <button class="btn ghost" data-route="templates" id="all-btn">All agents</button>
+    </div>
+    <div class="topics" id="topics"></div>
+  </section>
 
   <section class="wrap">
     <div class="band">
       <div>
         <p class="eyebrow">Done for you</p>
         <h2>Tell us what should run on its own.</h2>
-        <p>We design the agent around your tools, test it on your data and hand it over. You get a reply within a day on whether it can be automated and how.</p>
+        <p>We design the system around your tools, test it on your data and hand it over. You get a reply within a day on whether it can be automated and how.</p>
+      </div>
+      <div><button class="btn" data-brief style="width:100%">Send the brief</button><p class="note">Free call. No deck, no pressure.</p></div>
+    </div>
+  </section>
+</div>
+
+<!-- SYSTEMS -->
+<div id="view-systems" hidden>
+  <div class="hero">
+    <div class="hero-art"></div><div class="hero-grain"></div>
+    <div class="hero-in" style="grid-template-columns:1fr">
+      <div>
+      <p class="eyebrow">The systems</p>
+      <h1>How each system works,<br><span class="clay">step by step.</span></h1>
+      <p class="lede">Every system below runs on a schedule or a trigger. Each one shows what goes in, what comes out, and where a person stays in charge.</p>
+      </div>
+    </div>
+  </div>
+  <section class="wrap" style="padding-top:36px">
+
+    <div class="sys" id="sys-outbound"><span class="eyebrow">01 · Outbound</span><h3>Outbound engine</h3>
+      <p>Runs every night with no one at the keyboard. It finds businesses that fit, checks each one is real, writes each a personal email, sends within daily limits and follows up. Replies are pulled into one place.</p>
+      <div data-lg data-flow="Nightly run|Finds businesses|Checks site and email|Writes personal email|Sends within limits|Follows up day 3, 7, 15|Reply reaches you"></div>
+      <div class="io">
+        <div><b>In</b>A short description of who you sell to.</div>
+        <div><b>Out</b>Verified prospects, sent emails, follow-ups and a log of replies.</div>
+        <div><b>Limits</b>Daily send cap, gaps between sends, and a person approves the queue.</div>
+      </div></div>
+
+    <div class="sys" id="sys-video"><span class="eyebrow">02 · Video</span><h3>Video repurposing</h3>
+      <p>Takes a long video and cuts it into vertical shorts. It picks the strongest moments, keeps the speaker in frame, adds captions and explainer visuals, and ends with a call or WhatsApp card.</p>
+      <div data-lg data-flow="Long video dropped|Best moments picked|Speaker tracked in frame|Captions and visuals added|End card added|Shorts ready to post"></div>
+      <div class="io">
+        <div><b>In</b>One long YouTube or camera video.</div>
+        <div><b>Out</b>Finished 9:16 shorts for Reels and YouTube Shorts.</div>
+        <div><b>Limits</b>You approve each short before it is posted.</div>
+      </div></div>
+
+    <div class="sys" id="sys-posts"><span class="eyebrow">03 · Posts</span><h3>Post maker</h3>
+      <p>Turns one idea into a finished carousel. The cover carries the strongest claim, each slide carries one point, and the layout is the same every time so the account looks like one brand.</p>
+      <div data-lg data-flow="One idea|Cover written|One point per slide|Layout checked|Sent for approval|Scheduled"></div>
+      <div class="io">
+        <div><b>In</b>One idea, claim or topic.</div>
+        <div><b>Out</b>A finished, on-brand carousel and its caption.</div>
+        <div><b>Limits</b>Text that does not fit is cut, and you approve before posting.</div>
+      </div></div>
+
+    <div class="sys" id="sys-dm"><span class="eyebrow">04 · Lead capture</span><h3>Comment to DM</h3>
+      <p>Someone comments a keyword on a post and the link lands in their inbox. They get the resource, you get the lead, and nobody replies by hand.</p>
+      <div data-lg data-flow="Keyword commented|Public reply posted|DM sent with link|Contact captured|Follow-up if no click"></div>
+      <div class="io">
+        <div><b>In</b>A post, a keyword and a resource to give away.</div>
+        <div><b>Out</b>A DM to every commenter and a list of contacts.</div>
+        <div><b>Limits</b>Runs on the official API, so the account stays safe.</div>
+      </div></div>
+
+    <div class="sys" id="sys-dash"><span class="eyebrow">05 · Reporting</span><h3>Morning dashboard</h3>
+      <p>One screen shows new leads, what is queued, what was sent and what failed. It updates every morning, so you start the day with the numbers instead of opening five tools.</p>
+      <div data-lg data-flow="6 AM run|Pulls the numbers|Updates the dashboard|Flags failures|You open one screen"></div>
+      <div class="io">
+        <div><b>In</b>Your lead tables, send logs and task lists.</div>
+        <div><b>Out</b>A daily numbers strip and a short plan for the day.</div>
+        <div><b>Limits</b>Read-only. It reports and never changes your data.</div>
+      </div></div>
+
+    <p style="margin:26px 0 0"><button class="btn" data-brief>Want one of these? Send the brief</button> <button class="btn ghost" data-route="work">See the output</button></p>
+  </section>
+</div>
+
+<!-- WORK -->
+<div id="view-work" hidden>
+  <div class="hero">
+    <div class="hero-art"></div><div class="hero-grain"></div>
+    <div class="hero-in" style="grid-template-columns:1fr">
+      <div>
+      <p class="eyebrow">The output</p>
+      <h1>What the systems<br><span class="clay">actually produced.</span></h1>
+      <p class="lede">Real files made by the systems on the Systems page. Press play, flip through the slides, and judge the quality yourself.</p>
+      </div>
+    </div>
+  </div>
+  <section class="wrap" style="padding-top:36px">
+    <p class="eyebrow">Video repurposing</p>
+    <h2 style="font-size:clamp(26px,3.6vw,38px);font-weight:800;margin:10px 0 8px">Shorts made from long videos.</h2>
+    <p style="color:var(--ink-2);max-width:60ch;margin:0 0 24px">Each one started as a single long video. The system picked the moment, tracked the speaker, and added captions, visuals and the end card.</p>
+    <div class="reels">
+      <div class="reel"><video src="assets/reel-fertility.mp4" poster="assets/reel-fertility.jpg" controls preload="none" playsinline></video><h3>Fertility clinic</h3><p>Captions, explainer visuals and a call button at the end.</p></div>
+      <div class="reel"><video src="assets/reel-gastro.mp4" poster="assets/reel-gastro.jpg" controls preload="none" playsinline></video><h3>Gastro clinic</h3><p>Face tracking keeps the doctor centred through the whole cut.</p></div>
+      <div class="reel"><video src="assets/reel-aesthetics.mp4" poster="assets/reel-aesthetics.jpg" controls preload="none" playsinline></video><h3>Aesthetics clinic</h3><p>Split screen: the doctor on top, the explainer below.</p></div>
+    </div>
+  </section>
+  <div class="band-bg"><section class="wrap">
+    <p class="eyebrow">Post maker</p>
+    <h2 style="font-size:clamp(26px,3.6vw,38px);font-weight:800;margin:10px 0 8px">A carousel from one idea.</h2>
+    <p style="color:var(--ink-2);max-width:60ch;margin:0 0 24px">Cover, then one point per slide, in the same layout every time.</p>
+    <div class="slides"><img src="assets/car-01.jpg" alt="Carousel cover slide" loading="lazy"><img src="assets/car-02.jpg" alt="Carousel slide 2" loading="lazy"><img src="assets/car-03.jpg" alt="Carousel slide 3" loading="lazy"><img src="assets/car-04.jpg" alt="Carousel slide 4" loading="lazy"></div>
+  </section></div>
+  <section class="wrap">
+    <div class="band">
+      <div>
+        <p class="eyebrow">Your turn</p>
+        <h2>Want output like this for your company?</h2>
+        <p>Tell us the job. We reply within a day on whether a system can do it and how.</p>
       </div>
       <div><button class="btn" data-brief style="width:100%">Send the brief</button><p class="note">Free call. No deck, no pressure.</p></div>
     </div>
@@ -559,6 +694,8 @@ footer{border-top:1px solid var(--line);padding-block:30px;color:var(--muted);fo
     <div>
       <h4>Site</h4>
       <button data-route="home">Home</button>
+      <button data-route="systems">Systems</button>
+      <button data-route="work">Work</button>
       <button data-route="templates">All agents</button>
       <button data-route="services">Done for you</button>
     </div>
@@ -622,7 +759,7 @@ function render(){
 }
 q.addEventListener("input",render);
 
-const routes=["home","templates","guide","services"];
+const routes=["home","systems","work","templates","guide","services"];
 function go(r){
   r=(r||"").replace(/\/+$/,"");
   if(r==="waitlist"||r==="newsletter")r="services";
@@ -641,6 +778,8 @@ function go(r){
 }
 function toBrief(){go("services");setTimeout(()=>{const f=document.getElementById("svc-form");if(f)f.scrollIntoView({behavior:"smooth",block:"start"})},60)}
 document.addEventListener("click",e=>{
+  const sj=e.target.closest("[data-jump-sys]");
+  if(sj){go("systems");setTimeout(()=>document.getElementById("sys-"+sj.dataset.jumpSys)?.scrollIntoView({behavior:"smooth",block:"start"}),60);return;}
   if(e.target.closest("[data-brief]")){toBrief();return;}
   const j=e.target.closest("[data-jump]");
   if(j){e.preventDefault();document.getElementById(j.dataset.jump)?.scrollIntoView({behavior:"smooth",block:"start"});return;}
@@ -694,9 +833,6 @@ handle("sv","sv-done","Got it. I will reply within a day.");
 
 // home: featured, areas
 document.getElementById("all-btn").textContent="All "+T.length+" agents";
-document.getElementById("feat").innerHTML=FEAT.map((sl,i)=>{const x=T.find(v=>v.s===sl);
- return `<button class="feat-row" data-s="${x.s}"><span class="idx">${String(i+1).padStart(2,"0")}</span>
- <span><span class="kick">${x.c}</span><h3>${x.t}</h3><p>${x.d}</p></span></button>`}).join("");
 document.getElementById("hero-topics").innerHTML=`<div class="hp-head"><span class="hp-dot"></span> THE AREAS</div>`+
  Object.keys(TOPICDESC).map((c,i)=>`<button class="hp-row" data-cat="${c}" style="width:100%;text-align:left;background:none;border-left:0;border-right:0;border-top:0;cursor:pointer;font:inherit;color:inherit">
  <span class="s">${i+1}</span><span class="t">${c}<small>${TOPICDESC[c].split(".")[0]}</small></span>
