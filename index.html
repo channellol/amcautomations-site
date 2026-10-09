@@ -415,6 +415,15 @@ footer{border-top:1px solid var(--line);padding-block:30px;color:var(--muted);fo
 .dcard .play{width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,.14);display:grid;place-items:center;margin:auto;font-size:13px;color:#fff}
 .dcard .cap{font-family:var(--f-data);font-size:10px;color:#fff;background:rgba(0,0,0,.45);padding:3px 6px;border-radius:4px;align-self:flex-start}
 @media(max-width:800px){.dout{grid-template-columns:repeat(2,1fr)}}
+
+.dcard.mailc{aspect-ratio:auto;min-height:190px;justify-content:flex-start;gap:8px}
+.dcard.mailc h4{font-size:14.5px}
+.dcard.mailc p{margin:0;font-size:12.5px;line-height:1.45;color:#d8e6dc}
+.dout.m4{grid-template-columns:repeat(4,1fr)}
+.dcard.slide{aspect-ratio:4/5}
+.dcard.slide.cover h4{font-size:clamp(17px,1.9vw,22px)}
+.dcard.slide p{margin:0;font-size:12px;color:#d8e6dc}
+@media(max-width:800px){.dout.m4{grid-template-columns:repeat(2,1fr)}}
 /* v4 console */
 .cz{--cb:#0e1311;--cb2:#151c19;--cl:#26302b;--ct:#e9efe9;--cm:#8b9a90;--cg:#6fe3a0}
 .console{background:var(--cb);color:var(--ct);border-radius:20px;padding:22px;border:1px solid var(--cl);box-shadow:0 30px 60px -30px rgba(0,0,0,.45);font-family:var(--f-data)}
@@ -585,11 +594,22 @@ footer{border-top:1px solid var(--line);padding-block:30px;color:var(--muted);fo
     </div>
   </div>
 
-  <section class="wrap">
-    <div class="proof">
+  <section class="wrap cz">
+    <p class="eyebrow">Output 1 · Outbound</p>
+    <div class="sec-head" style="margin-bottom:22px"><h2 style="font-size:clamp(26px,3.6vw,38px);font-weight:800">Drop in a company. Get the email sequence.</h2><button class="btn ghost" data-route="systems" data-jump-sys="outbound">How it works</button></div>
+    <div class="demo cz" data-demo="mail">
+      <div class="row"><input class="d-link" type="text" placeholder="Put a company website here" autocomplete="off" aria-label="Put a company website here"><button class="go d-go" type="button">Write the emails</button></div>
+      <div class="dstage d-stage"><div class="hint">Paste any website, or just press the button</div><div class="strip"><div class="scan"></div><div class="seg" style="left:8%;width:7%"></div><div class="seg" style="left:27%;width:7%"></div><div class="seg" style="left:47%;width:7%"></div><div class="seg" style="left:66%;width:7%"></div><div class="seg" style="left:85%;width:7%"></div></div></div>
+      <div class="stat2"><span class="d-msg">Waiting</span><span class="d-pct"></span></div>
+      <div class="pbar"><i class="d-bar"></i></div>
+      <div class="dout d-out"></div>
+      <p class="dnote">Demo: the website is not read here. The company name comes from your link and the rest is sample text, so you can see the format: one outcome, one question, and follow-ups on day 3, 7 and 15.</p>
+      <div class="dcta d-cta"><a class="btn wa" href="https://wa.me/917075969025?text=Hi%20Atharva%2C%20I%20tried%20the%20outbound%20demo.%20Can%20you%20run%20this%20for%20my%20business%3F" target="_blank" rel="noopener"><img src="https://cdn.jsdelivr.net/npm/simple-icons@15.0.0/icons/whatsapp.svg" alt="">Get a real one on WhatsApp</a></div>
+    </div>
+    <div style="margin-top:44px"><div class="proof">
       <div>
-        <p class="eyebrow">Output 1 · Outbound</p>
-        <h3>An email the engine wrote.</h3>
+        <p class="eyebrow">A real one it sent</p>
+        <h3>A real email the engine wrote.</h3>
         <p>It read about the brand, found one real thing to mention, and tied it to one outcome. Names are blurred here.</p>
         <ul><li>Each email names one thing about the company</li><li>One outcome, one question, no attachments</li><li>Follow-ups go out on day 3, 7 and 15</li></ul>
         <p><button class="btn ghost" data-route="systems" data-jump-sys="outbound">How the engine works</button></p>
@@ -602,26 +622,36 @@ footer{border-top:1px solid var(--line);padding-block:30px;color:var(--muted);fo
   <p>You approve every message before it goes live, and you can switch it off at any point.</p>
   <p>Would a 15-minute call be worth it?</p>
 </div>
-    </div>
+    </div></div>
   </section>
 
   <div class="band-bg"><section class="wrap cz">
     <p class="eyebrow">Output 2 · Video</p>
     <div class="sec-head" style="margin-bottom:22px"><h2 style="font-size:clamp(26px,3.6vw,38px);font-weight:800">Drop in one long video. Get shorts out.</h2><button class="btn ghost" data-route="systems" data-jump-sys="video">How it works</button></div>
-    <div class="demo" id="demo">
-      <div class="row"><input id="d-link" type="text" placeholder="Put your link here" autocomplete="off" aria-label="Video link"><button class="go" id="d-go" type="button">Make shorts</button></div>
-      <div class="dstage" id="d-stage"><div class="hint">Paste any link, or just press the button</div><div class="strip"><div class="scan"></div><div class="seg" style="left:8%;width:7%"></div><div class="seg" style="left:27%;width:7%"></div><div class="seg" style="left:47%;width:7%"></div><div class="seg" style="left:66%;width:7%"></div><div class="seg" style="left:85%;width:7%"></div></div></div>
-      <div class="stat2"><span id="d-msg">Waiting for a link</span><span id="d-pct"></span></div>
-      <div class="pbar"><i id="d-bar"></i></div>
-      <div class="dout" id="d-out"></div>
+    <div class="demo cz" data-demo="shorts">
+      <div class="row"><input class="d-link" type="text" placeholder="Put your link here" autocomplete="off" aria-label="Put your link here"><button class="go d-go" type="button">Make shorts</button></div>
+      <div class="dstage d-stage"><div class="hint">Paste any link, or just press the button</div><div class="strip"><div class="scan"></div><div class="seg" style="left:8%;width:7%"></div><div class="seg" style="left:27%;width:7%"></div><div class="seg" style="left:47%;width:7%"></div><div class="seg" style="left:66%;width:7%"></div><div class="seg" style="left:85%;width:7%"></div></div></div>
+      <div class="stat2"><span class="d-msg">Waiting</span><span class="d-pct"></span></div>
+      <div class="pbar"><i class="d-bar"></i></div>
+      <div class="dout d-out"></div>
       <p class="dnote">Demo: your link is not processed here. These cards show what each short comes with: a hook, a cut range, captions, speaker tracking and an end card. The topics change with every run.</p>
-      <div class="dcta" id="d-cta"><a class="btn wa" href="https://wa.me/917075969025?text=Hi%20Atharva%2C%20I%20tried%20the%20shorts%20demo.%20Can%20you%20make%20shorts%20from%20my%20video%3F" target="_blank" rel="noopener"><img src="https://cdn.jsdelivr.net/npm/simple-icons@15.0.0/icons/whatsapp.svg" alt="">Send your real video on WhatsApp</a></div>
+      <div class="dcta d-cta"><a class="btn wa" href="https://wa.me/917075969025?text=Hi%20Atharva%2C%20I%20tried%20the%20shorts%20demo.%20Can%20you%20make%20shorts%20from%20my%20video%3F" target="_blank" rel="noopener"><img src="https://cdn.jsdelivr.net/npm/simple-icons@15.0.0/icons/whatsapp.svg" alt="">Get a real one on WhatsApp</a></div>
     </div>
   </section></div>
 
-  <section class="wrap">
+  <section class="wrap cz">
     <p class="eyebrow">Output 3 · Posts</p>
-    <div class="sec-head" style="margin-bottom:22px"><h2 style="font-size:clamp(26px,3.6vw,38px);font-weight:800">A carousel from one idea.</h2><button class="btn ghost" data-route="systems" data-jump-sys="posts">How it works</button></div>
+    <div class="sec-head" style="margin-bottom:22px"><h2 style="font-size:clamp(26px,3.6vw,38px);font-weight:800">Drop in one idea. Get a carousel out.</h2><button class="btn ghost" data-route="systems" data-jump-sys="posts">How it works</button></div>
+    <div class="demo cz" data-demo="slides">
+      <div class="row"><input class="d-link" type="text" placeholder="Type your idea here" autocomplete="off" aria-label="Type your idea here"><button class="go d-go" type="button">Make the carousel</button></div>
+      <div class="dstage d-stage"><div class="hint">Type any idea, or just press the button</div><div class="strip"><div class="scan"></div><div class="seg" style="left:8%;width:7%"></div><div class="seg" style="left:27%;width:7%"></div><div class="seg" style="left:47%;width:7%"></div><div class="seg" style="left:66%;width:7%"></div><div class="seg" style="left:85%;width:7%"></div></div></div>
+      <div class="stat2"><span class="d-msg">Waiting</span><span class="d-pct"></span></div>
+      <div class="pbar"><i class="d-bar"></i></div>
+      <div class="dout d-out"></div>
+      <p class="dnote">Demo: your idea becomes the cover. The other slides are sample text that show the layout: one point per slide, the same every time.</p>
+      <div class="dcta d-cta"><a class="btn wa" href="https://wa.me/917075969025?text=Hi%20Atharva%2C%20I%20tried%20the%20carousel%20demo.%20Can%20you%20make%20posts%20for%20my%20brand%3F" target="_blank" rel="noopener"><img src="https://cdn.jsdelivr.net/npm/simple-icons@15.0.0/icons/whatsapp.svg" alt="">Get a real one on WhatsApp</a></div>
+    </div>
+    <p class="eyebrow" style="margin:44px 0 14px">Real carousel it made</p>
     <div class="slides"><img src="assets/car-01.jpg" alt="Carousel cover" loading="lazy"><img src="assets/car-02.jpg" alt="Carousel slide 2" loading="lazy"><img src="assets/car-03.jpg" alt="Carousel slide 3" loading="lazy"><img src="assets/car-04.jpg" alt="Carousel slide 4" loading="lazy"></div>
   </section>
 
@@ -915,37 +945,52 @@ render();go("templates");});
 render();go(location.hash.slice(1)||"home");
 document.querySelectorAll("[data-flow]").forEach(d=>d.outerHTML=flowHTML(d.dataset.flow.split("|"),d.dataset.lg!=null?"lg":"sm"));
 
-// shorts demo
+// demos
 (function(){
- const go=document.getElementById("d-go"),st=document.getElementById("d-stage"),msg=document.getElementById("d-msg"),pct=document.getElementById("d-pct"),bar=document.getElementById("d-bar"),cta=document.getElementById("d-cta"),out=document.getElementById("d-out"),inp=document.getElementById("d-link");
- if(!go)return;
- const segs=[...document.querySelectorAll("#demo .seg")];
  const R=matchMedia("(prefers-reduced-motion:reduce)").matches;
- const steps=[[0,"Reading the video"],[.28,"Finding the best moments"],[.55,"Tracking the speaker"],[.78,"Adding captions and visuals"],[.93,"Cutting 5 shorts"]];
- const SETS=[
+ const h=str=>{let x=0;for(const c of str)x=(x*31+c.charCodeAt(0))>>>0;return x};
+ const esc=t=>t.replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+ const SHORTS=[
   {n:"Marketing agency podcast",g:"160deg,#1f3a2c,#0e1311",h:["Why your ads stop working after week 3","The one metric clients never ask about","We fired our biggest client. Here is why","Stop pitching. Start showing results.","3 reports that save 10 hours a week"]},
   {n:"SaaS founder interview",g:"160deg,#2a2f4a,#0e1311",h:["How we got our first 100 users with no ads","The pricing mistake that cost us 6 months","Why we said no to funding","The feature nobody used","What I would do differently on day one"]},
   {n:"Real estate agency talk",g:"160deg,#4a3320,#0e1311",h:["3 things to check before you buy in 2026","Why the cheapest flat costs more","Rent or buy? The honest math","Builder promises vs reality","Questions to ask on a site visit"]},
-  {n:"Coaching and edtech session",g:"160deg,#3a2040,#0e1311",h:["Why most people quit a course in week 2","The 15-minute rule for learning","Projects beat certificates","How to read a job description","What actually helps in a mock interview"]}
- ];
+  {n:"Coaching and edtech session",g:"160deg,#3a2040,#0e1311",h:["Why most people quit a course in week 2","The 15-minute rule for learning","Projects beat certificates","How to read a job description","What actually helps in a mock interview"]}];
  const RANGES=[["04:12","04:49"],["11:30","12:08"],["19:05","19:41"],["27:48","28:22"],["36:10","36:52"]];
- let busy=false,run=0;
- function h(str){let x=0;for(const c of str)x=(x*31+c.charCodeAt(0))>>>0;return x}
- function cards(){
-  const seed=inp.value.trim()?h(inp.value.trim()):run;const set=SETS[(seed+run)%SETS.length];
-  out.innerHTML=set.h.map((t,i)=>{const r=RANGES[i];return `<div class="dcard" style="--g:linear-gradient(${set.g})"><span class="tag">SHORT ${i+1}</span><span class="play">&#9654;</span><div><h4>${t}</h4></div><div class="meta"><span>${r[0]} to ${r[1]}</span><span class="cap">Captions on</span></div></div>`}).join("");
-  document.getElementById("d-src").textContent=set.n;
- }
- function reset(){st.className="dstage";segs.forEach(x=>x.classList.remove("on"));out.innerHTML="";cta.classList.remove("show");bar.style.width="0"}
- function finish(){st.className="dstage done";msg.innerHTML="<b>Done.</b> 5 shorts ready from a <span id='d-src'></span>";cards();pct.textContent="100%";bar.style.width="100%";[...out.children].forEach((x,i)=>setTimeout(()=>x.classList.add("in"),R?0:60+i*220));cta.classList.add("show");run++;busy=false;go.disabled=false;go.textContent="Run it again"}
- go.addEventListener("click",()=>{
-  if(busy)return;busy=true;go.disabled=true;reset();
-  if(R){finish();return}
-  st.className="dstage run";const T=3000,t0=performance.now();
-  (function f(t){const p=Math.min(1,(t-t0)/T);bar.style.width=(p*100)+"%";pct.textContent=Math.round(p*100)+"%";
-   let m=steps[0][1];steps.forEach(x=>{if(p>=x[0])m=x[1]});msg.textContent=m+"...";
-   segs.forEach((x,i)=>{if(p>.25+i*.13)x.classList.add("on")});
-   if(p<1)requestAnimationFrame(f);else finish()})(t0);
+ const MAILS=[
+  {n:"D2C brand",sub:"fewer 'where is my order' messages for {B}",m:["Order spikes bring spikes in 'where is my order' messages. I would aim for {B}'s team to stop answering those by hand, with tracking updates sent on WhatsApp before customers ask.","Following up with one flow only: delivery updates on WhatsApp. You approve every message before it goes live.","Different angle: reviews. Every Google review gets a reply drafted in your voice, and you approve the unhappy ones.","Last note from me. If the timing is wrong, no reply needed. Happy to come back in a few months."]},
+  {n:"agency",sub:"client reports for {B} in minutes",m:["Most agencies lose a day a week to client reports. I would aim to have {B}'s monthly reports built from the ad accounts and sent for your approval.","Following up: the same report, with a short note on what changed and what to do next, written for the client.","Another idea: new leads from ads get a reply in under a minute, even at night, and book straight to your calendar.","Last note. If reports are not a pain right now, ignore this. I am easy to find when they are."]},
+  {n:"local service business",sub:"every enquiry answered fast at {B}",m:["Enquiries that wait more than an hour mostly go elsewhere. I would aim for every message to {B} to get an answer and a booking link within a minute.","Following up: one WhatsApp flow that qualifies the enquiry and books the visit. Edge cases go to your team.","Different angle: missed calls. The caller gets a text and your team gets a name, a number and a reason.","Last note from me. Reply any time if this becomes useful."]}];
+ const SL=[
+  {n:"outreach",h:["Why your follow-ups get ignored","One email, then silence","Nobody sees it on day 1","Follow up on day 3, 7 and 15","Automate it. Keep a person approving."],g:"160deg,#1f3a2c,#0e1311"},
+  {n:"support",h:["Stop answering the same 10 questions","The same questions, every day","Write the answers once","Let an agent reply. Hand off edge cases.","Check the log once a week"],g:"160deg,#2a2f4a,#0e1311"},
+  {n:"content",h:["One idea. A week of posts.","You post when you remember","Turn one idea into five formats","Same layout every time","Approve in one sitting"],g:"160deg,#4a3320,#0e1311"}];
+ const KINDS={
+  shorts:{steps:["Reading the video","Finding the best moments","Tracking the speaker","Adding captions and visuals","Cutting 5 shorts"],cls:"",done:"5 shorts ready from a ",
+   build(v,run){const x=SHORTS[((v?h(v):run)+run)%SHORTS.length];return{label:x.n,html:x.h.map((t,i)=>`<div class="dcard" style="--g:linear-gradient(${x.g})"><span class="tag">SHORT ${i+1}</span><span class="play">&#9654;</span><div><h4>${t}</h4></div><div class="meta"><span>${RANGES[i][0]} to ${RANGES[i][1]}</span><span class="cap">Captions on</span></div></div>`)}}},
+  mail:{steps:["Opening the website","Finding the decision maker","Finding one thing to mention","Writing the email","Queued for your approval"],cls:" m4",done:"4 emails ready for a ",
+   build(v,run){let b="Your company";if(v){let d=v.replace(/^https?:\/\//,"").replace(/^www\./,"").split(/[\/.?]/)[0];if(d)b=d.charAt(0).toUpperCase()+d.slice(1)}
+    const x=MAILS[((v?h(v):run)+run)%MAILS.length],days=["DAY 0","DAY 3","DAY 7","DAY 15"],names=["First email","Follow-up","New angle","Last note"];
+    return{label:x.n,html:x.m.map((t,i)=>`<div class="dcard mailc"><span class="tag">${days[i]} · ${names[i]}</span><h4>${i===0?esc(x.sub.replace(/\{B\}/g,b)):"Re: "+esc(x.sub.replace(/\{B\}/g,b))}</h4><p>${esc(t.replace(/\{B\}/g,b))}</p></div>`)}}},
+  slides:{steps:["Reading the idea","Writing the cover","One point per slide","Checking the layout","Packing 5 slides"],cls:"",done:"5 slides ready for ",
+   build(v,run){const x=SL[((v?h(v):run)+run)%SL.length],heads=[v?esc(v):x.h[0],x.h[1],x.h[2],x.h[3],x.h[4]];
+    return{label:v?"your idea":"a sample idea",html:heads.map((t,i)=>`<div class="dcard slide${i?"":" cover"}" style="--g:linear-gradient(${x.g})"><span class="tag">${i?"POINT "+i:"COVER"} · ${i+1}/5</span><div><h4>${t}</h4></div><p>${i?"One point, one line.":"Strongest claim first."}</p></div>`)}}}
+ };
+ document.querySelectorAll("[data-demo]").forEach(root=>{
+  const K=KINDS[root.dataset.demo];if(!K)return;
+  const $=c=>root.querySelector(c),go=$(".d-go"),st=$(".d-stage"),msg=$(".d-msg"),pct=$(".d-pct"),bar=$(".d-bar"),cta=$(".d-cta"),out=$(".d-out"),inp=$(".d-link"),segs=[...root.querySelectorAll(".seg")];
+  out.className="dout d-out"+K.cls;
+  let busy=false,run=0;
+  const reset=()=>{st.className="dstage d-stage";segs.forEach(x=>x.classList.remove("on"));out.innerHTML="";cta.classList.remove("show");bar.style.width="0"};
+  function finish(){st.className="dstage d-stage done";const r=K.build(inp.value.trim(),run);msg.innerHTML="<b>Done.</b> "+K.done+r.label;out.innerHTML=r.html.join("");pct.textContent="100%";bar.style.width="100%";[...out.children].forEach((x,i)=>setTimeout(()=>x.classList.add("in"),R?0:60+i*220));cta.classList.add("show");run++;busy=false;go.disabled=false;go.dataset.t=go.dataset.t||go.textContent;go.textContent="Run it again"}
+  go.addEventListener("click",()=>{
+   if(busy)return;busy=true;go.disabled=true;reset();
+   if(R){finish();return}
+   st.className="dstage d-stage run";const T=3000,t0=performance.now(),n=K.steps.length;
+   (function f(t){const p=Math.min(1,(t-t0)/T);bar.style.width=(p*100)+"%";pct.textContent=Math.round(p*100)+"%";
+    msg.textContent=K.steps[Math.min(n-1,Math.floor(p*n))]+"...";
+    segs.forEach((x,i)=>{if(p>.25+i*.13)x.classList.add("on")});
+    if(p<1)requestAnimationFrame(f);else finish()})(t0);
+  });
  });
 })();
 // v3 motion
