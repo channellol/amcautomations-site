@@ -28,7 +28,29 @@
   --f-body:"Source Sans 3",system-ui,-apple-system,sans-serif;
   --f-data:"IBM Plex Mono",ui-monospace,Menlo,monospace;
 }
+[data-mode="tech"]{
+  --ground:#171511;
+  --surface:#221F19;
+  --surface-2:#2B2721;
+  --line:#3B362D;
+  --line-strong:#4C4638;
+  --ink:#F5EFE6;
+  --ink-2:#D9D0C2;
+  --muted:#8F8676;
+  --clay:#E3835A;
+  --clay-soft:#3A2A20;
+  --clay-ink:#F0B89A;
+  --good:#6FBF86;
+  color-scheme:dark;
+}
 *{box-sizing:border-box}
+.techSwitch{display:flex;align-items:center;gap:9px;background:none;border:0;padding:4px 2px;cursor:pointer;font-family:var(--f-data);font-size:12px;font-weight:600;letter-spacing:.04em}
+.techSwitch .ts-lbl{color:var(--muted);transition:color .25s}
+.techSwitch[aria-checked="false"] .ts-lbl.ts-off,.techSwitch[aria-checked="true"] .ts-lbl.ts-on{color:var(--ink)}
+.techSwitch .ts-track{position:relative;width:42px;height:23px;border-radius:999px;background:var(--surface-2);border:1px solid var(--line-strong);transition:background .3s,border-color .3s;flex:none}
+.techSwitch[aria-checked="true"] .ts-track{background:var(--clay);border-color:var(--clay)}
+.techSwitch .ts-knob{position:absolute;top:2px;left:2px;width:17px;height:17px;border-radius:50%;background:#fff;box-shadow:0 1px 3px rgba(0,0,0,.35);transition:transform .3s cubic-bezier(.4,0,.2,1)}
+.techSwitch[aria-checked="true"] .ts-knob{transform:translateX(19px)}
 body{margin:0;background:var(--ground);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased}
 img{max-width:100%}
 a{color:inherit}
@@ -350,6 +372,11 @@ footer{border-top:1px solid var(--line);padding-block:30px;color:var(--muted);fo
 <header class="nav">
   <div class="nav-in">
     <div class="brand"><svg class="spark" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 1.5l1.9 6.3 6.3 1.9-6.3 1.9L12 22.5l-1.9-10.9L3.8 9.7l6.3-1.9z"/></svg> amc.automations</div>
+    <button class="techSwitch" id="techSwitch" role="switch" aria-checked="false" aria-label="Prompts or tech mode">
+      <span class="ts-lbl ts-off">Prompts</span>
+      <span class="ts-track"><span class="ts-knob"></span></span>
+      <span class="ts-lbl ts-on">Tech</span>
+    </button>
     <nav class="navlinks">
       <button data-route="home">Home</button>
       <button data-route="templates">Agents</button>
@@ -649,6 +676,7 @@ document.addEventListener("click",e=>{
   const b=e.target.closest("[data-route]");if(b)go(b.dataset.route)});
 window.addEventListener("hashchange",()=>go(location.hash.slice(1)));
 
+const CONFIG_ONLY=new Set(["stop-expensive-model-everywhere","agents-with-hands","overnight-crew","folder-watcher-trigger","local-transcription","mcp-servers-worth-it","one-command-stack","backup-and-rollback","cheap-model-routing","free-tier-pooling","observability-for-agents","recurring-job-autopilot"]);
 function renderGuide(x){
   document.title=x.t+" | amc.automations";
   document.getElementById("guide-body").innerHTML=`
