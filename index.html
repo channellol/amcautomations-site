@@ -368,6 +368,42 @@ footer{border-top:1px solid var(--line);padding-block:30px;color:var(--muted);fo
 @media(max-width:900px){.reels,.io{grid-template-columns:1fr}.slides,.sysgo{grid-template-columns:1fr 1fr}}
 
 .navlinks a.hire{font-size:15px;font-weight:500;background:var(--ink);color:var(--ground);padding:8px 16px;border-radius:999px}
+
+/* demo */
+.demo{background:var(--cb);color:var(--ct);border-radius:24px;padding:clamp(20px,4vw,40px);border:1px solid var(--cl)}
+.demo .row{display:flex;gap:10px;flex-wrap:wrap}
+.demo input{flex:1;min-width:220px;background:var(--cb2);border:1px solid var(--cl);color:var(--ct);border-radius:12px;padding:14px 16px;font:inherit;font-family:var(--f-data);font-size:14px}
+.demo input::placeholder{color:var(--cm)}
+.demo input:focus{outline:2px solid var(--cg);outline-offset:1px}
+.demo .go{background:var(--cg);color:#08140d;border:0;border-radius:12px;padding:14px 22px;font:inherit;font-weight:700;cursor:pointer}
+.demo .go:disabled{opacity:.5;cursor:wait}
+.dstage{height:150px;margin:22px 0 8px;position:relative;border:1px dashed var(--cl);border-radius:14px;overflow:hidden;background:var(--cb2)}
+.dstage .hint{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:var(--cm);font-family:var(--f-data);font-size:13px;transition:opacity .3s}
+.dstage.run .hint,.dstage.done .hint{opacity:0}
+.strip{position:absolute;left:4%;right:4%;top:50%;height:46px;transform:translateY(-50%) scaleX(.2);opacity:0;border-radius:8px;background:repeating-linear-gradient(90deg,#26302b 0 6px,#1d2622 6px 12px);transition:transform .6s cubic-bezier(.2,.7,.2,1),opacity .4s}
+.dstage.run .strip{transform:translateY(-50%) scaleX(1);opacity:1}
+.dstage.done .strip{opacity:.25;transform:translateY(-50%) scaleX(1)}
+.scan{position:absolute;top:0;bottom:0;width:3px;background:var(--cg);box-shadow:0 0 14px var(--cg);left:0}
+.dstage.run .scan{animation:sweep 1.5s ease-in-out infinite alternate}
+@keyframes sweep{to{left:calc(100% - 3px)}}
+.seg{position:absolute;top:-6px;bottom:-6px;border:2px solid var(--cg);border-radius:6px;background:rgba(111,227,160,.18);opacity:0;transform:scaleY(.4)}
+.seg.on{opacity:1;transform:none;transition:all .35s cubic-bezier(.2,.7,.2,1)}
+.dstage.done .seg{opacity:0}
+.stat2{font-family:var(--f-data);font-size:12.5px;color:var(--cm);min-height:20px;display:flex;justify-content:space-between;gap:12px}
+.stat2 b{color:var(--cg);font-weight:500}
+.pbar{height:3px;background:var(--cl);border-radius:3px;overflow:hidden;margin:8px 0 22px}
+.pbar i{display:block;height:100%;width:0;background:var(--cg)}
+.dout{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.dslot{aspect-ratio:9/16;border:1px dashed var(--cl);border-radius:14px;position:relative;overflow:hidden;background:var(--cb2)}
+.dslot video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transform:translateY(-70px) scale(.5);transition:opacity .5s ease,transform .7s cubic-bezier(.2,.9,.3,1.2)}
+.dslot.in{border-style:solid;border-color:var(--cg)}
+.dslot.in video{opacity:1;transform:none}
+.dslot span{position:absolute;left:10px;top:10px;z-index:2;font-family:var(--f-data);font-size:11px;background:rgba(0,0,0,.6);color:var(--cg);padding:3px 8px;border-radius:99px;opacity:0;transition:opacity .4s .5s}
+.dslot.in span{opacity:1}
+.dnote{margin:16px 0 0;font-size:12.5px;color:var(--cm);font-family:var(--f-data)}
+.dcta{margin-top:16px;display:none}
+.dcta.show{display:block}
+@media(max-width:700px){.dout{gap:8px}}
 /* v4 console */
 .cz{--cb:#0e1311;--cb2:#151c19;--cl:#26302b;--ct:#e9efe9;--cm:#8b9a90;--cg:#6fe3a0}
 .console{background:var(--cb);color:var(--ct);border-radius:20px;padding:22px;border:1px solid var(--cl);box-shadow:0 30px 60px -30px rgba(0,0,0,.45);font-family:var(--f-data)}
@@ -558,13 +594,21 @@ footer{border-top:1px solid var(--line);padding-block:30px;color:var(--muted);fo
     </div>
   </section>
 
-  <div class="band-bg"><section class="wrap">
+  <div class="band-bg"><section class="wrap cz">
     <p class="eyebrow">Output 2 · Video</p>
-    <div class="sec-head" style="margin-bottom:22px"><h2 style="font-size:clamp(26px,3.6vw,38px);font-weight:800">Shorts cut from one long video.</h2><button class="btn ghost" data-route="systems" data-jump-sys="video">How it works</button></div>
-    <div class="reels">
-      <div class="reel"><video src="assets/reel-fertility.mp4" poster="assets/reel-fertility.jpg" controls preload="none" playsinline></video><h3>Fertility clinic</h3><p>Captions, explainer visuals and a call button at the end.</p></div>
-      <div class="reel"><video src="assets/reel-gastro.mp4" poster="assets/reel-gastro.jpg" controls preload="none" playsinline></video><h3>Gastro clinic</h3><p>Face tracking keeps the doctor centred through the cut.</p></div>
-      <div class="reel"><video src="assets/reel-aesthetics.mp4" poster="assets/reel-aesthetics.jpg" controls preload="none" playsinline></video><h3>Aesthetics clinic</h3><p>Doctor on top, explainer below.</p></div>
+    <div class="sec-head" style="margin-bottom:22px"><h2 style="font-size:clamp(26px,3.6vw,38px);font-weight:800">Drop in one long video. Get shorts out.</h2><button class="btn ghost" data-route="systems" data-jump-sys="video">How it works</button></div>
+    <div class="demo" id="demo">
+      <div class="row"><input id="d-link" type="text" placeholder="Put your link here" autocomplete="off" aria-label="Video link"><button class="go" id="d-go" type="button">Make shorts</button></div>
+      <div class="dstage" id="d-stage"><div class="hint">Paste any link, or just press the button</div><div class="strip"><div class="scan"></div><div class="seg" style="left:12%;width:9%"></div><div class="seg" style="left:44%;width:9%"></div><div class="seg" style="left:74%;width:9%"></div></div></div>
+      <div class="stat2"><span id="d-msg">Waiting for a link</span><span id="d-pct"></span></div>
+      <div class="pbar"><i id="d-bar"></i></div>
+      <div class="dout">
+        <div class="dslot" data-i="0"><span>SHORT 1</span><video src="assets/reel-fertility.mp4" poster="assets/reel-fertility.jpg" controls preload="none" playsinline></video></div>
+        <div class="dslot" data-i="1"><span>SHORT 2</span><video src="assets/reel-gastro.mp4" poster="assets/reel-gastro.jpg" controls preload="none" playsinline></video></div>
+        <div class="dslot" data-i="2"><span>SHORT 3</span><video src="assets/reel-aesthetics.mp4" poster="assets/reel-aesthetics.jpg" controls preload="none" playsinline></video></div>
+      </div>
+      <p class="dnote">Demo: your link is not processed here. The three shorts are real samples our system made from other long videos.</p>
+      <div class="dcta" id="d-cta"><a class="btn wa" href="https://wa.me/917075969025?text=Hi%20Atharva%2C%20I%20tried%20the%20shorts%20demo.%20Can%20you%20make%20shorts%20from%20my%20video%3F" target="_blank" rel="noopener"><img src="https://cdn.jsdelivr.net/npm/simple-icons@15.0.0/icons/whatsapp.svg" alt="">Send your real video on WhatsApp</a></div>
     </div>
   </section></div>
 
@@ -863,6 +907,27 @@ render();go("templates");});
 
 render();go(location.hash.slice(1)||"home");
 document.querySelectorAll("[data-flow]").forEach(d=>d.outerHTML=flowHTML(d.dataset.flow.split("|"),d.dataset.lg!=null?"lg":"sm"));
+
+// shorts demo
+(function(){
+ const go=document.getElementById("d-go"),st=document.getElementById("d-stage"),msg=document.getElementById("d-msg"),pct=document.getElementById("d-pct"),bar=document.getElementById("d-bar"),cta=document.getElementById("d-cta");
+ if(!go)return;
+ const slots=[...document.querySelectorAll("#demo .dslot")],segs=[...document.querySelectorAll("#demo .seg")];
+ const R=matchMedia("(prefers-reduced-motion:reduce)").matches;
+ const steps=[[0,"Reading the video"],[.28,"Finding the best moments"],[.55,"Tracking the speaker"],[.78,"Adding captions and visuals"],[.93,"Cutting 3 shorts"]];
+ let busy=false;
+ function reset(){st.className="dstage";segs.forEach(x=>x.classList.remove("on"));slots.forEach(x=>{x.classList.remove("in");x.querySelector("video").pause()});cta.classList.remove("show");bar.style.width="0"}
+ function finish(){st.className="dstage done";msg.innerHTML="<b>Done.</b> 3 shorts ready";pct.textContent="100%";bar.style.width="100%";slots.forEach((x,i)=>setTimeout(()=>x.classList.add("in"),R?0:i*280));cta.classList.add("show");busy=false;go.disabled=false;go.textContent="Run it again"}
+ go.addEventListener("click",()=>{
+  if(busy)return;busy=true;go.disabled=true;reset();
+  if(R){finish();return}
+  st.className="dstage run";const T=3000,t0=performance.now();
+  (function f(t){const p=Math.min(1,(t-t0)/T);bar.style.width=(p*100)+"%";pct.textContent=Math.round(p*100)+"%";
+   let m=steps[0][1];steps.forEach(x=>{if(p>=x[0])m=x[1]});msg.textContent=m+"...";
+   segs.forEach((x,i)=>{if(p>.3+i*.2)x.classList.add("on")});
+   if(p<1)requestAnimationFrame(f);else finish()})(t0);
+ });
+})();
 // v3 motion
 (function(){
  const R=matchMedia("(prefers-reduced-motion:reduce)").matches;
