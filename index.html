@@ -393,7 +393,7 @@ footer{border-top:1px solid var(--line);padding-block:30px;color:var(--muted);fo
 .stat2 b{color:var(--cg);font-weight:500}
 .pbar{height:3px;background:var(--cl);border-radius:3px;overflow:hidden;margin:8px 0 22px}
 .pbar i{display:block;height:100%;width:0;background:var(--cg)}
-.dout{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.dout{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
 .dslot{aspect-ratio:9/16;border:1px dashed var(--cl);border-radius:14px;position:relative;overflow:hidden;background:var(--cb2)}
 .dslot video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transform:translateY(-70px) scale(.5);transition:opacity .5s ease,transform .7s cubic-bezier(.2,.9,.3,1.2)}
 .dslot.in{border-style:solid;border-color:var(--cg)}
@@ -404,6 +404,17 @@ footer{border-top:1px solid var(--line);padding-block:30px;color:var(--muted);fo
 .dcta{margin-top:16px;display:none}
 .dcta.show{display:block}
 @media(max-width:700px){.dout{gap:8px}}
+
+.dcard{aspect-ratio:9/14;border-radius:14px;padding:14px;display:flex;flex-direction:column;justify-content:space-between;position:relative;overflow:hidden;border:1px solid var(--cl);background:var(--cb2);opacity:0;transform:translateY(-50px) scale(.6);transition:opacity .5s ease,transform .7s cubic-bezier(.2,.9,.3,1.2)}
+.dcard.in{opacity:1;transform:none;border-color:var(--cg)}
+.dcard::before{content:"";position:absolute;inset:0;background:var(--g,linear-gradient(160deg,#1f3a2c,#0e1311));opacity:.9}
+.dcard>*{position:relative}
+.dcard .tag{font-family:var(--f-data);font-size:10.5px;letter-spacing:.1em;color:var(--cg)}
+.dcard h4{margin:0;font-family:var(--f-display);font-size:clamp(15px,1.5vw,18px);line-height:1.2;color:#fff}
+.dcard .meta{font-family:var(--f-data);font-size:10.5px;color:#cfe0d4;display:flex;flex-direction:column;gap:3px}
+.dcard .play{width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,.14);display:grid;place-items:center;margin:auto;font-size:13px;color:#fff}
+.dcard .cap{font-family:var(--f-data);font-size:10px;color:#fff;background:rgba(0,0,0,.45);padding:3px 6px;border-radius:4px;align-self:flex-start}
+@media(max-width:800px){.dout{grid-template-columns:repeat(2,1fr)}}
 /* v4 console */
 .cz{--cb:#0e1311;--cb2:#151c19;--cl:#26302b;--ct:#e9efe9;--cm:#8b9a90;--cg:#6fe3a0}
 .console{background:var(--cb);color:var(--ct);border-radius:20px;padding:22px;border:1px solid var(--cl);box-shadow:0 30px 60px -30px rgba(0,0,0,.45);font-family:var(--f-data)}
@@ -599,15 +610,11 @@ footer{border-top:1px solid var(--line);padding-block:30px;color:var(--muted);fo
     <div class="sec-head" style="margin-bottom:22px"><h2 style="font-size:clamp(26px,3.6vw,38px);font-weight:800">Drop in one long video. Get shorts out.</h2><button class="btn ghost" data-route="systems" data-jump-sys="video">How it works</button></div>
     <div class="demo" id="demo">
       <div class="row"><input id="d-link" type="text" placeholder="Put your link here" autocomplete="off" aria-label="Video link"><button class="go" id="d-go" type="button">Make shorts</button></div>
-      <div class="dstage" id="d-stage"><div class="hint">Paste any link, or just press the button</div><div class="strip"><div class="scan"></div><div class="seg" style="left:12%;width:9%"></div><div class="seg" style="left:44%;width:9%"></div><div class="seg" style="left:74%;width:9%"></div></div></div>
+      <div class="dstage" id="d-stage"><div class="hint">Paste any link, or just press the button</div><div class="strip"><div class="scan"></div><div class="seg" style="left:8%;width:7%"></div><div class="seg" style="left:27%;width:7%"></div><div class="seg" style="left:47%;width:7%"></div><div class="seg" style="left:66%;width:7%"></div><div class="seg" style="left:85%;width:7%"></div></div></div>
       <div class="stat2"><span id="d-msg">Waiting for a link</span><span id="d-pct"></span></div>
       <div class="pbar"><i id="d-bar"></i></div>
-      <div class="dout">
-        <div class="dslot" data-i="0"><span>SHORT 1</span><video src="assets/reel-fertility.mp4" poster="assets/reel-fertility.jpg" controls preload="none" playsinline></video></div>
-        <div class="dslot" data-i="1"><span>SHORT 2</span><video src="assets/reel-gastro.mp4" poster="assets/reel-gastro.jpg" controls preload="none" playsinline></video></div>
-        <div class="dslot" data-i="2"><span>SHORT 3</span><video src="assets/reel-aesthetics.mp4" poster="assets/reel-aesthetics.jpg" controls preload="none" playsinline></video></div>
-      </div>
-      <p class="dnote">Demo: your link is not processed here. The three shorts are real samples our system made from other long videos.</p>
+      <div class="dout" id="d-out"></div>
+      <p class="dnote">Demo: your link is not processed here. These cards show what each short comes with: a hook, a cut range, captions, speaker tracking and an end card. The topics change with every run.</p>
       <div class="dcta" id="d-cta"><a class="btn wa" href="https://wa.me/917075969025?text=Hi%20Atharva%2C%20I%20tried%20the%20shorts%20demo.%20Can%20you%20make%20shorts%20from%20my%20video%3F" target="_blank" rel="noopener"><img src="https://cdn.jsdelivr.net/npm/simple-icons@15.0.0/icons/whatsapp.svg" alt="">Send your real video on WhatsApp</a></div>
     </div>
   </section></div>
@@ -910,21 +917,34 @@ document.querySelectorAll("[data-flow]").forEach(d=>d.outerHTML=flowHTML(d.datas
 
 // shorts demo
 (function(){
- const go=document.getElementById("d-go"),st=document.getElementById("d-stage"),msg=document.getElementById("d-msg"),pct=document.getElementById("d-pct"),bar=document.getElementById("d-bar"),cta=document.getElementById("d-cta");
+ const go=document.getElementById("d-go"),st=document.getElementById("d-stage"),msg=document.getElementById("d-msg"),pct=document.getElementById("d-pct"),bar=document.getElementById("d-bar"),cta=document.getElementById("d-cta"),out=document.getElementById("d-out"),inp=document.getElementById("d-link");
  if(!go)return;
- const slots=[...document.querySelectorAll("#demo .dslot")],segs=[...document.querySelectorAll("#demo .seg")];
+ const segs=[...document.querySelectorAll("#demo .seg")];
  const R=matchMedia("(prefers-reduced-motion:reduce)").matches;
- const steps=[[0,"Reading the video"],[.28,"Finding the best moments"],[.55,"Tracking the speaker"],[.78,"Adding captions and visuals"],[.93,"Cutting 3 shorts"]];
- let busy=false;
- function reset(){st.className="dstage";segs.forEach(x=>x.classList.remove("on"));slots.forEach(x=>{x.classList.remove("in");x.querySelector("video").pause()});cta.classList.remove("show");bar.style.width="0"}
- function finish(){st.className="dstage done";msg.innerHTML="<b>Done.</b> 3 shorts ready";pct.textContent="100%";bar.style.width="100%";slots.forEach((x,i)=>setTimeout(()=>x.classList.add("in"),R?0:i*280));cta.classList.add("show");busy=false;go.disabled=false;go.textContent="Run it again"}
+ const steps=[[0,"Reading the video"],[.28,"Finding the best moments"],[.55,"Tracking the speaker"],[.78,"Adding captions and visuals"],[.93,"Cutting 5 shorts"]];
+ const SETS=[
+  {n:"Marketing agency podcast",g:"160deg,#1f3a2c,#0e1311",h:["Why your ads stop working after week 3","The one metric clients never ask about","We fired our biggest client. Here is why","Stop pitching. Start showing results.","3 reports that save 10 hours a week"]},
+  {n:"SaaS founder interview",g:"160deg,#2a2f4a,#0e1311",h:["How we got our first 100 users with no ads","The pricing mistake that cost us 6 months","Why we said no to funding","The feature nobody used","What I would do differently on day one"]},
+  {n:"Real estate agency talk",g:"160deg,#4a3320,#0e1311",h:["3 things to check before you buy in 2026","Why the cheapest flat costs more","Rent or buy? The honest math","Builder promises vs reality","Questions to ask on a site visit"]},
+  {n:"Coaching and edtech session",g:"160deg,#3a2040,#0e1311",h:["Why most people quit a course in week 2","The 15-minute rule for learning","Projects beat certificates","How to read a job description","What actually helps in a mock interview"]}
+ ];
+ const RANGES=[["04:12","04:49"],["11:30","12:08"],["19:05","19:41"],["27:48","28:22"],["36:10","36:52"]];
+ let busy=false,run=0;
+ function h(str){let x=0;for(const c of str)x=(x*31+c.charCodeAt(0))>>>0;return x}
+ function cards(){
+  const seed=inp.value.trim()?h(inp.value.trim()):run;const set=SETS[(seed+run)%SETS.length];
+  out.innerHTML=set.h.map((t,i)=>{const r=RANGES[i];return `<div class="dcard" style="--g:linear-gradient(${set.g})"><span class="tag">SHORT ${i+1}</span><span class="play">&#9654;</span><div><h4>${t}</h4></div><div class="meta"><span>${r[0]} to ${r[1]}</span><span class="cap">Captions on</span></div></div>`}).join("");
+  document.getElementById("d-src").textContent=set.n;
+ }
+ function reset(){st.className="dstage";segs.forEach(x=>x.classList.remove("on"));out.innerHTML="";cta.classList.remove("show");bar.style.width="0"}
+ function finish(){st.className="dstage done";msg.innerHTML="<b>Done.</b> 5 shorts ready from a <span id='d-src'></span>";cards();pct.textContent="100%";bar.style.width="100%";[...out.children].forEach((x,i)=>setTimeout(()=>x.classList.add("in"),R?0:60+i*220));cta.classList.add("show");run++;busy=false;go.disabled=false;go.textContent="Run it again"}
  go.addEventListener("click",()=>{
   if(busy)return;busy=true;go.disabled=true;reset();
   if(R){finish();return}
   st.className="dstage run";const T=3000,t0=performance.now();
   (function f(t){const p=Math.min(1,(t-t0)/T);bar.style.width=(p*100)+"%";pct.textContent=Math.round(p*100)+"%";
    let m=steps[0][1];steps.forEach(x=>{if(p>=x[0])m=x[1]});msg.textContent=m+"...";
-   segs.forEach((x,i)=>{if(p>.3+i*.2)x.classList.add("on")});
+   segs.forEach((x,i)=>{if(p>.25+i*.13)x.classList.add("on")});
    if(p<1)requestAnimationFrame(f);else finish()})(t0);
  });
 })();
