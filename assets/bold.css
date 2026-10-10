@@ -1,0 +1,51 @@
+/* Shared "bold" layer for every page: CHOSN-inspired type, full-bleed clay hero, smooth scroll. */
+:root{--f-impact:"Anton","Bricolage Grotesque",Impact,sans-serif}
+
+/* hero: full-bleed clay, white type, giant condensed headline */
+.hero{background:var(--clay);color:#fff;border:0;min-height:calc(100svh - 61px);display:flex;align-items:center}
+.hero>.hero-in,.hero>.wrap{width:100%}
+.hero .hero-art{background:radial-gradient(70% 60% at 75% 30%,rgba(255,255,255,.18),transparent 70%),radial-gradient(50% 50% at 10% 90%,rgba(0,0,0,.2),transparent 70%)!important;animation:none}
+.hero .hero-dots,.hero .hero-grain{opacity:.12}
+.hero h1{font-family:var(--f-impact);font-weight:400;text-transform:uppercase;letter-spacing:0;line-height:.92;font-size:clamp(52px,6.6vw,118px);max-width:none;color:#fff}
+.hero h1 em,.hero h1 .clay{font-style:normal;color:#1E1C18;background:none;-webkit-text-fill-color:#1E1C18}
+.hero .eyebrow,.hero .covers{color:rgba(255,255,255,.75)}
+.hero .lede{color:rgba(255,255,255,.9)}
+.hero .pill-new{background:rgba(255,255,255,.14);border-color:rgba(255,255,255,.3);color:#fff}
+.hero .pill-new b{background:#fff;color:var(--ink)}
+.hero .btn,.hero .btn.primary,.hero .btn.wa{background:#fff;color:var(--ink);border-color:#fff;box-shadow:0 10px 24px -12px rgba(0,0,0,.45)}
+.hero .btn:hover,.hero .btn.primary:hover{background:var(--ink);color:#fff;border-color:var(--ink);filter:none}
+.hero .btn.ghost{background:transparent;border-color:rgba(255,255,255,.55);color:#fff;box-shadow:none}
+.hero .btn.ghost:hover{background:rgba(255,255,255,.12);color:#fff;border-color:#fff}
+.hero .console,.hero .hero-panel{transform:rotate(1.5deg);box-shadow:0 40px 80px -24px rgba(0,0,0,.55)}
+
+/* headings: condensed caps everywhere */
+.sec-head h2,.band h2,.sys h3,section>.wrap>h2,.final h2,.sec-num h2{font-family:var(--f-impact);font-weight:400!important;text-transform:uppercase;letter-spacing:.01em;line-height:.92}
+.sec-head h2{font-size:clamp(40px,5.4vw,76px)!important}
+.band h2{font-size:clamp(40px,5vw,68px)}
+.sys h3{font-size:clamp(32px,3.6vw,48px)}
+.sec-head{border-bottom:2px solid var(--ink);padding-bottom:14px}
+
+/* numbered section heads (YouTube page) */
+.sec-num{display:flex;align-items:baseline;gap:18px;border-bottom:2px solid var(--ink);padding-bottom:14px;margin-bottom:36px}
+.sec-num .no{font-family:var(--f-impact);font-size:clamp(56px,7vw,96px);line-height:.9}
+.sec-num h2{font-size:clamp(44px,6vw,84px);margin:0;max-width:none}
+.sec-num .eyebrow{display:block;margin-bottom:6px}
+
+/* surfaces: rounder, lift on hover */
+.card,.sys,.band,.reel video{border-radius:22px}
+.card,.sys{transition:transform .35s cubic-bezier(.2,.7,.2,1),box-shadow .35s}
+.card:hover,.sys:hover{transform:translateY(-4px);box-shadow:0 24px 40px -24px rgba(30,28,24,.3)}
+
+@media (max-width:820px){.hero{min-height:auto}.hero .console,.hero .hero-panel{transform:none}}
+
+/* only the home and YouTube heroes fill the screen; inner pages get a compact banner */
+[id^="view-"]:not(#view-home) .hero{min-height:auto}
+[id^="view-"]:not(#view-home) .hero .hero-in{padding-block:72px 56px}
+
+/* mobile nav: one scrolling row, no wrapping */
+@media (max-width:720px){
+  .navlinks,.ytnav{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;margin-left:0;width:100%;-webkit-mask-image:linear-gradient(90deg,#000 88%,transparent)}
+  .navlinks::-webkit-scrollbar,.ytnav::-webkit-scrollbar{display:none}
+  .navlinks>*,.ytnav>*{white-space:nowrap;flex:none}
+  .nav-in{row-gap:8px}
+}

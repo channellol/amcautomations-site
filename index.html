@@ -6,7 +6,7 @@
 <title>amc.automations | AI agents and automations for companies</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=IBM+Plex+Mono:wght@400;500;600&family=Source+Sans+3:ital,wght@0,400;0,500;0,600;1,400&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=IBM+Plex+Mono:wght@400;500;600&family=Source+Sans+3:ital,wght@0,400;0,500;0,600;1,400&display=swap">
 <style>
 :root{
   --ground:#FAF7F2;
@@ -22,7 +22,7 @@
   --clay-ink:#8E4224;
   --good:#3F7A52;
   --radius:14px;
-  --maxw:1120px;
+  --maxw:1560px;
   color-scheme:light;
   --f-display:"Bricolage Grotesque","Trebuchet MS",system-ui,sans-serif;
   --f-body:"Source Sans 3",system-ui,-apple-system,sans-serif;
@@ -33,16 +33,18 @@ body{margin:0;background:var(--ground);color:var(--ink);font-family:var(--f-body
 img{max-width:100%}
 a{color:inherit}
 h1,h2,h3{font-family:var(--f-display);margin:0;text-wrap:balance;letter-spacing:-.02em;line-height:1.05}
-.wrap{max-width:var(--maxw);margin:0 auto;padding-inline:28px}
+.wrap{max-width:var(--maxw);margin:0 auto;padding-inline:clamp(16px,4vw,64px)}
 .eyebrow{font-family:var(--f-data);font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
 
 /* nav */
 header.nav{position:sticky;top:0;z-index:30;background:color-mix(in srgb,var(--ground) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
-.nav-in{max-width:var(--maxw);margin:0 auto;padding-block:14px;padding-inline:28px;display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.nav-in{max-width:var(--maxw);margin:0 auto;padding-block:14px;padding-inline:clamp(16px,4vw,64px);display:flex;align-items:center;gap:16px;flex-wrap:wrap}
 .brand{display:flex;align-items:center;gap:10px;font-family:var(--f-display);font-weight:800;font-size:18px;letter-spacing:-.03em}
 .spark{width:20px;height:20px;color:var(--clay);flex:none}
 .navlinks{margin-left:auto;display:flex;gap:6px;flex-wrap:wrap}
 .navlinks button{font-family:var(--f-body);font-size:15px;font-weight:500;color:var(--ink-2);background:none;border:0;padding:8px 16px;border-radius:999px;cursor:pointer}
+.navlinks a.navlink{font-family:var(--f-body);font-size:15px;font-weight:500;color:var(--ink-2);text-decoration:none;padding:8px 16px;border-radius:999px}
+.navlinks a.navlink:hover{color:var(--ink);background:var(--surface-2)}
 .navlinks button:hover{color:var(--ink);background:var(--surface-2)}
 .navlinks button[aria-current="page"]{background:var(--surface);color:var(--ink);box-shadow:0 1px 2px rgba(0,0,0,.06);border:1px solid var(--line)}
 button:focus-visible,input:focus-visible,select:focus-visible,a:focus-visible{outline:2px solid var(--clay);outline-offset:2px}
@@ -57,7 +59,7 @@ button:focus-visible,input:focus-visible,select:focus-visible,a:focus-visible{ou
   filter:saturate(1.05)}
 .hero-grain{position:absolute;inset:0;pointer-events:none;opacity:.35;mix-blend-mode:multiply;
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='.5'/%3E%3C/svg%3E")}
-.hero-in{position:relative;max-width:var(--maxw);margin:0 auto;padding-block:56px;padding-inline:28px;display:grid;grid-template-columns:1.15fr .85fr;gap:40px;align-items:center}
+.hero-in{position:relative;max-width:var(--maxw);margin:0 auto;padding-block:56px;padding-inline:clamp(16px,4vw,64px);display:grid;grid-template-columns:1.15fr .85fr;gap:40px;align-items:center}
 @media(max-width:900px){.hero-in{grid-template-columns:1fr;gap:28px}}
 .hero h1{font-size:clamp(38px,6vw,66px);font-weight:800;max-width:20ch}
 .hero h1 .clay{color:var(--clay)}
@@ -83,7 +85,7 @@ button:focus-visible,input:focus-visible,select:focus-visible,a:focus-visible{ou
 
 /* stat strip */
 .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-top:1px solid var(--line);background:var(--surface)}
-.stats>.stat:first-child{padding-left:max(28px,calc((100vw - var(--maxw))/2 + 28px))}
+.stats>.stat:first-child{padding-left:max(28px,calc((100vw - var(--maxw))/2 + clamp(16px,4vw,64px)))}
 .stat{padding:24px 28px;border-right:1px solid var(--line)}
 .stat:last-child{border-right:0}
 .stat b{display:block;font-family:var(--f-data);font-variant-numeric:tabular-nums;font-size:clamp(22px,3vw,30px);font-weight:600;letter-spacing:-.02em}
@@ -466,6 +468,7 @@ footer{border-top:1px solid var(--line);padding-block:30px;color:var(--muted);fo
 .srow .pr{font-family:var(--f-data);font-size:12.5px;color:var(--clay);white-space:nowrap;padding-top:6px}
 @media(max-width:900px){.proof,.also{grid-template-columns:1fr}.kpis{grid-template-columns:1fr 1fr}.srow{grid-template-columns:auto 1fr}.srow .pr{display:none}.mini .reel{width:100%}}
 </style>
+<link rel="stylesheet" href="assets/bold.css">
 
 <header class="nav">
   <div class="nav-in">
@@ -474,6 +477,7 @@ footer{border-top:1px solid var(--line);padding-block:30px;color:var(--muted);fo
       <button data-route="home">Home</button>
       <button data-route="systems">Systems</button>
       <button data-route="templates">Agents</button>
+      <a class="navlink" href="youtube.html">YouTube</a>
       <a class="hire" href="https://wa.me/917075969025?text=Hi%20Atharva%2C%20I%20saw%20amc.automations%20and%20want%20to%20book%20a%20call" target="_blank" rel="noopener" style="text-decoration:none">Book a call</a>
     </nav>
   </div>
@@ -1010,5 +1014,34 @@ document.querySelectorAll("[data-flow]").forEach(d=>d.outerHTML=flowHTML(d.datas
 })();
 
 </script>
+
+<style id="reveal-css">
+.js-reveal .sr{opacity:0;transform:translateY(28px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1)}
+.js-reveal .sr.sr-in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.js-reveal .sr{opacity:1;transform:none;transition:none}}
+</style>
+<script>
+(function(){
+  if(!('IntersectionObserver' in window))return;
+  document.documentElement.classList.add('js-reveal');
+  function arm(){
+    var sel='.wrap>*,.sec-head,.svc-step,.kpi,.stat2,.card,.reel,.sys,.proof,.list li,.mail,.phone,.hero h1,.lede,.ctas';
+    var els=[].slice.call(document.querySelectorAll(sel));
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('sr-in');io.unobserve(e.target);}});},{threshold:0,rootMargin:'0px 0px -8% 0px'});
+    els.forEach(function(el,i){
+      if(el.tagName==='SECTION'||el.classList.contains('wrap')||el.querySelector('.wrap,section'))return;
+      if(el.parentElement&&el.parentElement.closest('.sr'))return;
+      el.classList.add('sr');
+      var sib=el.parentElement?[].indexOf.call(el.parentElement.children,el):0;
+      el.style.transitionDelay=Math.min(sib,5)*70+'ms';
+      io.observe(el);
+    });
+    function chk(){els.forEach(function(el){if(el.classList.contains('sr-in'))return;var r=el.getBoundingClientRect();if(r.height&&r.top<innerHeight*.92&&r.bottom>0)el.classList.add('sr-in');});}
+    var tk=false;addEventListener('scroll',function(){if(!tk){tk=true;requestAnimationFrame(function(){tk=false;chk()})}},{passive:true});addEventListener('resize',chk);addEventListener('hashchange',function(){setTimeout(chk,60)});setTimeout(chk,50);
+  }
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',arm);else arm();
+})();
+</script>
+<script src="assets/bold.js"></script>
 </body>
 </html>
