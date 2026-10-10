@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>amc.automations | YouTube for experts</title>
+<meta name="description" content="Your long videos edited and 30 Shorts cut from them every month, scheduled and uploaded. All you do is record.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=IBM+Plex+Mono:wght@400;500;600&family=Source+Sans+3:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ground:#FAF7F2;--surface:#FFFFFF;--surface-2:#F3EEE6;--line:#E4DCCF;--line-strong:#D3C7B4;
+  --ink:#1E1C18;--ink-2:#4A453D;--muted:#7A7264;--clay:#C05F38;--clay-soft:#F2E2D9;--clay-ink:#8E4224;
+  --radius:14px;--maxw:1120px;color-scheme:light;
+  --f-display:"Bricolage Grotesque","Trebuchet MS",system-ui,sans-serif;
+  --f-body:"Source Sans 3",system-ui,-apple-system,sans-serif;
+  --f-data:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--ground);color:var(--ink);font-family:var(--f-body);font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+h1,h2,h3{font-family:var(--f-display);margin:0;text-wrap:balance;letter-spacing:-.02em;line-height:1.05}
+.wrap{max-width:var(--maxw);margin:0 auto;padding-inline:28px}
+.eyebrow{font-family:var(--f-data);font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+header.nav{position:sticky;top:0;z-index:30;background:color-mix(in srgb,var(--ground) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.nav-in{max-width:var(--maxw);margin:0 auto;padding:14px 28px;display:flex;align-items:center;gap:16px}
+.brand{display:flex;align-items:center;gap:10px;font-family:var(--f-display);font-weight:800;font-size:18px;letter-spacing:-.03em;text-decoration:none}
+.spark{width:20px;height:20px;color:var(--clay)}
+.nav-in .home{margin-left:auto;font-size:15px;color:var(--ink-2);text-decoration:none;padding:8px 16px;border-radius:999px}
+.nav-in .home:hover{background:var(--surface-2)}
+.hero{position:relative;overflow:hidden;border-bottom:1px solid var(--line)}
+.hero-art{position:absolute;inset:0;pointer-events:none;background:radial-gradient(60% 55% at 80% 15%,color-mix(in srgb,var(--clay) 24%,transparent),transparent 70%),radial-gradient(45% 50% at 10% 85%,color-mix(in srgb,var(--clay) 12%,transparent),transparent 72%)}
+.hero .wrap{position:relative;padding-block:88px 72px}
+.hero h1{font-size:clamp(40px,6.4vw,78px);font-weight:800;max-width:14ch;margin-top:14px}
+.hero h1 em{font-style:normal;color:var(--clay)}
+.lede{font-size:20px;color:var(--ink-2);max-width:56ch;margin:22px 0 32px}
+.btn{display:inline-flex;align-items:center;gap:8px;font-weight:600;font-size:16px;padding:14px 22px;border-radius:999px;text-decoration:none;border:1px solid transparent}
+.btn.primary{background:var(--ink);color:var(--ground)}
+.btn.primary:hover{background:var(--clay)}
+.btn.ghost{border-color:var(--line-strong);color:var(--ink)}
+.btn.ghost:hover{background:var(--surface)}
+.ctas{display:flex;gap:12px;flex-wrap:wrap}
+section{padding-block:80px;border-bottom:1px solid var(--line)}
+section h2{font-size:clamp(30px,4vw,46px);font-weight:800;margin:12px 0 18px;max-width:20ch}
+.sub{color:var(--ink-2);max-width:60ch;margin:0 0 40px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:26px}
+.card .n{font-family:var(--f-data);font-size:13px;color:var(--clay);font-weight:600}
+.card h3{font-size:22px;margin:10px 0 8px}
+.card p{margin:0;color:var(--ink-2)}
+.big{font-family:var(--f-display);font-size:52px;font-weight:800;color:var(--clay);line-height:1}
+.reels{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.reel video{width:100%;aspect-ratio:9/16;border-radius:var(--radius);background:#111;display:block;object-fit:cover}
+.reel h3{font-size:19px;margin:14px 0 4px}
+.reel p{margin:0;color:var(--muted);font-size:15px}
+.list{list-style:none;padding:0;margin:0;display:grid;gap:12px;max-width:720px}
+.list li{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px 20px}
+.list b{display:block;font-family:var(--f-display);font-size:18px;margin-bottom:2px}
+.final{background:var(--ink);color:var(--ground);border:0}
+.final h2{color:var(--ground)}
+.final .sub{color:#CFC7BA}
+.final .btn.primary{background:var(--clay);color:#fff}
+.final .btn.primary:hover{background:#fff;color:var(--ink)}
+footer{padding:28px 0;color:var(--muted);font-size:14px}
+@media (max-width:820px){.grid3,.reels{grid-template-columns:1fr}.reels{max-width:360px}.wrap{padding-inline:16px}.nav-in{padding-inline:16px}.hero .wrap{padding-block:56px 48px}section{padding-block:56px}}
+</style>
+</head>
+<body>
+<header class="nav"><div class="nav-in">
+  <a class="brand" href="./"><svg class="spark" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l2.2 6.8L21 11l-6.8 2.2L12 20l-2.2-6.8L3 11l6.8-2.2z"/></svg>amc.automations</a>
+  <a class="home" href="./">Home</a>
+</div></header>
+
+<div class="hero"><div class="hero-art"></div><div class="wrap">
+  <span class="eyebrow">YouTube for experts</span>
+  <h1>You record. <em>We do the rest.</em></h1>
+  <p class="lede">For advisers, realtors, doctors and other experts who already make long videos. Every month your long videos are edited and cut into Shorts, then scheduled and uploaded for you.</p>
+  <div class="ctas">
+    <a class="btn primary" href="mailto:atharvabhutada169@gmail.com?subject=Free%20Short&body=Hi%20Atharva%2C%20here%27s%20my%20channel%3A%20">Get one free Short</a>
+    <a class="btn ghost" href="#work">See the work</a>
+  </div>
+</div></div>
+
+<section><div class="wrap">
+  <span class="eyebrow">Every month</span>
+  <h2>What you get</h2>
+  <div class="grid3">
+    <div class="card"><div class="big">5</div><h3>Long videos edited</h3><p>Cuts, pacing, captions and on-screen visuals, ready to publish.</p></div>
+    <div class="card"><div class="big">30</div><h3>Shorts</h3><p>Cut from your long videos, each one pointing viewers back to the full video.</p></div>
+    <div class="card"><div class="big">0</div><h3>Uploads by you</h3><p>Titles, descriptions, scheduling and uploading are handled for you.</p></div>
+  </div>
+</div></section>
+
+<section id="work"><div class="wrap">
+  <span class="eyebrow">Recent work</span>
+  <h2>Shorts made from long videos</h2>
+  <p class="sub">Each one was cut from a single long video: strongest moment first, captions, explainer visuals and a call to action at the end.</p>
+  <div class="reels">
+    <div class="reel"><video src="assets/reel-fertility.mp4" poster="assets/reel-fertility.jpg" controls preload="none" playsinline></video><h3>Fertility clinic</h3><p>Captions, explainer visuals, call button at the end.</p></div>
+    <div class="reel"><video src="assets/reel-gastro.mp4" poster="assets/reel-gastro.jpg" controls preload="none" playsinline></video><h3>Gastro clinic</h3><p>Speaker kept in frame from start to finish.</p></div>
+    <div class="reel"><video src="assets/reel-aesthetics.mp4" poster="assets/reel-aesthetics.jpg" controls preload="none" playsinline></video><h3>Aesthetics clinic</h3><p>Hook first, then the explanation.</p></div>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <span class="eyebrow">How it works</span>
+  <h2>Three steps, then it runs every month</h2>
+  <div class="grid3">
+    <div class="card"><div class="n">01</div><h3>Free Short first</h3><p>Send your channel. You get one Short from one of your videos within 24 hours, free.</p></div>
+    <div class="card"><div class="n">02</div><h3>Send your recordings</h3><p>Drop raw videos in a shared folder. No new video this week? Shorts come from your older ones.</p></div>
+    <div class="card"><div class="n">03</div><h3>Approve and it goes live</h3><p>You see everything before it posts. Then it is scheduled and uploaded.</p></div>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <span class="eyebrow">Questions</span>
+  <h2>Common questions</h2>
+  <ul class="list">
+    <li><b>Do I have to change how I record?</b>No. Keep recording the way you do now.</li>
+    <li><b>Who owns the videos?</b>You do. Everything is posted on your channel.</li>
+    <li><b>Can I approve before anything goes live?</b>Yes. Nothing is posted without your OK.</li>
+    <li><b>What if I don't record a new video one month?</b>Shorts are cut from your older videos, so your channel keeps posting.</li>
+  </ul>
+</div></section>
+
+<section class="final"><div class="wrap">
+  <h2>See it on your own channel first</h2>
+  <p class="sub">Send your channel link. You get one finished Short from one of your videos within 24 hours, free.</p>
+  <a class="btn primary" href="mailto:atharvabhutada169@gmail.com?subject=Free%20Short&body=Hi%20Atharva%2C%20here%27s%20my%20channel%3A%20">Get one free Short</a>
+</div></section>
+
+<footer><div class="wrap">amc.automations · Atharva Bhutada · <a href="mailto:atharvabhutada169@gmail.com">atharvabhutada169@gmail.com</a></div></footer>
+</body>
+</html>
