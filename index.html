@@ -6,7 +6,7 @@
 <title>amc.automations | AI agents and automations for companies</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=IBM+Plex+Mono:wght@400;500;600&family=Source+Sans+3:ital,wght@0,400;0,500;0,600;1,400&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,300..900;1,8..60,300..900&family=IBM+Plex+Mono:wght@400;500&display=swap">
 <style>
 :root{
   --ground:#FAF7F2;
@@ -469,19 +469,20 @@ footer{border-top:1px solid var(--line);padding-block:30px;color:var(--muted);fo
 @media(max-width:900px){.proof,.also{grid-template-columns:1fr}.kpis{grid-template-columns:1fr 1fr}.srow{grid-template-columns:auto 1fr}.srow .pr{display:none}.mini .reel{width:100%}}
 </style>
 <link rel="stylesheet" href="assets/bold.css">
+<link rel="stylesheet" href="assets/nav.css">
+<link rel="stylesheet" href="assets/o1.css">
 
-<header class="nav">
-  <div class="nav-in">
-    <div class="brand"><svg class="spark" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 1.5l1.9 6.3 6.3 1.9-6.3 1.9L12 22.5l-1.9-10.9L3.8 9.7l6.3-1.9z"/></svg> amc.automations</div>
-    <nav class="navlinks">
-      <button data-route="home">Home</button>
-      <button data-route="systems">Systems</button>
-      <button data-route="templates">Agents</button>
-      <a class="navlink" href="youtube.html">YouTube</a>
-      <a class="hire" href="https://wa.me/917075969025?text=Hi%20Atharva%2C%20I%20saw%20amc.automations%20and%20want%20to%20book%20a%20call" target="_blank" rel="noopener" style="text-decoration:none">Book a call</a>
-    </nav>
-  </div>
-</header>
+<div class="topbar">
+  <a class="logo-link" href="./" aria-label="AMC Automations home"><img src="assets/logo.png" alt="AMC Automations"></a>
+  <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false" aria-controls="drawer"><i></i><i></i><i></i></button>
+</div>
+<div class="scrim" id="scrim"></div>
+<aside class="drawer" id="drawer" aria-label="Menu">
+  <div class="drawer-head"><img src="assets/logo.png" alt="AMC Automations"><button class="drawer-close" aria-label="Close menu">&times;</button></div>
+  <nav class="navlinks"><a data-route="home" href="#home">Home</a><a data-route="systems" href="#systems">Systems</a><a data-route="templates" href="#templates">Agents</a><a data-route="services" href="#services">Done for you</a><a href="youtube.html">YouTube</a></nav>
+  <a class="book" href="https://wa.me/917075969025?text=Hi%20Atharva%2C%20I%20saw%20amc.automations%20and%20want%20to%20book%20a%20call" target="_blank" rel="noopener">Book a call on WhatsApp</a>
+  <p class="drawer-note">A person approves every email before it goes out.</p>
+</aside>
 
 <main>
 
@@ -566,98 +567,129 @@ footer{border-top:1px solid var(--line);padding-block:30px;color:var(--muted);fo
 
 <!-- HOME -->
 <div id="view-home" hidden>
-  <div class="hero">
-    <div class="scroll-cue">Scroll<i></i></div><div class="hero-art"></div><div class="hero-dots"></div><div class="hero-grain"></div>
-    <div class="hero-in">
-      <div>
-      <span class="pill-new"><b>AI AGENTS · AUTOMATIONS · CONTENT</b><span class="live-dot"></span> Taking new builds</span>
-      <h1><span class="ln">Busywork,</span><br><span class="ln clay">on autopilot.</span></h1>
-      <p class="lede">We build the automations your team does by hand: follow-ups, WhatsApp updates, content and outbound. On the right is our own outbound engine since 26 September, running with no one at the keyboard.</p>
+  <div class="hero hero-video">
+    <video class="hero-bgvid" autoplay muted loop playsinline preload="auto" poster="assets/hero-video-poster.jpg" aria-hidden="true"><source src="assets/hero-video.mp4" type="video/mp4"></video>
+    <div class="hero-shade"></div>
+    <div class="hero-center">
+      <img class="hero-logo-img" src="assets/logo.png" alt="AMC Automations">
+      <h1><span class="ln">Busywork,</span> <span class="ln clay">on autopilot.</span></h1>
+      <p class="lede">We build the automations your team does by hand: follow-ups, WhatsApp updates, content and outbound.</p>
       <div class="hero-cta">
         <a class="btn wa" href="https://wa.me/917075969025?text=Hi%20Atharva%2C%20I%20saw%20amc.automations%20and%20want%20to%20book%20a%20call" target="_blank" rel="noopener"><img src="https://cdn.jsdelivr.net/npm/simple-icons@15.0.0/icons/whatsapp.svg" alt="">Book a call on WhatsApp</a>
         <button class="btn ghost" data-route="systems">See what each system made</button>
       </div>
-      <p class="covers">Real numbers, 8 Oct 2026. A person approves every email before it goes out.</p>
-      </div>
-      <div class="console cz" role="img" aria-label="Outbound engine log">
-  <div class="ch"><span><i></i>Outbound engine · live log</span><span>26 Sep to 8 Oct</span></div>
-  <div class="kpis">
-    <div class="kpi"><b>304</b><span>prospects found</span></div>
-    <div class="kpi"><b>317</b><span>emails sent</span></div>
-    <div class="kpi"><b>4</b><span>replies</span></div>
-    <div class="kpi"><b>7</b><span>bounces caught</span></div>
-  </div>
-  <div class="bars"><div class="" style="height:20%" title="8"></div><div class="" style="height:62%" title="25"></div><div class="" style="height:62%" title="25"></div><div class="" style="height:82%" title="33"></div><div class="" style="height:100%" title="40"></div><div class="" style="height:100%" title="40"></div><div class="z" style="height:2%" title="0"></div><div class="z" style="height:2%" title="0"></div><div class="" style="height:100%" title="40"></div><div class="" style="height:100%" title="40"></div><div class="" style="height:100%" title="40"></div><div class="" style="height:65%" title="26"></div></div>
-  <div class="bl"><span>27 Sep</span><span>emails sent per day, capped at 40</span><span>8 Oct</span></div>
-  <ul class="feed">
-    <li>approved by a person before sending<b>323</b></li>
-    <li>prospects with a personal opening line<b>286</b></li>
-    <li>low-lead warnings raised by the engine<b>28</b></li>
-  </ul>
-</div>
     </div>
+    <div class="scroll-cue">Scroll<i></i></div>
   </div>
 
-  <section class="wrap cz">
-    <p class="eyebrow">Output 1 · Outbound</p>
-    <div class="sec-head" style="margin-bottom:22px"><h2 style="font-size:clamp(26px,3.6vw,38px);font-weight:800">Drop in a company. Get the email sequence.</h2><button class="btn ghost" data-route="systems" data-jump-sys="outbound">How it works</button></div>
-    <div class="demo cz" data-demo="mail">
+  <section class="o1" id="o1">
+  <div class="o1-track">
+    <div class="o1-stage">
+      <div class="o1-demo-wrap">
+        <div class="o1-head"><h3>Paste a site. Watch the sequence appear.</h3></div>
+        <div class="demo cz" data-demo="mail">
       <div class="row"><input class="d-link" type="text" placeholder="Put a company website here" autocomplete="off" aria-label="Put a company website here"><button class="go d-go" type="button">Write the emails</button></div>
-      <div class="dstage d-stage"><div class="hint">Paste any website, or just press the button</div><div class="strip"><div class="scan"></div><div class="seg" style="left:8%;width:7%"></div><div class="seg" style="left:27%;width:7%"></div><div class="seg" style="left:47%;width:7%"></div><div class="seg" style="left:66%;width:7%"></div><div class="seg" style="left:85%;width:7%"></div></div></div>
+      <div class="dstage d-stage"><div class="hint"><span class="hint-t">Paste a company website to begin</span><div class="idle-steps"><b>Research</b><i></i><b>Outcome</b><i></i><b>Email</b><i></i><b>Day 3</b><i></i><b>Day 7</b><i></i><b>Day 15</b></div></div><div class="strip"><div class="scan"></div><div class="seg" style="left:8%;width:7%"></div><div class="seg" style="left:27%;width:7%"></div><div class="seg" style="left:47%;width:7%"></div><div class="seg" style="left:66%;width:7%"></div><div class="seg" style="left:85%;width:7%"></div></div></div>
       <div class="stat2"><span class="d-msg">Waiting</span><span class="d-pct"></span></div>
       <div class="pbar"><i class="d-bar"></i></div>
       <div class="dout d-out"></div>
       <p class="dnote">Demo: the website is not read here. The company name comes from your link and the rest is sample text, so you can see the format: one outcome, one question, and follow-ups on day 3, 7 and 15.</p>
       <div class="dcta d-cta"><a class="btn wa" href="https://wa.me/917075969025?text=Hi%20Atharva%2C%20I%20tried%20the%20outbound%20demo.%20Can%20you%20run%20this%20for%20my%20business%3F" target="_blank" rel="noopener"><img src="https://cdn.jsdelivr.net/npm/simple-icons@15.0.0/icons/whatsapp.svg" alt="">Get a real one on WhatsApp</a></div>
     </div>
-    <div style="margin-top:44px"><div class="proof">
+      </div>
+      <div class="o1-cover top">
+        <div class="o1-title"><span class="o1-kick">Output 1</span><h2><span class="o1-no">01</span> Outbound.</h2><p>Drop in a company. Get the email sequence.</p><span class="o1-hint">Scroll<i></i></span></div>
+      </div>
+      <div class="o1-cover bot" aria-hidden="true">
+        <div class="o1-title"><span class="o1-kick">Output 1</span><h2><span class="o1-no">01</span> Outbound.</h2><p>Drop in a company. Get the email sequence.</p><span class="o1-hint">Scroll<i></i></span></div>
+      </div>
+    </div>
+  </div>
+  <div class="wrap o1-proof">
+    <div class="proof">
       <div>
         <p class="eyebrow">A real one it sent</p>
         <h3>A real email the engine wrote.</h3>
-        <p>It read about the brand, found one real thing to mention, and tied it to one outcome. Names are blurred here.</p>
-        <ul><li>Each email names one thing about the company</li><li>One outcome, one question, no attachments</li><li>Follow-ups go out on day 3, 7 and 15</li></ul>
+        <p class="rd">It read about the brand, found one real thing to mention, and tied it to one outcome. Names are blurred here.</p>
+        <ul><li>Each email names <mark class="hl">one thing about the company</mark></li><li><mark class="hl">One outcome, one question</mark>, no attachments</li><li>Follow-ups go out on <mark class="hl">day 3, 7 and 15</mark></li></ul>
         <p><button class="btn ghost" data-route="systems" data-jump-sys="outbound">How the engine works</button></p>
       </div>
       <div class="mail">
-  <div class="mh">To: <b class="blur">Founder Name</b> · Subject: <b>fewer "where is my order" messages for <span class="blur">Brand</span></b></div>
-  <p>Hi <span class="blur">Name</span>,</p>
-  <p>Since Shark Tank, you've probably seen how order spikes also bring spikes in "where is my order" messages.</p>
-  <p>The outcome I'd aim for at <span class="blur">Brand</span>: your team stops answering delivery questions by hand. Customers get tracking updates on WhatsApp before they think to ask.</p>
-  <p>You approve every message before it goes live, and you can switch it off at any point.</p>
-  <p>Would a 15-minute call be worth it?</p>
-</div>
-    </div></div>
-  </section>
+        <div class="mh">To: <b class="blur">Founder Name</b> · Subject: <b>fewer "where is my order" messages for <span class="blur">Brand</span></b></div>
+        <p>Hi <span class="blur">Name</span>,</p>
+        <p>Since Shark Tank, you've probably seen how <mark class="hl">order spikes also bring spikes</mark> in "where is my order" messages.</p>
+        <p>The outcome I'd aim for at <span class="blur">Brand</span>: <mark class="hl">your team stops answering delivery questions by hand</mark>. Customers get <mark class="hl">tracking updates on WhatsApp</mark> before they think to ask.</p>
+        <p><mark class="hl">You approve every message before it goes live</mark>, and you can switch it off at any point.</p>
+        <p><mark class="hl">Would a 15-minute call be worth it?</mark></p>
+      </div>
+    </div>
+  </div>
+</section>
 
-  <div class="band-bg"><section class="wrap cz">
-    <p class="eyebrow">Output 2 · Video</p>
-    <div class="sec-head" style="margin-bottom:22px"><h2 style="font-size:clamp(26px,3.6vw,38px);font-weight:800">Drop in one long video. Get shorts out.</h2><button class="btn ghost" data-route="systems" data-jump-sys="video">How it works</button></div>
-    <div class="demo cz" data-demo="shorts">
+  <section class="o1" id="o2">
+  <div class="o1-track">
+    <div class="o1-stage">
+      <div class="o1-demo-wrap">
+        <div class="o1-head"><h3>Paste a video. Watch the shorts appear.</h3></div>
+        <div class="demo cz" data-demo="shorts">
       <div class="row"><input class="d-link" type="text" placeholder="Put your link here" autocomplete="off" aria-label="Put your link here"><button class="go d-go" type="button">Make shorts</button></div>
-      <div class="dstage d-stage"><div class="hint">Paste any link, or just press the button</div><div class="strip"><div class="scan"></div><div class="seg" style="left:8%;width:7%"></div><div class="seg" style="left:27%;width:7%"></div><div class="seg" style="left:47%;width:7%"></div><div class="seg" style="left:66%;width:7%"></div><div class="seg" style="left:85%;width:7%"></div></div></div>
+      <div class="dstage d-stage"><div class="hint"><span class="hint-t">Paste a video link to begin</span><div class="idle-steps"><b>Watch</b><i></i><b>Find moments</b><i></i><b>Track speaker</b><i></i><b>Captions</b><i></i><b>Cut 5 shorts</b></div></div><div class="strip"><div class="scan"></div><div class="seg" style="left:8%;width:7%"></div><div class="seg" style="left:27%;width:7%"></div><div class="seg" style="left:47%;width:7%"></div><div class="seg" style="left:66%;width:7%"></div><div class="seg" style="left:85%;width:7%"></div></div></div>
       <div class="stat2"><span class="d-msg">Waiting</span><span class="d-pct"></span></div>
       <div class="pbar"><i class="d-bar"></i></div>
       <div class="dout d-out"></div>
       <p class="dnote">Demo: your link is not processed here. These cards show what each short comes with: a hook, a cut range, captions, speaker tracking and an end card. The topics change with every run.</p>
       <div class="dcta d-cta"><a class="btn wa" href="https://wa.me/917075969025?text=Hi%20Atharva%2C%20I%20tried%20the%20shorts%20demo.%20Can%20you%20make%20shorts%20from%20my%20video%3F" target="_blank" rel="noopener"><img src="https://cdn.jsdelivr.net/npm/simple-icons@15.0.0/icons/whatsapp.svg" alt="">Get a real one on WhatsApp</a></div>
     </div>
-  </section></div>
+      </div>
+      <div class="o1-cover top">
+        <div class="o1-title"><span class="o1-kick">Output 2</span><h2><span class="o1-no">02</span> Video.</h2><p>Drop in one long video. Get shorts out.</p><span class="o1-hint">Scroll<i></i></span></div>
+      </div>
+      <div class="o1-cover bot" aria-hidden="true">
+        <div class="o1-title"><span class="o1-kick">Output 2</span><h2><span class="o1-no">02</span> Video.</h2><p>Drop in one long video. Get shorts out.</p><span class="o1-hint">Scroll<i></i></span></div>
+      </div>
+    </div>
+  </div>
+</section>
 
-  <section class="wrap cz">
-    <p class="eyebrow">Output 3 · Posts</p>
-    <div class="sec-head" style="margin-bottom:22px"><h2 style="font-size:clamp(26px,3.6vw,38px);font-weight:800">Drop in one idea. Get a carousel out.</h2><button class="btn ghost" data-route="systems" data-jump-sys="posts">How it works</button></div>
-    <div class="demo cz" data-demo="slides">
+  <section class="o1" id="o3">
+  <div class="o1-track">
+    <div class="o1-stage">
+      <div class="o1-demo-wrap">
+        <div class="o1-head"><h3>Type an idea. Watch the carousel appear.</h3></div>
+        <div class="demo cz" data-demo="slides">
       <div class="row"><input class="d-link" type="text" placeholder="Type your idea here" autocomplete="off" aria-label="Type your idea here"><button class="go d-go" type="button">Make the carousel</button></div>
-      <div class="dstage d-stage"><div class="hint">Type any idea, or just press the button</div><div class="strip"><div class="scan"></div><div class="seg" style="left:8%;width:7%"></div><div class="seg" style="left:27%;width:7%"></div><div class="seg" style="left:47%;width:7%"></div><div class="seg" style="left:66%;width:7%"></div><div class="seg" style="left:85%;width:7%"></div></div></div>
+      <div class="dstage d-stage"><div class="hint"><span class="hint-t">Type an idea to begin</span><div class="idle-steps"><b>Read idea</b><i></i><b>Write cover</b><i></i><b>One point per slide</b><i></i><b>Check layout</b><i></i><b>Pack 5 slides</b></div></div><div class="strip"><div class="scan"></div><div class="seg" style="left:8%;width:7%"></div><div class="seg" style="left:27%;width:7%"></div><div class="seg" style="left:47%;width:7%"></div><div class="seg" style="left:66%;width:7%"></div><div class="seg" style="left:85%;width:7%"></div></div></div>
       <div class="stat2"><span class="d-msg">Waiting</span><span class="d-pct"></span></div>
       <div class="pbar"><i class="d-bar"></i></div>
       <div class="dout d-out"></div>
       <p class="dnote">Demo: your idea becomes the cover. The other slides are sample text that show the layout: one point per slide, the same every time.</p>
       <div class="dcta d-cta"><a class="btn wa" href="https://wa.me/917075969025?text=Hi%20Atharva%2C%20I%20tried%20the%20carousel%20demo.%20Can%20you%20make%20posts%20for%20my%20brand%3F" target="_blank" rel="noopener"><img src="https://cdn.jsdelivr.net/npm/simple-icons@15.0.0/icons/whatsapp.svg" alt="">Get a real one on WhatsApp</a></div>
     </div>
-    <p class="eyebrow" style="margin:44px 0 14px">Real carousel it made</p>
-    <div class="slides"><img src="assets/car-01.jpg" alt="Carousel cover" loading="lazy"><img src="assets/car-02.jpg" alt="Carousel slide 2" loading="lazy"><img src="assets/car-03.jpg" alt="Carousel slide 3" loading="lazy"><img src="assets/car-04.jpg" alt="Carousel slide 4" loading="lazy"></div>
-  </section>
+      </div>
+      <div class="o1-cover top">
+        <div class="o1-title"><span class="o1-kick">Output 3</span><h2><span class="o1-no">03</span> Posts.</h2><p>Drop in one idea. Get a carousel out.</p><span class="o1-hint">Scroll<i></i></span></div>
+      </div>
+      <div class="o1-cover bot" aria-hidden="true">
+        <div class="o1-title"><span class="o1-kick">Output 3</span><h2><span class="o1-no">03</span> Posts.</h2><p>Drop in one idea. Get a carousel out.</p><span class="o1-hint">Scroll<i></i></span></div>
+      </div>
+    </div>
+  </div>
+  <div class="o3-reel">
+    <div class="o3-pin">
+      <div class="wrap">
+        <p class="eyebrow">Real carousel it made</p>
+        <h3 class="o3-h">One idea in. <mark class="hl">Five slides out</mark>, same layout every time.</h3>
+        <div class="reel-row">
+          <figure class="rc"><img src="assets/car-01.jpg" alt="Carousel cover"></figure>
+          <figure class="rc"><img src="assets/car-02.jpg" alt="Carousel slide 2"></figure>
+          <figure class="rc"><img src="assets/car-03.jpg" alt="Carousel slide 3"></figure>
+          <figure class="rc"><img src="assets/car-04.jpg" alt="Carousel slide 4"></figure>
+        </div>
+        <div class="reel-meta"><span class="reel-count"><b>01</b> / 04</span><span class="reel-bar"><i></i></span></div>
+      </div>
+    </div>
+  </div>
+</section>
 
   <section class="wrap" style="padding-top:0">
     <p class="eyebrow">Something else?</p>
@@ -780,7 +812,7 @@ footer{border-top:1px solid var(--line);padding-block:30px;color:var(--muted);fo
 <footer><div class="wrap">
   <div class="foot-grid">
     <div>
-      <div class="foot-brand">amc.automations</div>
+      <div class="foot-brand"><img src="assets/logo.png" alt="AMC Automations" style="height:38px;width:auto"></div>
       <p style="max-width:34ch;margin:10px 0 0">AI agents and automations for companies. Set up around your tools and handed over.</p>
     </div>
     <div>
@@ -873,7 +905,7 @@ function go(r){
   if(!routes.includes(r))r="home";
   routes.forEach(x=>document.getElementById("view-"+x).hidden=x!==r);
   if(r!=="guide")document.title=TITLE0;
-  document.querySelectorAll(".navlinks button").forEach(b=>{b.dataset.route===r?b.setAttribute("aria-current","page"):b.removeAttribute("aria-current")});
+  document.querySelectorAll(".navlinks a[data-route]").forEach(b=>{b.dataset.route===r?b.setAttribute("aria-current","page"):b.removeAttribute("aria-current")});
   if(r!=="guide"&&location.hash.slice(1)!==r)history.replaceState(null,"","#"+r);
   window.scrollTo({top:0,behavior:"instant"});
 }
@@ -987,7 +1019,28 @@ document.querySelectorAll("[data-flow]").forEach(d=>d.outerHTML=flowHTML(d.datas
   const reset=()=>{st.className="dstage d-stage";segs.forEach(x=>x.classList.remove("on"));out.innerHTML="";cta.classList.remove("show");bar.style.width="0"};
   function finish(){st.className="dstage d-stage done";const r=K.build(inp.value.trim(),run);msg.innerHTML="<b>Done.</b> "+K.done+r.label;out.innerHTML=r.html.join("");pct.textContent="100%";bar.style.width="100%";[...out.children].forEach((x,i)=>setTimeout(()=>x.classList.add("in"),R?0:60+i*220));cta.classList.add("show");run++;busy=false;go.disabled=false;go.dataset.t=go.dataset.t||go.textContent;go.textContent="Run it again"}
   go.addEventListener("click",()=>{
-   if(busy)return;busy=true;go.disabled=true;reset();
+   if(busy)return;
+   if(root.dataset.demo==="slides"){
+    let err=root.querySelector(".d-err");
+    if(!err){err=document.createElement("p");err.className="d-err";err.setAttribute("role","alert");root.querySelector(".row").after(err);inp.addEventListener("input",()=>{err.textContent="";inp.classList.remove("bad");inp.removeAttribute("aria-invalid")})}
+    const t=inp.value.trim();let e="";
+    if(!t)e="Type an idea first, like: Why follow-ups win deals";
+    else if(t.length<4)e="Make it a little longer. A few words is enough";
+    else if(t.length>120)e="Keep it under 120 characters";
+    if(e){err.textContent=e;inp.classList.remove("bad");void inp.offsetWidth;inp.classList.add("bad");inp.setAttribute("aria-invalid","true");inp.focus();return}
+    err.textContent="";inp.classList.remove("bad");inp.removeAttribute("aria-invalid");
+   }
+   if(root.dataset.demo==="mail"||root.dataset.demo==="shorts"){const vid=root.dataset.demo==="shorts";
+    let err=root.querySelector(".d-err");
+    if(!err){err=document.createElement("p");err.className="d-err";err.setAttribute("role","alert");root.querySelector(".row").after(err);inp.addEventListener("input",()=>{err.textContent="";inp.classList.remove("bad");inp.removeAttribute("aria-invalid")})}
+    const v=inp.value.trim().replace(/^https?:\/\//i,"").replace(/^www\./i,""),host=v.split(/[\/?#]/)[0].toLowerCase();
+    let e="";
+    if(!v)e=vid?"Add a video link first, like youtube.com/watch?v=abc123":"Add a company website first, like brand.com";
+    else if(/\s/.test(v)||!/^(?:[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?\.)+[a-z]{2,}$/.test(host))e=vid?"That doesn't look like a link. Try something like youtube.com/watch?v=abc123":"That doesn't look like a website. Try something like brand.com";
+    if(e){err.textContent=e;inp.classList.remove("bad");void inp.offsetWidth;inp.classList.add("bad");inp.setAttribute("aria-invalid","true");inp.focus();return}
+    err.textContent="";inp.classList.remove("bad");inp.removeAttribute("aria-invalid");
+   }
+   busy=true;go.disabled=true;reset();
    if(R){finish();return}
    st.className="dstage d-stage run";const T=3000,t0=performance.now(),n=K.steps.length;
    (function f(t){const p=Math.min(1,(t-t0)/T);bar.style.width=(p*100)+"%";pct.textContent=Math.round(p*100)+"%";
@@ -1043,5 +1096,7 @@ document.querySelectorAll("[data-flow]").forEach(d=>d.outerHTML=flowHTML(d.datas
 })();
 </script>
 <script src="assets/bold.js"></script>
+<script src="assets/nav.js"></script>
+<script src="assets/o1.js"></script>
 </body>
 </html>
