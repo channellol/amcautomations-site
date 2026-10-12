@@ -83,6 +83,23 @@ footer{padding:28px 0;color:var(--muted);font-size:14px}
 .ytnav a:hover{color:var(--ink);background:var(--surface-2)}
 .ytnav a[aria-current="page"]{background:var(--surface);color:var(--ink);border:1px solid var(--line);box-shadow:0 1px 2px rgba(0,0,0,.06)}
 @media (max-width:560px){.ytnav a{padding:6px 10px;font-size:14px}}
+
+.cut{margin:0 0 60px}
+.cut-long{background:#17150f;border-radius:var(--radius);padding:14px 14px 18px;color:#fff}
+.cut-long .lab{display:flex;justify-content:space-between;font:500 12px var(--f-data);letter-spacing:.1em;text-transform:uppercase;color:#b9b0a0;margin-bottom:10px}
+.cut-bar{position:relative;display:grid;grid-template-columns:repeat(10,1fr);gap:2px;border-radius:8px;overflow:hidden}
+.cut-bar img{width:100%;aspect-ratio:16/9;object-fit:cover;display:block;filter:brightness(.55)}
+.cut-bar img.on{filter:none;outline:3px solid var(--clay);outline-offset:-3px;position:relative}
+.cut-bar b{position:absolute;top:6px;left:6px;background:var(--clay);color:#fff;font:600 12px var(--f-data);border-radius:6px;padding:2px 7px}
+.cut-bar div{position:relative}
+.cut-arrows{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;height:30px}
+.cut-arrows span{justify-self:center;width:2px;background:var(--clay);position:relative}
+.cut-arrows span:after{content:"";position:absolute;bottom:-1px;left:-5px;border:6px solid transparent;border-top:8px solid var(--clay);border-bottom:0}
+.cut-shorts{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.cut-short img{width:100%;aspect-ratio:9/14;object-fit:cover;border-radius:18px;display:block;background:#111}
+.cut-short h3{font-size:18px;margin:12px 0 2px}.cut-short p{margin:0;color:var(--muted);font-size:14.5px}
+.cut-note{color:var(--ink-2);margin:22px 0 0;max-width:62ch}
+@media(max-width:700px){.cut-arrows,.cut-shorts{grid-template-columns:repeat(2,1fr)}.cut-arrows span:nth-child(n+3){display:none}.cut-arrows{height:20px}.cut-bar{grid-template-columns:repeat(5,1fr)}.cut-bar div:nth-child(n+6){display:none}}
 </style>
 <link rel="stylesheet" href="assets/bold.css">
 <link rel="stylesheet" href="assets/nav.css">
@@ -105,7 +122,7 @@ footer{padding:28px 0;color:var(--muted);font-size:14px}
   <h1><span class="ln">You record.</span><br><span class="ln"><em>We do the rest.</em></span></h1>
   <p class="lede">For advisers, realtors, doctors and other experts who already make long videos. Every month your long videos are edited and cut into Shorts, then scheduled and uploaded for you.</p>
   <div class="ctas">
-    <a class="btn primary" href="mailto:atharvabhutada169@gmail.com?subject=Free%20Short&body=Hi%20Atharva%2C%20here%27s%20my%20channel%3A%20">Get one free Short</a>
+    <a class="btn primary" href="mailto:atharvabhutada169@gmail.com?subject=YouTube%20Shorts&body=Hi%20Atharva%2C%20here%27s%20my%20channel%3A%20">Send your channel</a>
     <a class="btn ghost" href="#work">See the work</a>
   </div>
 </div>
@@ -124,6 +141,12 @@ footer{padding:28px 0;color:var(--muted);font-size:14px}
 <section id="work"><div class="wrap">
 <div class="sec-num"><span class="no">02</span><div><span class="eyebrow">Recent work</span><h2>The work.</h2></div></div>
   <p class="sub">Each one was cut from a single long video: strongest moment first, captions, explainer visuals and a call to action at the end.</p>
+<div class="cut">
+  <div class="cut-long"><div class="lab"><span>One long video</span><span>10 min, real source</span></div><div class="cut-bar"><div><img src="assets/cutstrip-0.jpg" alt="" loading="lazy"></div><div><img src="assets/cutstrip-1.jpg" alt="" class=on loading="lazy"><b>1</b></div><div><img src="assets/cutstrip-2.jpg" alt="" loading="lazy"></div><div><img src="assets/cutstrip-3.jpg" alt="" class=on loading="lazy"><b>2</b></div><div><img src="assets/cutstrip-4.jpg" alt="" loading="lazy"></div><div><img src="assets/cutstrip-5.jpg" alt="" class=on loading="lazy"><b>3</b></div><div><img src="assets/cutstrip-6.jpg" alt="" loading="lazy"></div><div><img src="assets/cutstrip-7.jpg" alt="" loading="lazy"></div><div><img src="assets/cutstrip-8.jpg" alt="" class=on loading="lazy"><b>4</b></div><div><img src="assets/cutstrip-9.jpg" alt="" loading="lazy"></div></div></div>
+  <div class="cut-arrows"><span></span><span></span><span></span><span></span></div>
+  <div class="cut-shorts"><div class="cut-short"><img src="assets/cutshort-0.jpg" alt="" loading="lazy"><h3>Short 1</h3><p>Opens on its strongest line.</p></div><div class="cut-short"><img src="assets/cutshort-1.jpg" alt="" loading="lazy"><h3>Short 2</h3><p>Speaker kept in frame.</p></div><div class="cut-short"><img src="assets/cutshort-2.jpg" alt="" loading="lazy"><h3>Short 3</h3><p>Captioned, ends on a call card.</p></div><div class="cut-short"><img src="assets/cutshort-3.jpg" alt="" loading="lazy"><h3>Short 4</h3><p>Visuals added where needed.</p></div></div>
+  <p class="cut-note">Illustration. The moments that stand alone are picked, cut to the speaker, captioned and ended with a call card. One long video, four or more Shorts.</p>
+</div>
   <div class="reels">
 <div class="reel"><video src="assets/sample-kendall.mp4" poster="assets/sample-kendall.jpg" controls preload="none" playsinline></video><h3>Talking head</h3><p>Bold word captions. Sample edit, not client work.</p></div>
 <div class="reel"><video src="assets/sample-mikey.mp4" poster="assets/sample-mikey.jpg" controls preload="none" playsinline></video><h3>Split screen</h3><p>Explainer visual on top, speaker below. Sample edit.</p></div>
@@ -136,7 +159,7 @@ footer{padding:28px 0;color:var(--muted);font-size:14px}
 <section><div class="wrap">
 <div class="sec-num"><span class="no">03</span><div><span class="eyebrow">How it works</span><h2>Three steps.</h2></div></div>
   <div class="grid3">
-    <div class="card"><div class="n">01</div><h3>Free Short first</h3><p>Send your channel. You get one Short from one of your videos within 24 hours, free.</p></div>
+    <div class="card"><div class="n">01</div><h3>Send your channel</h3><p>Share your channel link and we look at your videos and pick where to start.</p></div>
     <div class="card"><div class="n">02</div><h3>Send your recordings</h3><p>Drop raw videos in a shared folder. No new video this week? Shorts come from your older ones.</p></div>
     <div class="card"><div class="n">03</div><h3>Approve and it goes live</h3><p>You see everything before it posts. Then it is scheduled and uploaded.</p></div>
   </div>
@@ -153,9 +176,9 @@ footer{padding:28px 0;color:var(--muted);font-size:14px}
 </div></section>
 
 <section class="final"><div class="wrap">
-  <h2>See it on your own channel first</h2>
-  <p class="sub">Send your channel link. You get one finished Short from one of your videos within 24 hours, free.</p>
-  <a class="btn primary" href="mailto:atharvabhutada169@gmail.com?subject=Free%20Short&body=Hi%20Atharva%2C%20here%27s%20my%20channel%3A%20">Get one free Short</a>
+  <h2>See it on your own channel</h2>
+  <p class="sub">Send your channel link and we will show you how your videos would be cut.</p>
+  <a class="btn primary" href="mailto:atharvabhutada169@gmail.com?subject=YouTube%20Shorts&body=Hi%20Atharva%2C%20here%27s%20my%20channel%3A%20">Send your channel</a>
 </div></section>
 
 <footer><div class="wrap">amc.automations · Atharva Bhutada · <a href="mailto:atharvabhutada169@gmail.com">atharvabhutada169@gmail.com</a></div></footer>
