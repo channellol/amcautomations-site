@@ -100,7 +100,7 @@ footer{padding:28px 0;color:var(--muted);font-size:14px}
 .cut-short h3{font-size:18px;margin:12px 0 2px}.cut-short p{margin:0;color:var(--muted);font-size:14.5px}
 .cut-note{color:var(--ink-2);margin:22px 0 0;max-width:62ch}
 @media(max-width:700px){.cut-arrows,.cut-shorts{grid-template-columns:repeat(2,1fr)}.cut-arrows span:nth-child(n+3){display:none}.cut-arrows{height:20px}.cut-bar{grid-template-columns:repeat(5,1fr)}.cut-bar div:nth-child(n+6){display:none}}
-</style>
+.wk-ari{margin-bottom:28px}</style>
 <link rel="stylesheet" href="assets/bold.css">
 <link rel="stylesheet" href="assets/nav.css">
 </head>
@@ -132,11 +132,11 @@ footer{padding:28px 0;color:var(--muted);font-size:14px}
 <section id="work"><div class="wrap">
 <div class="sec-num"><span class="no">01</span><div><span class="eyebrow">Recent work</span><h2>The work.</h2></div></div>
   <p class="sub">Shorts, podcast clips and long-form cuts across different niches. Sample and past edits, shown without client names.</p>
-<div class="cut">
-  <div class="cut-long"><div class="lab"><span>One long video</span><span>10 min, real source</span></div><div class="cut-bar"><div><img src="assets/cutstrip-0.jpg" alt="" loading="lazy"></div><div><img src="assets/cutstrip-1.jpg" alt="" class=on loading="lazy"><b>1</b></div><div><img src="assets/cutstrip-2.jpg" alt="" loading="lazy"></div><div><img src="assets/cutstrip-3.jpg" alt="" class=on loading="lazy"><b>2</b></div><div><img src="assets/cutstrip-4.jpg" alt="" loading="lazy"></div><div><img src="assets/cutstrip-5.jpg" alt="" class=on loading="lazy"><b>3</b></div><div><img src="assets/cutstrip-6.jpg" alt="" loading="lazy"></div><div><img src="assets/cutstrip-7.jpg" alt="" loading="lazy"></div><div><img src="assets/cutstrip-8.jpg" alt="" class=on loading="lazy"><b>4</b></div><div><img src="assets/cutstrip-9.jpg" alt="" loading="lazy"></div></div></div>
-  <div class="cut-arrows"><span></span><span></span><span></span><span></span></div>
-  <div class="cut-shorts"><div class="cut-short"><img src="assets/cutshort-0.jpg" alt="" loading="lazy"><h3>Short 1</h3><p>Opens on its strongest line.</p></div><div class="cut-short"><img src="assets/cutshort-1.jpg" alt="" loading="lazy"><h3>Short 2</h3><p>Speaker kept in frame.</p></div><div class="cut-short"><img src="assets/cutshort-2.jpg" alt="" loading="lazy"><h3>Short 3</h3><p>Captioned, ends on a call card.</p></div><div class="cut-short"><img src="assets/cutshort-3.jpg" alt="" loading="lazy"><h3>Short 4</h3><p>Visuals added where needed.</p></div></div>
-  <p class="cut-note">Illustration. The moments that stand alone are picked, cut to the speaker, captioned and ended with a call card. One long video, four or more Shorts.</p>
+<div class="wk-grid wk-ari">
+<figure class="wk " data-cat="podcast"><div class="wk-v"><video src="assets/work/ari/a01.mp4" poster="assets/work/ari/a01.jpg" muted loop playsinline preload="none" aria-label="Mirrored repost"></video><span class="wk-play" aria-hidden="true"></span></div><figcaption><h3>Mirrored repost</h3><p>Mirrored and sped up for a fresh repost.</p></figcaption></figure>
+<figure class="wk " data-cat="podcast"><div class="wk-v"><video src="assets/work/ari/a02.mp4" poster="assets/work/ari/a02.jpg" muted loop playsinline preload="none" aria-label="B-roll cut"></video><span class="wk-play" aria-hidden="true"></span></div><figcaption><h3>B-roll cut</h3><p>Stock b-roll over the speaker, brightness matched.</p></figcaption></figure>
+<figure class="wk " data-cat="podcast"><div class="wk-v"><video src="assets/work/ari/a03.mp4" poster="assets/work/ari/a03.jpg" muted loop playsinline preload="none" aria-label="Music and captions"></video><span class="wk-play" aria-hidden="true"></span></div><figcaption><h3>Music and captions</h3><p>New music bed and a new caption style.</p></figcaption></figure>
+<figure class="wk " data-cat="podcast"><div class="wk-v"><video src="assets/work/ari/a04.mp4" poster="assets/work/ari/a04.jpg" muted loop playsinline preload="none" aria-label="New hook"></video><span class="wk-play" aria-hidden="true"></span></div><figcaption><h3>New hook</h3><p>Same clip, a new opening line to test.</p></figcaption></figure>
 </div>
   <div class="wk-tabs" role="group" aria-label="Filter work"><button type="button" aria-pressed="true" data-f="all">All</button><button type="button" aria-pressed="false" data-f="shorts">Shorts</button><button type="button" aria-pressed="false" data-f="podcast">Podcast</button><button type="button" aria-pressed="false" data-f="long">Long-form</button><button type="button" aria-pressed="false" data-f="essay">Documentary and essay</button></div>
 <div class="wk-grid">
@@ -204,7 +204,7 @@ footer{padding:28px 0;color:var(--muted);font-size:14px}
 .js-reveal .sr{opacity:0;transform:translateY(28px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1)}
 .js-reveal .sr.sr-in{opacity:1;transform:none}
 @media (prefers-reduced-motion:reduce){.js-reveal .sr{opacity:1;transform:none;transition:none}}
-</style>
+.wk-ari{margin-bottom:28px}</style>
 <script>
 (function(){
   if(!('IntersectionObserver' in window))return;
@@ -242,7 +242,7 @@ footer{padding:28px 0;color:var(--muted);font-size:14px}
 .wk h3{font-size:18px;margin:12px 0 3px}.wk p{margin:0;color:var(--muted);font-size:15px}
 .wk-note{color:var(--muted);font-size:14px;margin:26px 0 0}
 @media (max-width:820px){.wk-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.wk h3{font-size:16px}.wk p{font-size:14px}}
-</style>
+.wk-ari{margin-bottom:28px}</style>
 <script src="assets/bold.js"></script>
 <script src="assets/nav.js"></script>
 </body>
